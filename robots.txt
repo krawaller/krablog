@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://krawaller.github.com/krablog/sitemap.xml 
