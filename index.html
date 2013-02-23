@@ -125,50 +125,87 @@
 
 <p>As an example, consider the (adapted) following view that a student of mine had in a recent project:</p>
 
-<pre><code>:::javascript
-var AddRecipeView = Backbone.View.extend({
+<figure class='code'><figcaption><span>Backbone View</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">AddRecipeView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DishModel</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+</span><span class='line'>      <span class="c1">// Listen to model validation errors</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderErrors</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkErrorField</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// ...rest of functionality edited out...</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-  initialize: function(opts) {
-    this.model = new DishModel();
-    this.render()
-      // Listen to model validation errors
-      .listenTo(this.model, 'invalid', this.renderErrors)
-      .listenTo(this.model, 'change', this.checkErrorField)
-  },
-
-  // ...rest of functionality edited out...
-});
-</code></pre>
 
 <p>Using the test philosofy outlined above, how would we test the <code>initialize</code> function? Here&#8217;s one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers:</p>
 
-<pre><code>:::javascript
-describe("the initialize function",function(){
-    var initialize = AddRecipeView.prototype.initialize,
-        context = {
-            listenTo: sinon.stub().returns(context),
-            render: sinon.stub().returns(context),
-            renderErrors: "RENDERFUNC",
-            checkErrorField: "CHECKSTUFF"
-        };
-    initialize.call(context);
-    it("should set a Dishmodel instance on .model",function(){
-        expect(context.model instanceof Dishmodel).toBe(true);
-    });
-    it("should call render",function(){
-        expect(context.render).toHaveBeenCalledOnce();
-    });
-    it("called listenTo correctly",function(){
-        expect(context.listenTo).toHaveBeenCalledTwice();
-        expect(context.listenTo.firstCall.args).toEqual([
-            context.model,"invalid",context.renderErrors
-        ]);
-        expect(context.listenTo.secondCall.args).toEqual([
-            context.model,"change",context.checkErrorField
-        ]);
-    });
-});
-</code></pre>
+<figure class='code'><figcaption><span>Unit Tests for initialize function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;the initialize function&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">listenTo</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">().</span><span class="nx">returns</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
+</span><span class='line'>            <span class="nx">render</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">().</span><span class="nx">returns</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
+</span><span class='line'>            <span class="nx">renderErrors</span><span class="o">:</span> <span class="s2">&quot;RENDERFUNC&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">checkErrorField</span><span class="o">:</span> <span class="s2">&quot;CHECKSTUFF&quot;</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should set a Dishmodel instance on .model&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">model</span> <span class="k">instanceof</span> <span class="nx">Dishmodel</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should call render&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">render</span><span class="p">).</span><span class="nx">toHaveBeenCalledOnce</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;called listenTo correctly&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">).</span><span class="nx">toHaveBeenCalledTwice</span><span class="p">();</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">.</span><span class="nx">firstCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>          <span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">renderErrors</span>
+</span><span class='line'>        <span class="p">]);</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">.</span><span class="nx">secondCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>          <span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">checkErrorField</span>
+</span><span class='line'>        <span class="p">]);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>As often the case with testing Backbone objects, we&#8217;re faced with the problem of having to deal with chaining syntax. Here I simply let my stubs for <code>listenTo</code> and <code>render</code> return the <code>context</code>.</p>
 
@@ -187,53 +224,91 @@ describe("the initialize function",function(){
 
 <p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
 
-<pre><code>:::javascript
-renderErrors: function(model) {
-    this.$('.errors').html('');
-    _.each(model.validationError, function(error) {
-        this.$('.errors').append(error.message + '&lt;br&gt;');
-    });
-},
-</code></pre>
+<figure class='code'><figcaption><span>Backbone view function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">renderErrors</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.errors&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">validationError</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.errors&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">+</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">},</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>How to test that? There&#8217;s even quirkier chaining going on, and we&#8217;re manipulating the DOM. Is testing this really feasible without instantiating the view?</p>
 
 <p>Here&#8217;s what I did:</p>
 
-<pre><code>:::javascript
-describe("the renderError function",function(){
-    var renderErr = AddRecipeView.prototype.renderErrors,
-        model = {validationError:[
-            {message:"err1"},{message:"err2"},{message:"err3"}
-        ]},
-        $el = {
-            html: sinon.spy(),
-            append: sinon.spy()
-        },
-        context = {
-            $: sinon.stub().returns($el);
-        };
-    renderErr.call(context,model);
-    it("should use the correct selector",function(){
-        expect(context.$).toHaveBeenAlwaysCalledWith(".errors");
-    });
-    it("should have cleared the previous html",function(){
-        expect($el.html).toHaveBeenCalledWith("");
-    });
-    it("appends each errormsg",function(){
-        expect($el.append).toHaveBeenCalledThrice();
-        expect($el.append.firstCall.args).toEqual([
-            model.validationError[0].message+"&lt;br&gt;"
-        ]);
-        expect($el.append.secondCall.args).toEqual([
-            model.validationError[1].message+"&lt;br&gt;"
-        ]);
-        expect($el.append.thirdCall.args).toEqual([
-            model.validationError[2].message+"&lt;br&gt;"
-        ]);
-    });
-});
-</code></pre>
+<figure class='code'><figcaption><span>Unit tests</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;the renderError function&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">renderErr</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">renderErrors</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">model</span> <span class="o">=</span> <span class="p">{</span><span class="nx">validationError</span><span class="o">:</span><span class="p">[</span>
+</span><span class='line'>          <span class="p">{</span><span class="nx">message</span><span class="o">:</span><span class="s2">&quot;err1&quot;</span><span class="p">},{</span><span class="nx">message</span><span class="o">:</span><span class="s2">&quot;err2&quot;</span><span class="p">},{</span><span class="nx">message</span><span class="o">:</span><span class="s2">&quot;err3&quot;</span><span class="p">}</span>
+</span><span class='line'>        <span class="p">]},</span>
+</span><span class='line'>        <span class="nx">$el</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">html</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(),</span>
+</span><span class='line'>            <span class="nx">append</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">()</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">$</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">().</span><span class="nx">returns</span><span class="p">(</span><span class="nx">$el</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="nx">renderErr</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="nx">model</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should use the correct selector&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">$</span><span class="p">).</span><span class="nx">toHaveBeenAlwaysCalledWith</span><span class="p">(</span><span class="s2">&quot;.errors&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should have cleared the previous html&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">$el</span><span class="p">.</span><span class="nx">html</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;appends each errormsg&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">).</span><span class="nx">toHaveBeenCalledThrice</span><span class="p">();</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">.</span><span class="nx">firstCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>          <span class="nx">model</span><span class="p">.</span><span class="nx">validationError</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">message</span><span class="o">+</span><span class="s2">&quot;&lt;br&gt;&quot;</span>
+</span><span class='line'>        <span class="p">]);</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">.</span><span class="nx">secondCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>          <span class="nx">model</span><span class="p">.</span><span class="nx">validationError</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">message</span><span class="o">+</span><span class="s2">&quot;&lt;br&gt;&quot;</span>
+</span><span class='line'>        <span class="p">]);</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">$el</span><span class="p">.</span><span class="nx">append</span><span class="p">.</span><span class="nx">thirdCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>          <span class="nx">model</span><span class="p">.</span><span class="nx">validationError</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">message</span><span class="o">+</span><span class="s2">&quot;&lt;br&gt;&quot;</span>
+</span><span class='line'>        <span class="p">]);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>In order to deal with the chain, I made a dummy object for the element (<code>$el</code>), and then I made the spy for the scoped selector <code>$</code> return that dummy. This deals with the chaining problem, but is perhaps a bit too implementation specific - for example, the student might change from using <code>this.$(selector)</code> to <code>this.$el.find(selector)</code>, in which case my test would fail. It will however keep working even if he starts caching the result from <code>this.$(selector)</code>, which he should of course do.</p>
 

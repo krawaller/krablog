@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Backbone | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/backbone/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-23T17:27:44+01:00</updated>
+  <updated>2013-02-23T17:29:14+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -50,50 +50,56 @@
 
 <p>As an example, consider the (adapted) following view that a student of mine had in a recent project:</p>
 
-<pre><code>:::javascript
-var AddRecipeView = Backbone.View.extend({
+<p>``` javascript Backbone View
+var AddRecipeView = Backbone.View.extend({</p>
 
-  initialize: function(opts) {
-    this.model = new DishModel();
-    this.render()
-      // Listen to model validation errors
-      .listenTo(this.model, 'invalid', this.renderErrors)
-      .listenTo(this.model, 'change', this.checkErrorField)
-  },
+<p>  initialize: function(opts) {</p>
 
-  // ...rest of functionality edited out...
-});
+<pre><code>this.model = new DishModel();
+this.render()
+  // Listen to model validation errors
+  .listenTo(this.model, 'invalid', this.renderErrors)
+  .listenTo(this.model, 'change', this.checkErrorField)
 </code></pre>
+
+<p>  },</p>
+
+<p>  // ...rest of functionality edited out...
+});
+```</p>
 
 <p>Using the test philosofy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers:</p>
 
-<pre><code>:::javascript
-describe("the initialize function",function(){
-    var initialize = AddRecipeView.prototype.initialize,
-        context = {
-            listenTo: sinon.stub().returns(context),
-            render: sinon.stub().returns(context),
-            renderErrors: "RENDERFUNC",
-            checkErrorField: "CHECKSTUFF"
-        };
-    initialize.call(context);
-    it("should set a Dishmodel instance on .model",function(){
-        expect(context.model instanceof Dishmodel).toBe(true);
-    });
-    it("should call render",function(){
-        expect(context.render).toHaveBeenCalledOnce();
-    });
-    it("called listenTo correctly",function(){
-        expect(context.listenTo).toHaveBeenCalledTwice();
-        expect(context.listenTo.firstCall.args).toEqual([
-            context.model,"invalid",context.renderErrors
-        ]);
-        expect(context.listenTo.secondCall.args).toEqual([
-            context.model,"change",context.checkErrorField
-        ]);
-    });
+<p>``` javascript Unit Tests for initialize function
+describe("the initialize function",function(){</p>
+
+<pre><code>var initialize = AddRecipeView.prototype.initialize,
+    context = {
+        listenTo: sinon.stub().returns(context),
+        render: sinon.stub().returns(context),
+        renderErrors: "RENDERFUNC",
+        checkErrorField: "CHECKSTUFF"
+    };
+initialize.call(context);
+it("should set a Dishmodel instance on .model",function(){
+    expect(context.model instanceof Dishmodel).toBe(true);
+});
+it("should call render",function(){
+    expect(context.render).toHaveBeenCalledOnce();
+});
+it("called listenTo correctly",function(){
+    expect(context.listenTo).toHaveBeenCalledTwice();
+    expect(context.listenTo.firstCall.args).toEqual([
+        context.model,"invalid",context.renderErrors
+    ]);
+    expect(context.listenTo.secondCall.args).toEqual([
+        context.model,"change",context.checkErrorField
+    ]);
 });
 </code></pre>
+
+<p>});
+```</p>
 
 <p>As often the case with testing Backbone objects, we're faced with the problem of having to deal with chaining syntax. Here I simply let my stubs for <code>listenTo</code> and <code>render</code> return the <code>context</code>.</p>
 
@@ -112,53 +118,59 @@ describe("the initialize function",function(){
 
 <p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
 
-<pre><code>:::javascript
-renderErrors: function(model) {
-    this.$('.errors').html('');
-    _.each(model.validationError, function(error) {
-        this.$('.errors').append(error.message + '&lt;br&gt;');
-    });
-},
+<p>``` javascript Backbone view function
+renderErrors: function(model) {</p>
+
+<pre><code>this.$('.errors').html('');
+_.each(model.validationError, function(error) {
+    this.$('.errors').append(error.message + '&lt;br&gt;');
+});
 </code></pre>
+
+<p>},
+```</p>
 
 <p>How to test that? There's even quirkier chaining going on, and we're manipulating the DOM. Is testing this really feasible without instantiating the view?</p>
 
 <p>Here's what I did:</p>
 
-<pre><code>:::javascript
-describe("the renderError function",function(){
-    var renderErr = AddRecipeView.prototype.renderErrors,
-        model = {validationError:[
-            {message:"err1"},{message:"err2"},{message:"err3"}
-        ]},
-        $el = {
-            html: sinon.spy(),
-            append: sinon.spy()
-        },
-        context = {
-            $: sinon.stub().returns($el);
-        };
-    renderErr.call(context,model);
-    it("should use the correct selector",function(){
-        expect(context.$).toHaveBeenAlwaysCalledWith(".errors");
-    });
-    it("should have cleared the previous html",function(){
-        expect($el.html).toHaveBeenCalledWith("");
-    });
-    it("appends each errormsg",function(){
-        expect($el.append).toHaveBeenCalledThrice();
-        expect($el.append.firstCall.args).toEqual([
-            model.validationError[0].message+"&lt;br&gt;"
-        ]);
-        expect($el.append.secondCall.args).toEqual([
-            model.validationError[1].message+"&lt;br&gt;"
-        ]);
-        expect($el.append.thirdCall.args).toEqual([
-            model.validationError[2].message+"&lt;br&gt;"
-        ]);
-    });
+<p>``` javascript Unit tests
+describe("the renderError function",function(){</p>
+
+<pre><code>var renderErr = AddRecipeView.prototype.renderErrors,
+    model = {validationError:[
+        {message:"err1"},{message:"err2"},{message:"err3"}
+    ]},
+    $el = {
+        html: sinon.spy(),
+        append: sinon.spy()
+    },
+    context = {
+        $: sinon.stub().returns($el);
+    };
+renderErr.call(context,model);
+it("should use the correct selector",function(){
+    expect(context.$).toHaveBeenAlwaysCalledWith(".errors");
+});
+it("should have cleared the previous html",function(){
+    expect($el.html).toHaveBeenCalledWith("");
+});
+it("appends each errormsg",function(){
+    expect($el.append).toHaveBeenCalledThrice();
+    expect($el.append.firstCall.args).toEqual([
+        model.validationError[0].message+"&lt;br&gt;"
+    ]);
+    expect($el.append.secondCall.args).toEqual([
+        model.validationError[1].message+"&lt;br&gt;"
+    ]);
+    expect($el.append.thirdCall.args).toEqual([
+        model.validationError[2].message+"&lt;br&gt;"
+    ]);
 });
 </code></pre>
+
+<p>});
+```</p>
 
 <p>In order to deal with the chain, I made a dummy object for the element (<code>$el</code>), and then I made the spy for the scoped selector <code>$</code> return that dummy. This deals with the chaining problem, but is perhaps a bit too implementation specific - for example, the student might change from using <code>this.$(selector)</code> to <code>this.$el.find(selector)</code>, in which case my test would fail. It will however keep working even if he starts caching the result from <code>this.$(selector)</code>, which he should of course do.</p>
 
