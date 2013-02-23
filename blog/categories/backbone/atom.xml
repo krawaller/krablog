@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Backbone | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/blog/categories/backbone/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
   <updated>2013-02-23T17:27:44+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
@@ -18,13 +18,13 @@
     <link href="http://krawaller.github.com/krablog/blog/2013/02/23/testing-backbone-objects/"/>
     <updated>2013-02-23T17:21:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/blog/2013/02/23/testing-backbone-objects</id>
-    <content type="html"><![CDATA[<h3>Troll bait (or &#8220;How not to do it&#8221;)</h3>
+    <content type="html"><![CDATA[<h3>Troll bait (or "How not to do it")</h3>
 
-<p>Here&#8217;s a blanket statement to flame against:</p>
+<p>Here's a blanket statement to flame against:</p>
 
 <blockquote><p><em>Instantiating Backbone views/controllers/models in order to test them is an <strong>antipattern</strong>!</em></p></blockquote>
 
-<p>Why? When we try to test an instance, we&#8217;re faced with two main problems:</p>
+<p>Why? When we try to test an instance, we're faced with two main problems:</p>
 
 <ul>
 <li> It will likely <strong>require lots of setup</strong>, as we have to call the constructor with some reasonable data.</li>
@@ -34,15 +34,15 @@
 
 <h3>How to do it</h3>
 
-<p>So, then, how should it be done? Here&#8217;s the approach I use.</p>
+<p>So, then, how should it be done? Here's the approach I use.</p>
 
 <ol>
 <li>First I <strong>access the method</strong> to test through <code>var method = MyConstructor.prototype.methodToTest</code>.</li>
 <li>If the method touches <code>this</code> (which is almost always the case) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
 <li>I create eventual <strong>parameter</strong> data.</li>
-<li>I&#8217;ll then <strong>call the method on the custom context</strong>: <code>var result = method.call(context, ...args...);</code>.</li>
-<li>Following that I can <strong>test the result</strong>&#8230;</li>
-<li>&#8230;and also if my <strong>spies where called in the correct way</strong>.</li>
+<li>I'll then <strong>call the method on the custom context</strong>: <code>var result = method.call(context, ...args...);</code>.</li>
+<li>Following that I can <strong>test the result</strong>...</li>
+<li>...and also if my <strong>spies where called in the correct way</strong>.</li>
 </ol>
 
 
@@ -65,7 +65,7 @@ var AddRecipeView = Backbone.View.extend({
 });
 </code></pre>
 
-<p>Using the test philosofy outlined above, how would we test the <code>initialize</code> function? Here&#8217;s one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers:</p>
+<p>Using the test philosofy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers:</p>
 
 <pre><code>:::javascript
 describe("the initialize function",function(){
@@ -95,7 +95,7 @@ describe("the initialize function",function(){
 });
 </code></pre>
 
-<p>As often the case with testing Backbone objects, we&#8217;re faced with the problem of having to deal with chaining syntax. Here I simply let my stubs for <code>listenTo</code> and <code>render</code> return the <code>context</code>.</p>
+<p>As often the case with testing Backbone objects, we're faced with the problem of having to deal with chaining syntax. Here I simply let my stubs for <code>listenTo</code> and <code>render</code> return the <code>context</code>.</p>
 
 <p>Having set that up, we can proceed to check that initialize did what it was supposed to do:</p>
 
@@ -106,7 +106,7 @@ describe("the initialize function",function(){
 </ol>
 
 
-<p>All tests test the expected behaviour of the function, and nothing else. We&#8217;re not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
+<p>All tests test the expected behaviour of the function, and nothing else. We're not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
 
 <h3>Testing DOM methods</h3>
 
@@ -121,9 +121,9 @@ renderErrors: function(model) {
 },
 </code></pre>
 
-<p>How to test that? There&#8217;s even quirkier chaining going on, and we&#8217;re manipulating the DOM. Is testing this really feasible without instantiating the view?</p>
+<p>How to test that? There's even quirkier chaining going on, and we're manipulating the DOM. Is testing this really feasible without instantiating the view?</p>
 
-<p>Here&#8217;s what I did:</p>
+<p>Here's what I did:</p>
 
 <pre><code>:::javascript
 describe("the renderError function",function(){
@@ -164,7 +164,7 @@ describe("the renderError function",function(){
 
 <p>Apart from the danger of becoming implementation specific, I find that this fake chain approach mostly works very well!</p>
 
-<p>As for the DOM, the secret to testing it is NOT to test it. Here I stub out the relevant methods, and then simply check that they&#8217;re called correctly. No special measure needs to be taken just because they&#8217;re functions that are supposed to affect the DOM. I find this approach much easier than actually making sure that the correct html was set. In fact, I&#8217;ll go as far as to end this post with another bit of troll bait:</p>
+<p>As for the DOM, the secret to testing it is NOT to test it. Here I stub out the relevant methods, and then simply check that they're called correctly. No special measure needs to be taken just because they're functions that are supposed to affect the DOM. I find this approach much easier than actually making sure that the correct html was set. In fact, I'll go as far as to end this post with another bit of troll bait:</p>
 
 <blockquote><p><em>Testing if <code>this.$el.html() === expectedHtml</code> is an <strong>antipattern</strong>!</em></p></blockquote>
 ]]></content>
