@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Testing | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:23:14+01:00</updated>
+  <updated>2013-02-24T07:29:43+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -87,7 +87,7 @@ this.render()
 
 <p>We start the testcode by capturing the method to test from the constructor prototype:
 <code>javascript
-var initialize = AddRecipeView.prototype.initialize
+var initialize = AddRecipeView.prototype.initialize;
 </code></p>
 
 <h4>3: Context</h4>
@@ -159,7 +159,29 @@ expect(context.listenTo.secondCall.args).toEqual([
 <p>});
 ```</p>
 
-<p>Here's the test code in full:</p>
+<h4>End result</h4>
+
+<p>To save you scrolling back and forth, here's the <code>initialize</code> source again:</p>
+
+<p>``` javascript
+var AddRecipeView = Backbone.View.extend({</p>
+
+<p>  initialize: function(opts) {</p>
+
+<pre><code>this.model = new DishModel();
+this.render()
+  // Listen to model validation errors
+  .listenTo(this.model, 'invalid', this.renderErrors)
+  .listenTo(this.model, 'change', this.checkErrorField)
+</code></pre>
+
+<p>  },</p>
+
+<p>  // ...rest of functionality edited out...
+});
+```</p>
+
+<p>...and here's the test code in full:</p>
 
 <p>``` javascript
 describe("the initialize function",function(){</p>
@@ -192,23 +214,25 @@ it("called listenTo correctly",function(){
 <p>});
 ```</p>
 
-<p>All tests test the expected behaviour of the function, and nothing else. We're not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
+<p>All tests control one specific expected behaviour of the method, and nothing else. We're not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
 
-<h3>Testing DOM methods</h3>
+<h3>Case study #2 - Testing DOM methods</h3>
 
 <p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
 
-<p>``` javascript Backbone view function
+<p>``` javascript
 var AddRecipeView = Backbone.View.extend({</p>
 
-<pre><code>// ...
+<pre><code>// ...other functionality edited out...
+
 renderErrors: function(model) {
     this.$('.errors').html('');
     _.each(model.validationError, function(error) {
         this.$('.errors').append(error.message + '&lt;br&gt;');
     });
 },
-// ...
+
+// ...other functionality edited out...
 </code></pre>
 
 <p>});

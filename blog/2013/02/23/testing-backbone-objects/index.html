@@ -169,7 +169,7 @@
 <p>We start the testcode by capturing the method to test from the constructor prototype:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -258,7 +258,38 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here&#8217;s the test code in full:</p>
+<h4>End result</h4>
+
+<p>To save you scrolling back and forth, here&#8217;s the <code>initialize</code> source again:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">AddRecipeView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DishModel</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+</span><span class='line'>      <span class="c1">// Listen to model validation errors</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderErrors</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkErrorField</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// ...rest of functionality edited out...</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&#8230;and here&#8217;s the test code in full:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -313,13 +344,13 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>All tests test the expected behaviour of the function, and nothing else. We&#8217;re not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
+<p>All tests control one specific expected behaviour of the method, and nothing else. We&#8217;re not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
 
-<h3>Testing DOM methods</h3>
+<h3>Case study #2 - Testing DOM methods</h3>
 
 <p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
 
-<figure class='code'><figcaption><span>Backbone view function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -329,15 +360,23 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">AddRecipeView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// ...other functionality edited out...</span>
+</span><span class='line'>
 </span><span class='line'>  <span class="nx">renderErrors</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.errors&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
 </span><span class='line'>      <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">validationError</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.errors&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">+</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">);</span>
 </span><span class='line'>      <span class="p">});</span>
 </span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// ...other functionality edited out...</span>
+</span><span class='line'>
 </span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 
