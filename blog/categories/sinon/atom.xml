@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sinon | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/sinon/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:29:43+01:00</updated>
+  <updated>2013-02-24T07:35:51+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -39,7 +39,7 @@
 <ol>
 <li>First we must of course <strong>analyse what the method actually does</strong> (or is supposed to do, if we're doing true BDD and writing the tests first).</li>
 <li>Start the test by <strong>storing the method</strong> to test by stealing it from the constructor prototype.</li>
-<li>If the method touches <code>this</code> (which is almost always the case) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
+<li>If the method touches <code>this</code> (which is almost always the case in a Backbone object) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
 <li>I create eventual <strong>parameter</strong> data.</li>
 <li>I'll then <strong>call the method on the custom context</strong>.</li>
 <li>Following that I can <strong>test the result</strong>...</li>
@@ -76,11 +76,11 @@ this.render()
 
 <p>First we analyse what the method is supposed to do:</p>
 
-<ol>
-<li>It adds a Dishmodel instance to the context</li>
-<li>It calls the render function</li>
-<li>It sets two event listeners</li>
-</ol>
+<ul>
+<li> It adds a Dishmodel instance to the context</li>
+<li> It calls the render function</li>
+<li> It sets two event listeners</li>
+</ul>
 
 
 <h4>2: Access the method</h4>
@@ -218,7 +218,7 @@ it("called listenTo correctly",function(){
 
 <h3>Case study #2 - Testing DOM methods</h3>
 
-<p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
+<p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> method of the same view:</p>
 
 <p>``` javascript
 var AddRecipeView = Backbone.View.extend({</p>
@@ -242,7 +242,7 @@ renderErrors: function(model) {
 
 <p>Here's what I did, using the same approach as before:</p>
 
-<p>``` javascript Unit tests
+<p>``` javascript
 describe("the renderError function",function(){</p>
 
 <pre><code>var renderErr = AddRecipeView.prototype.renderErrors,

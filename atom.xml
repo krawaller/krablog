@@ -4,7 +4,7 @@
   <title><![CDATA[Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:29:43+01:00</updated>
+  <updated>2013-02-24T07:35:51+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -39,7 +39,7 @@
 <ol>
 <li>First we must of course <strong>analyse what the method actually does</strong> (or is supposed to do, if we&#8217;re doing true BDD and writing the tests first).</li>
 <li>Start the test by <strong>storing the method</strong> to test by stealing it from the constructor prototype.</li>
-<li>If the method touches <code>this</code> (which is almost always the case) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
+<li>If the method touches <code>this</code> (which is almost always the case in a Backbone object) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
 <li>I create eventual <strong>parameter</strong> data.</li>
 <li>I&#8217;ll then <strong>call the method on the custom context</strong>.</li>
 <li>Following that I can <strong>test the result</strong>&#8230;</li>
@@ -85,11 +85,11 @@
 
 <p>First we analyse what the method is supposed to do:</p>
 
-<ol>
-<li>It adds a Dishmodel instance to the context</li>
-<li>It calls the render function</li>
-<li>It sets two event listeners</li>
-</ol>
+<ul>
+<li> It adds a Dishmodel instance to the context</li>
+<li> It calls the render function</li>
+<li> It sets two event listeners</li>
+</ul>
 
 
 <h4>2: Access the method</h4>
@@ -276,7 +276,7 @@
 
 <h3>Case study #2 - Testing DOM methods</h3>
 
-<p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
+<p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> method of the same view:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -313,7 +313,7 @@
 
 <p>Here&#8217;s what I did, using the same approach as before:</p>
 
-<figure class='code'><figcaption><span>Unit tests</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
