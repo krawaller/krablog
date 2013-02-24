@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Testing | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:14:14+01:00</updated>
+  <updated>2013-02-24T07:22:09+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -34,7 +34,7 @@
 
 <h3>How to do it</h3>
 
-<p>So, then, how should it be done? Here's the approach I use.</p>
+<p>So, then, how should it be done? Here's the approach I use when testing a method on a Backbone object:</p>
 
 <ol>
 <li>First we must of course <strong>analyse what the method actually does</strong> (or is supposed to do, if we're doing true BDD and writing the tests first).</li>
@@ -52,7 +52,7 @@
 
 <p>As an example, consider the (adapted) following view that a student of mine had in a recent project:</p>
 
-<p>``` javascript Backbone View
+<p>``` javascript
 var AddRecipeView = Backbone.View.extend({</p>
 
 <p>  initialize: function(opts) {</p>
@@ -72,64 +72,96 @@ this.render()
 
 <p>Using the test philosophy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers.</p>
 
-<ol>
-<li><p><strong>Analysis:</strong> First we analyse what the method is supposed to do:</p>
+<h4>1: Analysis</h4>
+
+<p>First we analyse what the method is supposed to do:</p>
 
 <ol>
 <li>It adds a Dishmodel instance to the context</li>
 <li>It calls the render function</li>
 <li>It sets two event listeners</li>
 </ol>
-</li>
-<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype:
+
+
+<h4>2: Access the method</h4>
+
+<p>We start the testcode by capturing the method to test from the constructor prototype:
 <code>javascript
 var initialize = AddRecipeView.prototype.initialize
-</code></p></li>
-<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here's the full fake context:
-<code>javascript
-var context = {
-listenTo: sinon.stub().returns(context),
+</code></p>
+
+<h4>3: Context</h4>
+
+<p>We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here's the full fake context:
+``` javascript
+var context = {</p>
+
+<pre><code>listenTo: sinon.stub().returns(context),
 render: sinon.stub().returns(context),
 renderErrors: "RENDERFUNC",
 checkErrorField: "CHECKSTUFF"
-};
-</code></li>
-<li><strong>Create parameter data:</strong> The initialize method doesn't take any arguments, so we don't need to decide on any data for that.</li>
-<li><strong>Execute the method:</strong> Now we execute the method on our fake context:
+</code></pre>
+
+<p>};
+```</p>
+
+<h4>4: Parameter data</h4>
+
+<p>The initialize method doesn't take any arguments, so we don't need to decide on any data for that.</p>
+
+<h4>5: Execute the method</h4>
+
+<p>Now we execute the method on our fake context:
 <code>javascript
 var result = initialize.call(context);
-</code></li>
-<li><strong>Test the result:</strong> As the initialize method isn't supposed to return anything, we don't need to test the result.</li>
-<li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let's make sure that happened:
-<code>javascript
-it("should set a Dishmodel instance on .model",function(){
-expect(context.model instanceof Dishmodel).toBe(true);
-});
-</code></li>
-<li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
-<code>javascript
-it("should call render",function(){
-expect(context.render).toHaveBeenCalledOnce();
-});
-</code>
+</code></p>
+
+<h4>6: Test the result</h4>
+
+<p>As the initialize method isn't supposed to return anything, we don't need to test the result.</p>
+
+<h4>7: Check context manipulation</h4>
+
+<p>The method was supposed to add a dishmodel instance to the <code>.model</code> property, so let's make sure that happened:
+``` javascript
+it("should set a Dishmodel instance on .model",function(){</p>
+
+<pre><code>expect(context.model instanceof Dishmodel).toBe(true);
+</code></pre>
+
+<p>});
+```</p>
+
+<h4>8: Check method calls</h4>
+
+<p>Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
+``` javascript
+it("should call render",function(){</p>
+
+<pre><code>expect(context.render).toHaveBeenCalledOnce();
+</code></pre>
+
+<p>});
+<code>
 And finally we test if the two event listeners were set:
-<code>javascript
-it("added the event listeners",function(){
-expect(context.listenTo).toHaveBeenCalledTwice();
+</code> javascript
+it("added the event listeners",function(){</p>
+
+<pre><code>expect(context.listenTo).toHaveBeenCalledTwice();
 expect(context.listenTo.firstCall.args).toEqual([
-   context.model,"invalid",context.renderErrors
+    context.model,"invalid",context.renderErrors
 ]);
 expect(context.listenTo.secondCall.args).toEqual([
-   context.model,"change",context.checkErrorField
+    context.model,"change",context.checkErrorField
 ]);
-});
-</code></li>
-</ol>
+</code></pre>
 
+<p>});
+```</p>
 
 <p>Here's the test code in full:</p>
 
-<p>``` javascript Unit Tests for initialize function
+<p>``` javascript
 describe("the initialize function",function(){</p>
 
 <pre><code>var initialize = AddRecipeView.prototype.initialize,
@@ -167,20 +199,24 @@ it("called listenTo correctly",function(){
 <p>The same approach can be adopted even when DOM manipulation is involved. Here is the <code>renderErrors</code> function of the same view:</p>
 
 <p>``` javascript Backbone view function
-renderErrors: function(model) {</p>
+var AddRecipeView = Backbone.View.extend({</p>
 
-<pre><code>this.$('.errors').html('');
-_.each(model.validationError, function(error) {
-    this.$('.errors').append(error.message + '&lt;br&gt;');
-});
+<pre><code>// ...
+renderErrors: function(model) {
+    this.$('.errors').html('');
+    _.each(model.validationError, function(error) {
+        this.$('.errors').append(error.message + '&lt;br&gt;');
+    });
+},
+// ...
 </code></pre>
 
-<p>},
+<p>});
 ```</p>
 
 <p>How to test that? There's even quirkier chaining going on, and we're manipulating the DOM. Is testing this really feasible without instantiating the view?</p>
 
-<p>Here's what I did:</p>
+<p>Here's what I did, using the same approach as before:</p>
 
 <p>``` javascript Unit tests
 describe("the renderError function",function(){</p>
