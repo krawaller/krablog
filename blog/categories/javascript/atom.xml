@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:22:09+01:00</updated>
+  <updated>2013-02-24T07:23:14+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -38,10 +38,10 @@
 
 <ol>
 <li>First we must of course <strong>analyse what the method actually does</strong> (or is supposed to do, if we're doing true BDD and writing the tests first).</li>
-<li>Start the test by <strong>storing the method</strong> to test through <code>var method = MyConstructor.prototype.methodToTest</code>.</li>
+<li>Start the test by <strong>storing the method</strong> to test by stealing it from the constructor prototype.</li>
 <li>If the method touches <code>this</code> (which is almost always the case) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
 <li>I create eventual <strong>parameter</strong> data.</li>
-<li>I'll then <strong>call the method on the custom context</strong>: <code>var result = method.call(context, ...args...);</code>.</li>
+<li>I'll then <strong>call the method on the custom context</strong>.</li>
 <li>Following that I can <strong>test the result</strong>...</li>
 <li>...check that the <strong>context was manipulated</strong> in the expected way...</li>
 <li>...and also if my <strong>spies where called in the correct way</strong>.</li>
