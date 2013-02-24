@@ -165,8 +165,17 @@
 <li>It sets two event listeners</li>
 </ol>
 </li>
-<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype: <code>var initialize = AddRecipeView.prototype.initialize</code></p></li>
-<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these spies return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those were correctly passed to <code>listenTo</code>. Here&#8217;s the full fake context:</li>
+<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype:</p></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here&#8217;s the full fake context:</li>
 </ol>
 
 
@@ -187,7 +196,16 @@
 
 <ol>
 <li><strong>Create parameter data:</strong> The initialize method doesn&#8217;t take any arguments, so we don&#8217;t need to decide on any data for that.</li>
-<li><strong>Execute the method:</strong> Now we execute the method on our fake context: <code>var result = initialize.call(context);</code></li>
+<li><strong>Execute the method:</strong> Now we execute the method on our fake context:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
 <li><strong>Test the result:</strong> As the initialize method isn&#8217;t supposed to return anything, we don&#8217;t need to test the result.</li>
 <li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let&#8217;s make sure that happened:</li>
 </ol>

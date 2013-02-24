@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sinon | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/sinon/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:11:59+01:00</updated>
+  <updated>2013-02-24T07:14:14+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -81,8 +81,11 @@ this.render()
 <li>It sets two event listeners</li>
 </ol>
 </li>
-<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype: <code>var initialize = AddRecipeView.prototype.initialize</code></p></li>
-<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these spies return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those were correctly passed to <code>listenTo</code>. Here's the full fake context:
+<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype:
+<code>javascript
+var initialize = AddRecipeView.prototype.initialize
+</code></p></li>
+<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here's the full fake context:
 <code>javascript
 var context = {
 listenTo: sinon.stub().returns(context),
@@ -92,7 +95,10 @@ checkErrorField: "CHECKSTUFF"
 };
 </code></li>
 <li><strong>Create parameter data:</strong> The initialize method doesn't take any arguments, so we don't need to decide on any data for that.</li>
-<li><strong>Execute the method:</strong> Now we execute the method on our fake context: <code>var result = initialize.call(context);</code></li>
+<li><strong>Execute the method:</strong> Now we execute the method on our fake context:
+<code>javascript
+var result = initialize.call(context);
+</code></li>
 <li><strong>Test the result:</strong> As the initialize method isn't supposed to return anything, we don't need to test the result.</li>
 <li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let's make sure that happened:
 <code>javascript
