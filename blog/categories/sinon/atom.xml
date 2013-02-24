@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sinon | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/sinon/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-23T17:29:40+01:00</updated>
+  <updated>2013-02-24T07:03:54+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -22,7 +22,7 @@
 
 <p>Here's a blanket statement to flame against:</p>
 
-<blockquote><p><em>Instantiating Backbone views/controllers/models in order to test them is an <strong>antipattern</strong>!</em></p></blockquote>
+<blockquote><p><em>Instantiating Backbone views/models/collections in order to test them is an <strong>antipattern</strong>!</em></p></blockquote>
 
 <p>Why? When we try to test an instance, we're faced with two main problems:</p>
 
@@ -37,11 +37,13 @@
 <p>So, then, how should it be done? Here's the approach I use.</p>
 
 <ol>
-<li>First I <strong>access the method</strong> to test through <code>var method = MyConstructor.prototype.methodToTest</code>.</li>
+<li>First we must of course <strong>analyse what the method actually does</strong> (or is supposed to do, if we're doing true BDD and writing the tests first).</li>
+<li>Start the test by <strong>storing the method</strong> to test through <code>var method = MyConstructor.prototype.methodToTest</code>.</li>
 <li>If the method touches <code>this</code> (which is almost always the case) I <strong>create a custom context</strong> object containing stubs, spies and dummy data as needed.</li>
 <li>I create eventual <strong>parameter</strong> data.</li>
 <li>I'll then <strong>call the method on the custom context</strong>: <code>var result = method.call(context, ...args...);</code>.</li>
 <li>Following that I can <strong>test the result</strong>...</li>
+<li>...check that the <strong>context was manipulated</strong> in the expected way...</li>
 <li>...and also if my <strong>spies where called in the correct way</strong>.</li>
 </ol>
 
@@ -68,7 +70,69 @@ this.render()
 });
 ```</p>
 
-<p>Using the test philosofy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers:</p>
+<p>Using the test philosophy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers.</p>
+
+<ol>
+<li><strong>Analysis:</strong> First we analyse what the method is supposed to do:</li>
+</ol>
+
+
+<pre><code>1.    It adds a Dishmodel instance to the context
+2.    It calls the render function
+3.    It sets two event listeners
+</code></pre>
+
+<ol>
+<li><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype: <code>var initialize = AddRecipeView.prototype.initialize</code></li>
+<li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these spies return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those were correctly passed to <code>listenTo</code>. Here's the full fake context:
+<code>javascript
+var context = {
+listenTo: sinon.stub().returns(context),
+render: sinon.stub().returns(context),
+renderErrors: "RENDERFUNC",
+checkErrorField: "CHECKSTUFF"
+};
+</code></li>
+<li><strong>Create parameter data:</strong> The initialize method doesn't take any arguments, so we don't need to decide on any data for that.</li>
+<li><strong>Execute the method:</strong> Now we execute the method on our fake context: <code>var result = initialize.call(context);</code></li>
+<li><strong>Test the result:</strong> As the initialize method isn't supposed to return anything, we don't need to test the result.</li>
+<li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let's make sure that happened:
+``` javascript
+it("should set a Dishmodel instance on .model",function(){
+
+<pre><code>expect(context.model instanceof Dishmodel).toBe(true);
+</code></pre>
+
+<p>});
+```</p></li>
+<li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
+<code>javascript
+it("should call render",function(){
+   expect(context.render).toHaveBeenCalledOnce();
+});
+</code>
+And finally we test if the two event listeners were set:
+``` javascript
+it("added the event listeners",function(){
+   expect(context.listenTo).toHaveBeenCalledTwice();
+   expect(context.listenTo.firstCall.args).toEqual([
+
+<pre><code>   context.model,"invalid",context.renderErrors
+</code></pre>
+
+   ]);
+   expect(context.listenTo.secondCall.args).toEqual([
+
+<pre><code>   context.model,"change",context.checkErrorField
+</code></pre>
+
+<p>   ]);
+});
+```</p></li>
+</ol>
+
+
+<p>Here's the test code in full:</p>
 
 <p>``` javascript Unit Tests for initialize function
 describe("the initialize function",function(){</p>
@@ -100,17 +164,6 @@ it("called listenTo correctly",function(){
 
 <p>});
 ```</p>
-
-<p>As often the case with testing Backbone objects, we're faced with the problem of having to deal with chaining syntax. Here I simply let my stubs for <code>listenTo</code> and <code>render</code> return the <code>context</code>.</p>
-
-<p>Having set that up, we can proceed to check that initialize did what it was supposed to do:</p>
-
-<ol>
-<li>It added a Dishmodel instance to <code>context.model</code></li>
-<li>It called the render function</li>
-<li>It called listenTo twice. Here we also need to test the arguments. Note how we can make sure that the correct callbacks were passed simply by having dummy data in <code>context.renderErrors</code> and <code>context.checkErrorField</code>.</li>
-</ol>
-
 
 <p>All tests test the expected behaviour of the function, and nothing else. We're not even depending on any Backbone functionality, which is one of the badges to strive for when unit testing your Backbone apps! Achieving that will make the test simpler, smaller and less fragile.</p>
 
