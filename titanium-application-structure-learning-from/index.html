@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Titanium application structure – learning from Tweetanium - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Struct - learning from Tweetanium regarding application structure best practices! Up until recently, like so many other lost souls, we&#8217;ve &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Titanium Application Structure – Learning From Tweetanium</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-16T00:00:00+01:00" pubdate data-updated="true">Feb 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
+<p>Up until recently, like so many other lost souls, we&#8217;ve followed the same Titanium application structure as Appcelerator&#8217;s KitchenSink application. In this paradigm, when you want to open a new window, you&#8217;d typically do something like this:</p>
+<script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
+<p>Inside somefile.js the window would be populated with controls, using the Ti.UI.currentWindow reference. We can access the data from the previous window through win.importantdata.</p>
+<p>This approach, even when improved upon, has several disadvantages:</p>
+<ul>
+<li> If you have a file with application helper functions, you need to import that in every other file that needs the functionality. In my Tristania app for example, pretty much every file starts with Ti.include(&ldquo;../assets/utils.js&rdquo;).</li>
+<li> Every time a window is meant to be created, the relevant file must be read and code parsed.</li>
+<li>The structure of the app becomes rather opaque.</li>
+<li>It is very difficult to unittest this approach.</li>
+</ul>
+<p>It all works, sure, but I&#8217;ve never been comfortable with my application structures, feeling there must be a better way. Even though there are (many) ways to improve on the above example, I wanted a different structure paradigm alltogether. Alas, I was too lazy to get around to experiment with it, so &ldquo;it remained but a beautiful thought&rdquo;, as we say in Sweden.</p>
+<p>Fortunately, <a href="http://twitter.com/kevinwhinnery">Kevin Whinnery</a>, <a href="http://twitter.com/chadauld">Chad Auld</a> and the rest of the Appcelerator team have no such character flaws! Recently they <a href="http://developer.appcelerator.com/blog/2011/01/tweetanium-source-code-release.html">opensourced Tweetanium</a>, a fully functioning Twitter client coded with best practices regarding both JavaScript in general and Titanium in particular.</p>
+<p>Which was like christmas to me! The only non-Krawaller Titanium source code I&#8217;ve gleaned (with a few none-noteworthy exceptions) is the aforementioned KitchenSink, which &ndash; let&#8217;s be honest &ndash; is not a great piece of work at all. It demonstrates the API very well (which is great since the docs are crap), but as an application example, it leaves me wanting.</p>
+<p>So, enter Tweetanium. As soon as you open up the sourcecode, it is evident that they&#8217;re doing things very differently! I have created a stripped-down, barebones version of it called Struct, aiming to expose the new structure paradigm. You&#8217;ll find the git repo <a href="https://github.com/krawaller/struct">here</a>. This is what it looks like &ndash; isn&#8217;t knowledge beautiful? :)</p>
+<p>[[posterous-content:GjClsyjFxfyzfhrEvEFH]]</p>
+<p>The main point in the Tweetanium approach is that my various files (like somefile.js in the above example) are not messing with Ti.UI.currentWindow &ndash; instead, it augments a global namespace with a constructor variable. In Struct, I end up with the following global object:</p>
+<script src="https://gist.github.com/829615.js?file=globalobject.js"></script>
+<p>The program flow is that the otherwise pretty empty app.js imports struct.js, which can be considered your main app definition file. This file creates the global namespace and maybe some utility functions, and then includes the other files to populate the rest of the namespace.</p>
+<p>This means that as soon as the struct.js file is included, the entire app structure is created in memory. No more parsing of files will be done during the session.</p>
+<p>App.js will then call the createApplicationWindow function, call the open method on the returned window, and maybe do some other app initialization stuff. Now the app is up and running! In Struct, app.js looks like this:</p>
+<script src="https://gist.github.com/829615.js?file=app.js"></script>
+<p>So what are the great advantages to this approach? I&#8217;ve already found quite a few, but it boils down to a single keyword: closure. Every single function is executed in the same closure (ok, maybe subclosures, but you get the gist). Read that sentence again until the implications set in.</p>
+<p>This is good news from a performance perspective (and most likely stability) &ndash; no more importing the same file a gazillion times! But from an infrastructure point of view its even yummier:</p>
+<ul>
+<li> As we always have access to the same scope, we can keep app-wide data in a single object, instead of JSON:ing back and forth with Ti.App.Properties. </li>
+<li> All kinds of other convenience 	structures are suddenly very easy to build. In Struct there is a global messaging system, using one single view, instantiated only once. Tweetanium does a similar thing with a loader view, and has a 	very neat Model baseclass thing going. </li>
+<li> You can instantiate all app windows and views immediately, as they all live in the same closure. Windows opened at a later point will also live in the same closure, since that&#8217;s where the constructor function is defined. </li>
+<li> Creating your own navigation system (&#8220;immersive UI&#8221;, to use Apple&#8217;s lingo) is a breeze. In Struct I&#8217;ve stolen the home-brewed tabs from Tweetanium. </li>
+</ul>
+<p>Now, having autopsied Tweetanium, created Struct and looking at the layout before me, it seems very obvious and self-evident. Perhaps it already was to the rest of you, but for me it was a new-found revelation, and I can&#8217;t wait to test it out in our next project! So, for those of you who like me hadn&#8217;t caught on to this train before, check out <a href="https://github.com/krawaller/struct">Struct</a> &amp; <a href="http://developer.appcelerator.com/blog/2011/01/tweetanium-mobile.html">Tweetanium</a> and try it out!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-16T00:00:00+01:00" pubdate data-updated="true">Feb 16<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/development/'>development</a>, <a class='category' href='/krablog/blog/categories/release/'>release</a>, <a class='category' href='/krablog/blog/categories/struct/'>struct</a>, <a class='category' href='/krablog/blog/categories/titanium/'>titanium</a>, <a class='category' href='/krablog/blog/categories/tweetanium/'>tweetanium</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/releasing-auktionera-a-tradera-iphone-app/" title="Previous Post: Releasing Auktionera, a Tradera iPhone app">&laquo; Releasing Auktionera, a Tradera iPhone app</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/krawallers-ipad-design-flow-productivity-app/" title="Next Post: Krawaller's iPad design flow - productivity app recommendations">Krawaller's iPad design flow - productivity app recommendations &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

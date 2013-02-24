@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: systemet | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/blog/categories/systemet/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-24T16:55:26+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Systemet]]></title>
+    <link href="http://krawaller.github.com/krablog/systemet/"/>
+    <updated>2010-07-03T00:00:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/systemet</id>
+    <content type="html"><![CDATA[<div class="summarytext">Announcing the release of our new app! Behind-the-scenes bean spillage to follow.</div>
+
+
+<p>Yeay!</p>
+
+
+<p>[[posterous-content:dcEoHdApAizvGeFbqvJI]]</p>
+
+
+<p>We just wanted to let you know that our third app, <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">Systemet</a>, just <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">went live in the App Store</a>. It's an inofficial guide to the<span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> Swedish Alcohol Retail Monopoly Systembolaget, and it lets you:</span></span></p>
+
+
+<p><span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> </span></span></p>
+
+
+<ul>
+<li>Search for nearby stores</li>
+<li>See store opening times</li>
+<li>Call the store directly</li>
+<li>Search for products</li>
+<li>Sort by name, price and other properties</li>
+<li>See product info, qualities, suitable recipes etc</li>
+<li>Find the closest store with a certain product in stock</li>
+<li>Save your favourite stores, products, searches and recipes</li>
+</ul>
+
+
+<p> </p>
+
+
+<p>We'll spill all the beans about the development of Systemet later, but I can tell you right now that it took some serious Titanium, HTML5, and YQL wizardry to make this happen, and that our "database" is a plain ol' Google Docs Spreadsheet.</p>
+
+
+<p>Curious, ha? Stay tuned!</p>
+
+
+<p> </p>
+
+]]></content>
+  </entry>
+  
+</feed>

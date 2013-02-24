@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle app step 2 - Data structure - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/puzzle-app-step-2-data-structure/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Puzzle App Step 2 - Data Structure</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-12T00:00:00+02:00" pubdate data-updated="true">May 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game.</div>
+<p>We&#8217;ve already <a href="http://blog.krawaller.se/the-intestines-of-a-good-puzzle-game">laid down the foundation</a> of the project, defining the basic idea: ripping off the age-old idea of a labyrinth where the player object can travel in all cardinal directions, but always as far as possible. The why behind the adoption of this seemingly bland idea can be found in the previous post, now we&#8217;re going to get started on the how!</p>
+<p>In this post we&#8217;re going to define the <strong>data structures</strong> involved. Let&#8217;s start with deciding what a <strong>labyrinth data object</strong> should look like! To do that, we have to jot down our ideas of what a labyrinth can contain:</p>
+<ul>
+<li>Of course, it has to contain some <strong>walls</strong>. </li>
+<li>As the screen real estate on the iPhone is rather limited, we might do well to also allow the <strong>borders </strong>between the squares to block passage.</li>
+<li>We might also want <strong>special squares</strong> which somehow affect the player, for example teleporting him to a different square.</li>
+<li>A neat addition to this otherwise rather stale game concept might be to have <strong>other entities</strong> in the labyrinth apart from the player object. These can be moved along with the player (and kill him upon contact), or pushed along by the player, etc.</li>
+<li>One clone that I played had the concept of <strong>bonus objects</strong>, and you wouldn&#8217;t get a perfect score when you reached the goal if you hadn&#8217;t also collected all the loot on the level.</li>
+<li>We might also want things to happen in certain <strong>conditions</strong>, perhaps allowing passage through a wall if the player has collected the key, or pressed a button no more than three moves ago, etc.</li>
+</ul>
+<p>These wishes can be abstracted into the following concepts:</p>
+<ul>
+<li>Walls, borders and entities are all of a certain <strong>type</strong>. A type has a look (class), and a flag to say if it moves with gravity or not (if it is an entity).</li>
+<li>We need to have <strong>effects</strong>, affecting entities / walls / borders (changing their type, or position if an entity) or the game itself (flags, counters)</li>
+<li>Then we can define what effects should happen in a <strong>collision </strong>between two types.</li>
+<li>In order to spice things up we might also want to allow things to happen <strong>conditionally</strong>.</li>
+</ul>
+<p>Using these concepts we can build up an object defining a level with a somewhat advanced functionality:</p>
+<script src="http://gist.github.com/386993.js?file=datastructure.js"></script>
+<p>With this structure, we should be able to define levels with a wide range of behaviours. Probably we&#8217;d do well to hardcode some shortcuts for the most common usecases, but this should set us off on a good start.</p>
+<p>Now let&#8217;s consider what&#8217;s required to <strong>save the state</strong> of a level. What can change from the definition object?</p>
+<ul>
+<li>We need to track the <strong>position of all entities</strong>, that will fall around the labyrinth as the player makes his moves.</li>
+<li>The entities might also change <strong>type</strong>, so we need to track that as well.</li>
+<li>If a <strong>wall or border</strong> has changed, we have to store that.</li>
+<li>The <strong>flags and variables</strong> of the game must be kept. </li>
+<li>Finally we also need to save the <strong>number of moves</strong>.</li>
+</ul>
+<p>So a save object should look something like this:</p>
+<script src="http://gist.github.com/386993.js?file=gamestate.js"></script>
+<p>In the first post, we mentioned the idea of a <strong>level analyzer </strong>module. It should take a level object, and then use game logic to calculate all possible states, and the transitions between them. The returned analysis object would have keys made up by serialized states. The corresponding values is an object with the states you can reach from that particular state, and what graphical transitions should be shown for this move. This analysis object will then be used for the <strong>gameplayer </strong>module, which will simply transit between the states, performing the animations. </p>
+<p>Here&#8217;s a blueprint for such an analysis object: </p>
+<script src="http://gist.github.com/386993.js?file=analysis.js"></script>
+<p>The <strong>level analyzer</strong> module building that object will look something like this:</p>
+<script src="http://gist.github.com/386993.js?file=analyzer.js"></script>
+<p>And here&#8217;s a sketch of the <strong>gameplayer</strong> module: </p>
+<script src="http://gist.github.com/386993.js?file=gameplayer.js"></script>
+<p>So the bulk of the project consists of creating these two modules! I called dibs on the analyzer, so I&#8217;ll get started on that right away. Little brother, get cracking on some CSS3 magic for the gameplayer module! First one to report back here with a post about the module wins remote control control for a week!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-12T00:00:00+02:00" pubdate data-updated="true">May 12<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/development/'>development</a>, <a class='category' href='/krablog/blog/categories/labyrinth/'>labyrinth</a>, <a class='category' href='/krablog/blog/categories/smartphone-webapp/'>smartphone_webapp</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/puzzle-app-step-2-data-structure/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/puzzle-app-step-2-data-structure/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/krawaller-goes-github/" title="Previous Post: Krawaller goes Github">&laquo; Krawaller goes Github</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/opensourcing-golingo/" title="Next Post: Opensourcing Golingo">Opensourcing Golingo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

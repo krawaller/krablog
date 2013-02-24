@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Headbanging with YQL - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Discovering YQL&#8217;s inner heavy metal! [[posterous-content:HzJgGabluwqhaydBgsId]] During the past month, we&#8217;ve been hard at work on the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/headbanging-with-yql/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Headbanging With YQL</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-04T00:00:00+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Discovering YQL&#8217;s inner heavy metal!</div>
+<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
+<p>During the past month, we&#8217;ve been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo&#8217;s <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>
+<h3>Band app content</h3>
+<p>As the specification for the project was rather vague (us: &#8220;do you want an iPhone app?&#8221;, Tristania: &#8220;yes please!&#8221;), the first step was to figure out what such an app should contain. There aren&#8217;t really that many &#8220;band apps&#8221; as such in the app store, so no&nbsp;precedence&nbsp;as to what a normal band app is has been set. That left us pondering:</p>
+<ul>
+<li>Tristania have several digital presences such as the&nbsp;<a href="http://www.tristania.com" title="Official homepage of Tristania" target="_blank">official homepage</a>, a&nbsp;<a href="http://www.theilluminated.net" title="Tristania official forums" target="_blank">forum</a>, a&nbsp;<a href="http://www.myspace.com/tristania" title="Tristania myspace" target="_blank">myspace site</a>, a <a href="http://www.youtube.com/user/TristaniaVideos" title="Tristania youtube channel" target="_blank">youtube channel</a>,&nbsp;<a href="http://www.facebook.com/pages/Official-Tristania/124865974216395" title="Tristania Facebook" target="_blank">facebook page</a>,&nbsp;<a href="http://twitter.com/tristaniaband" title="Tristania twitter" target="_blank">twitter account</a>, a separate fanmade&nbsp;<a href="http://mvonlonski.com/cpg/index.php" title="Fanmade Tristania picture gallery" target="_blank">picture gallery</a>, etc.&nbsp;Shall we <strong>pull in content</strong> from any of these other online sources?</li>
+<li>Should it be used as a <strong>promotional platform</strong> for their&nbsp;<a href="http://www.napalmrecords.com/hp_aom.php?products_id=12797&amp;osCsid=d8306dab9dfa3ffe4cea707d1d0eb737&amp;hp=aom&amp;typ=prev" title="Rubicon @ Napalm Records">new album Rubicon</a>?&nbsp;</li>
+<li>Should the app have <strong>unique content</strong> not found elsewhere?&nbsp;</li>
+<li>Can we somehow put in some <strong>functionality that&nbsp;actually&nbsp;uses the platform</strong>, to&nbsp;preemptively answer the question &#8220;why not simply surf their homepage in Safari&#8221;?&nbsp;</li>
+</ul>
+<p>In the end, we answered these questions with&nbsp;&#8220;Definitely&#8221;,&nbsp;&#8220;Sort of&#8221;, &#8220;No&#8221; and &#8220;Hopefully&#8221;.&nbsp;</p>
+<p>As the &#8220;Definitely&#8221; suggests, data aggregation became the main justification of existence for the app. As we pull in data from almost all the aforementioned Tristania web resources, the application is a way for the fan to easily stay up to date with what&#8217;s going on. Granted, it doesn&#8217;t take that many extra minutes to manually check these different sources in a browser, but it still gives the app a sense of function.</p>
+<p>The &#8220;Sort of&#8221; regarding promoting Rubicon is simple - we made a spotlight function where individual data from the different sources can be promoted. Right now we have Rubicon-related data in there, and as the next album draws nearer we&#8217;ll promote that instead. This turned out to be an easy way to keep the content fresh and helping the band out, all without denying access to older content or having to code complicated extra functionality.&nbsp;</p>
+<p>Regarding the &#8220;No&#8221; to unique content, we&#8217;ve had to rethink our initial plans. Tristania used to be pretty bad at communicating with their fans, and their official homepage has traditionally been very stale and rarely updated. I therefore thought the app might be a way of getting them to share a bit more on what&#8217;s going on in their world, allowing us fanboys to peek over their shoulders. Lately, however, something has happened - now they&#8217;re suddenly very active on lots of different fronts (as seen in the list above), giving the fans fast and easy access to the goings on in the band. Therefore the need for an accessible information platform has been fulfilled already, and our application can take a back seat with a clear conscious.&nbsp;</p>
+<p>Finally the &#8220;Hopefully&#8221; - we have a plan to use geolocation to display all the app users on a map, and upon clicking a pin, showing that user&#8217;s presentation and favourite album/track (which can be set in the discography section). This, we thought, was a nice way of tying things together, as well as actually putting the platform to use. We felt from the beginning that we need some kind of interaction, to prevent the app from feeling like a webpage crammed into the phone. We&#8217;re still not sure if we&#8217;ll manage to piece this together for the first release, hence the &#8220;Hopefully&#8221; instead of &#8220;Oh yeah&#8221;.</p>
+<h3>YQL to the rescue</h3>
+<p>As seen above, most of the code in the app has to do with collecting and displaying external data. This has many similarities to what little brother Jacob did in his Swedish app store hit <a href="http://blog.krawaller.se/systemet" title="Systemet blog post" target="_blank">Systemet</a>. He there put YQL&nbsp;to good use, and repeatedly sang its praise during the development. I never really understood what the fuss was about, but then again, I didn&#8217;t really understand exactly what problem YQL solves for you, either. Of course I&#8217;ve seen the blog posts, read the JSMag articles, and yes, heard little brother nag, but I never saw the big picture.&nbsp;</p>
+<p>Now, as Tristania was mainly my project, I decided to try it out for myself. And, to make an already too long story short; I&#8217;m in awe. YQL does all the boring parts for me! I&#8217;ve just built the most extensive data collection application I&#8217;ve ever done, and I have almost<strong> no backend</strong> - YQL simply eliminates the need!</p>
+<p>I realise I was slow to get a seat on this band wagon and that I&#8217;m preaching to the choir, but the meaning of this blog post is simply to join the choir and <strong>sing YQL:s praises</strong>. It&#8217;s an absolutely amazing product! During this project alone, I estimate it has saved me, what, maybe 20 hours of (really dull) work. You do the math - I already owe Heilmann &amp; co quite a hefty amount of money!</p>
+<p>In an attempt to go more easy on the fanboy praise and become more concrete, here&#8217;s what YQL has done for me in the Tristania application:</p>
+<ul>
+<li>It is, in essence, my <strong>backend</strong>. In the application I&#8217;m collecting data from several different sources, which I would then normally have to parse and scrape to get what I want and translate to a suitable data format. This is now all instead done by YQL - I simply point it at the correct location, give it a few instructions, and my app is fed with a beautiful JSON object containing exactly what I want. Even when you have a &#8220;good&#8221; data source, such as Tristania&#8217;s homepage&#8217;s RSS news feed, you&#8217;ll still save time by piping it through YQL to get the JSON structure. Granted, I could do that locally, but now I don&#8217;t have to! Of all the aforementioned data sources, only the facebook data isn&#8217;t piped through YQL. Facebook&#8217;s Graph API returns JSON text, which I can digest in the application through a simple call to JSON.parse. Everything else, YQL prechews for me.</li>
+<li>Also, YQL enables me to separate concerns and have several fragile moving parts outside the application, through using what they call a&nbsp;<strong>Data Tables</strong>.&nbsp;Data tables enables you to keep the html-depending logic in an external xml file, which through mingled JavaScript and xml (in a mind-blowingly elegant and easy solution where xml nodes are first-class citizens) defines how the parsing should be done, and what should be returned to your application.&nbsp;My parsing of the picture gallery especially is rather complex; the html is several layers deep, and I need to perform lots of gymnastics to figure out what&#8217;s what and what I need. I could make YQL give the application the entire HTML structure in a JSON object and do the gymnastics locally, but that would mean that when the Gallery html changes, the application would break, and stay broken until we&#8217;ve submitted an update to the app store. Not an ideal situation. But when using Data Tables, if the Gallery changes, I can simply edit that xml file, and the applications will all start working again.&nbsp;</li>
+</ul>
+<p>So: If you are even slower than me and still haven&#8217;t caught on - try out YQL immediately, you won&#8217;t be sorry. If this was all old news to you - why the heck didn&#8217;t you let me in on it earlier?&nbsp;</p>
+<p>Also, buy Rubicon, Tristania&#8217;s new album, which <strong>rocks</strong>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-04T00:00:00+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/development/'>development</a>, <a class='category' href='/krablog/blog/categories/tristania/'>tristania</a>, <a class='category' href='/krablog/blog/categories/yql/'>yql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/headbanging-with-yql/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/headbanging-with-yql/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/pretty-search-for-mobile-safari-0/" title="Previous Post: Pretty Search for Mobile Safari">&laquo; Pretty Search for Mobile Safari</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/book-review-javascript-testing/" title="Next Post: Book review - JavaScript Testing">Book review - JavaScript Testing &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

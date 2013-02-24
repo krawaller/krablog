@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Releasing Auktionera, a Tradera iPhone app - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Releasing Auktionera, our iPhone app for the Swedish auction site Tradera! Update: As Tradera finally saw sense and ported the eBay app, we&#8217;re &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Releasing Auktionera, a Tradera iPhone App</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-03T00:00:00+01:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
+<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we&#8217;re pulling the Auktionera app from the App Store! One has to choose one&#8217;s battles&#8230;&nbsp;</p>
+<p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
+<p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>&#8217;s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
+<h3>Functionality</h3>
+<p>The app is a pretty standard auction site app, much like the eBay one. You can peruse auctions, bid, create your own auctions, save favourite searhes / users / auctions, check seller history, etc.</p>
+<p>[[posterous-content:ItBjeFqdGnhGEbvbsdwz]]</p>
+<p>Made with love and care, but pretty boring, in other words. This was also our approach as we entered the project. We weren&#8217;t&nbsp;really intrigued by the technical challenges, but&nbsp;thought this had a good chance of selling well. This mainly because there <a href="http://itunes.apple.com/us/app/id363997028?mt=8" title="The competition!" target="_blank">already was an app in the store</a>, selling better than our Systemet in spite of being rather crap.&nbsp;</p>
+<p>This competing app is getting flak because of two different things:</p>
+<ul>
+<li>It is, as stated, rather crappy, being very prone to crash. Also some functions have ceased to work after the latest iOS upgrades.&nbsp;</li>
+<li>It relies completely on <a href="http://api.tradera.com/" title="Tradera API" target="_blank">Tradera&#8217;s official API</a>, which for whatever reason is missing some vital functionality, such as checking out a seller&#8217;s previous history. This is, naturally, something that an auctioneer want to be able to do, before taking the plunge and risking those hard-earned dimes!</li>
+</ul>
+<p>Our tactic was therefore a mirror image of this list:</p>
+<ul>
+<li>Make sure the app doesn&#8217;t crash and burn!</li>
+<li>Complement the official API functionality with some YQL scraping on the side.</li>
+</ul>
+<p>Sounded easy enough, but it turned out that none of the above was as straight-forward as we thought..</p>
+<h3>Titanium stability</h3>
+<p>After a lengthy development cycle in Titanium and the emulator, we did a first reality test on an actual device. We weren&#8217;t really worried, as the app flowed very neatly in the emulator. But, as we fired it up on the phone, we discovered to our dismay that we had managed to copy the very fickleness we wanted to avoid! The app would crash in random places, not leaving any definite clues as to why.&nbsp;</p>
+<p>Not until we ran the app in an emulator next to the activity monitor did we find out why. It turned out that Titanium did some things rather inefficiently, which would eventually cause the phone to run out of memory or processor juice. The same thing happened in the emulator, but there it wouldn&#8217;t hit the ceiling as soon, as the computer has much more resources.&nbsp;</p>
+<p>So, what were these inefficient things that Titanium did? Well:</p>
+<ul>
+<li>First off - <strong>don&#8217;t handle XML</strong> in your app, unless you can avoid it. XML is of course painful in and of itself, but Titanium&#8217;s garbage collection somehow cannot clean up after xml parsing. Try it: open a new window, parse some XML, then close that window (using the back button, for example), and watch the processor usage spike, never to drop again.&nbsp;</li>
+<li>Be careful when doing <strong>advanced table creation</strong>. Use the best practices detailed in the <a href="http://assets.appcelerator.com.s3.amazonaws.com/docs/API_UITableViewClass.pdf" target="_blank">documentation</a>, and test your table generation with the Activity indicator running. For some combinations of table gymnastics, the memory usage will be intolerably high, eventually making the app crash.</li>
+<li>If you have a large data structure, <strong>prefer a sqlite database</strong> to just keeping a big object in memory. This might be obvious to the rest of the world, but took us a bit off guard - intuitively, we thought it would be more efficient to keep a single object and query that, skipping the overhead cost of a database. However, some testing proved us very wrong indeed - the sqlite database is quicker and uses far less memory.</li>
+</ul>
+<p>So we learned some specifics, but the main lesson for us was this: do <strong>frequent reality checks</strong> on an actual device. Titanium is still a young framework with many rough edges, and some of those edges will not cut you in the emulator since that does not correctly emulate the hardware limitations.&nbsp;</p>
+<h3>YQL + Tradera = somewhat true</h3>
+<p>We also had a rough time with the intermingling of official functionality and our home-brewed YQL-fueled queries. There were several authentication and authorization models involved; the Tradera API requires an App-Id, the user must be authenticated through the API, and also through the official site for our scraping to work.&nbsp;</p>
+<p>When starting off, we had all this in a spaghetti-bowl of code in the app. Lots of moving parts, lots of things that could break at any time. Not until we isolated all of this to a PHP-bridge did the different parts fall into place. This is of course what we should have done from the beginning - separations of concern is something we frequently preach to others. But somehow we fooled ourselves into thinking we&#8217;d already done this, as we has lots of logic in the YQL OpenTables. The lesson: you can always abstract your code one step further. :)</p>
+<h3>API design IS an artform</h3>
+<p>The biggest challenge, however, was actually using the Tradera API. I now realize that I&#8217;ve taken usability and intuitivity for granted in the API:s that I use, not thinking much of it. It&#8217;s like appreciating your mom doing all the household chores - you don&#8217;t, until you move out. I had no idea that designing a good API takes work, until I used a bad one.</p>
+<p>Now, you shouldn&#8217;t bite the hand that feeds you, but the Tradera API is pretty horrid. There seems to be no general rule for naming functions (camel casing, lower case, it&#8217;s the wild west in there). The same property names mean different things in different functions. Documented properties are sometimes populated, sometimes not, depending on the weather and alignent of planets. Functionality between functions overlap, but never so much that you can ignore one function and just use the other.</p>
+<p>And, most jarringly - there are several spelling errors in the API! When first creating our infrastructure to make calls, I tested it using the most simple function &#8220;GetOfficialTime&#8221;, requiring no parameters and just returning a flat data object. It didn&#8217;t work. Several hours later of reading SOAP specs and going through the code, I found the error - I needed to spell it &#8220;GetOfficalTime&#8221;, note the missing &#8220;i&#8221;. Fast forward a few weeks, and the same thing happened again when we tried to filter out used goods with the search parameter &#8220;ItemCondition&#8221;. It was supposed to be &#8220;ItemConditon&#8221;, again note the missing &#8220;i&#8221;.&nbsp;</p>
+<p>In Tradera&#8217;s&nbsp;defense, the misspellings are also present in the documentation, and they offer free support for developers using the API, which we found very helpful. But still, it made me better at appreciate good API design. And more on my guard when using them.</p>
+<h3>The result</h3>
+<p>In the end we feel pretty proud of the result! This in spite of entering the project with little heart, and being in some serious stability trouble mid-journey. So, now to the boring side of things - pushing the app, spreading the word. As previously lamented, this is not what we do best.</p>
+<p>Anyhow, hope the Swedish speakers among you will check the app out! Next up, Jacob will do a (less chatty) write-up on his neat method for deploying app builds to testers, right, brother? The pressure is on!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-03T00:00:00+01:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/auktionera/'>auktionera</a>, <a class='category' href='/krablog/blog/categories/development/'>development</a>, <a class='category' href='/krablog/blog/categories/release/'>release</a>, <a class='category' href='/krablog/blog/categories/titanium/'>titanium</a>, <a class='category' href='/krablog/blog/categories/tradera/'>tradera</a>, <a class='category' href='/krablog/blog/categories/yql/'>yql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/livetanium/" title="Previous Post: Livetanium">&laquo; Livetanium</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/titanium-application-structure-learning-from/" title="Next Post: Titanium application structure – learning from Tweetanium">Titanium application structure – learning from Tweetanium &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

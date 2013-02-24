@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="The Tristania iPhone app is now finally finished and available in the App Store! We are proud to announce the release of our latest creation; the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/blog/page/2/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/releasing-tristania-fan-app/">Releasing Tristania Fan App</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-21T00:00:00+02:00" pubdate data-updated="true">Oct 21<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
+<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
+<p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
+<p>&nbsp;</p>
+<h3>Features:</h3>
+<p>To get a feel for the app, please peruse the screenshots below:</p>
+<p>[[posterous-content:fvArwGHAovhlBCEobCwy]]</p>
+<p>With the app you can follow Tristania&#8217;s various digital presences such as the official homepage, Twitter, Facebook, YouTube, gallery etc, from one convenient place. You&#8217;ll also find a comprehensive discography section with lyrics and band comments, as well as other related band information. Some discussion on the included features can be found in&nbsp;<a href="http://blog.krawaller.se/headbanging-with-yql" title="previous post" target="_self">this blog post</a>.</p>
+<p>If you&#8217;re a Tristania fan you probably won&#8217;t want to read any further, as this blog focuses on the technical side of things. Instead you might want to head on over to <a href="http://theilluminated.net/your-work/tristania-iphone-app/" title="app thread on official Tristania forum" target="_blank">this thread</a> in the official forum, where you can discuss the app, tell us of bugs, etc. But, if you&#8217;re a nerd, read on!&nbsp;</p>
+<h3>Used tools:</h3>
+<p>Although it is unlikely that the average reader of this blog is unfamiliar with any of these JS-Ninja weaponry, here&#8217;s a quick rundown of the tools used when building the Tristania app. If any of the below is missing from your toolbox, definitely rectify right away!</p>
+<h4>Titanium</h4>
+<p>As usual we built the application using <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" title="Titanium mobile" target="_blank">Titanium</a>, so that we can program in the language we know and love (JavaScript, as opposed to Objective C), yet still deploy it as a native application.&nbsp;</p>
+<p>Although little brother has extensive experience with Titanium by now, this was my first &#8220;serious&#8221; deep-dive into the framework. Here are some of the lessons learnt during that journey:</p>
+<ul>
+<li>The emulator is not to be trusted, you need to <strong>make regular sanity checks on an actual device</strong>. In particular, what the emulator will not emulate is lag when a table / webview / somedetailedobject is rendered on the phone. Several times we had to refactor our code, when real-life tests revealed a certain solution to be too slow, in spite of split-second rendering in the emulator.</li>
+<li>F<strong>requently delete everything in the build directory</strong>. Yes, this means that you have to perform a full rebuild to test the next iteration, which some extra takes time. But you will save yourself from hugely annoying bug hunts caused by Titanium erroneously keeping old settings in the build. Take extra care to flush build before building to the device, and definitely flush <strong>thrice</strong> before packaging for upload to app store.&nbsp;</li>
+<li>Just <strong>ignore the official documentation</strong> completely. It is nowhere near complete, and full of half-truths and outright lies. Rely instead on the Kitchen Sink code. While not exactly a shining example of best practices, it has working examples of pretty much everything. When that fails, check the <a href="http://github.com/appcelerator/titanium_mobile" title="Titanium source code" target="_blank">source code</a> of Titanium itself. Also the FAQ discussion on the official homepage is a good resource.</li>
+<li>Titanium is still a <strong>beta-ish platform</strong>, and sometimes the boat will be rocking for no fault of yours. But, it is getting more stable by each release, and being able to code native apps in beautiful JavaScript is worth the frustration.&nbsp;</li>
+<li>The API is <strong>very low-level</strong>, as it should be. So for a large application you definitely need some kind of library to keep you sane, lest you have to type out lots of very verbose code everytime you want to create some non-trivial element. We adressed this through a little library of our own, which is slowly making its way to maturity. Especially with the <a href="http://developer.appcelerator.com/blog/2010/10/appcelerator-announces-9m-in-funding-paypal-partnership.html" title="Titanium blog" target="_blank">added investment just announced today</a>, things are only going to get better!&nbsp;</li>
+</ul>
+<p>Now, misunderstand me correctly - in spite of the whiny tone of the above notes, I still feel that Titanium is a remarkable framework, and that it is definitely heading in the right direction.&nbsp;</p>
+<ul>
+</ul>
+<h4>YQL</h4>
+<p>Yahoo&#8217;s web service to transform any online data into beautiful JSON is nothing short of brilliant. I already sang the praise of this service in the <a href="http://blog.krawaller.se/headbanging-with-yql" title="last post" target="_blank">in-progress post</a>, so shall not reiterate that here. The main point for us was to be able to isolate fragile scraping logic outside the application, in a YQL OpenTable. Should the site we scrape change its markup, we just update the table, and all apps will instantly work again. Also, being able to pass pure JSON back to the app is wonderful, making for a beautiful separation of concerns.&nbsp;</p>
+<h4>CouchOne</h4>
+<p>This is another road that little brother paved for me, as he has used CouchDB in both <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo" title="Golingo release post" target="_blank">Golingo</a> and <a href="http://blog.krawaller.se/systemet" title="Systemet release post" target="_blank">Systemet</a>. For me, however, it was a completely new experience.</p>
+<p>[[posterous-content:FaoDhnxvvjBnFzBBzryB]]</p>
+<p>What&#8217;s special about CouchDB is not just that it&#8217;s all JavaScript emitting JSON (which in and of itself is really cool), but it is a (for me) whole new way to think about data. The veterans among you are probably wrinkling your noses over us youngsters never having heard of MapReduce before, but somehow I&#8217;ve managed to completely miss this database approach. In a MapReduce database, data isn&#8217;t&nbsp;organized&nbsp;in tables. Instead it is all &#8220;documents&#8221;, meaning a simple object of key-value pairs. Here, for instance, is a user document from the Tristania database:</p>
+<script src="http://gist.github.com/638246.js?file=document.js"></script>
+<p>Since there are no tables, you cannot simply &#8220;SELECT * FROM Users&#8221;. Instead, you program a &#8220;view&#8221;, using JavaScript. Every document will be sent as an argument to a &#8220;Map&#8221; function, where you choose what to emit to the result set. The result will be a JSON object with a rows array, containing all the emitted objects. Here is the map function from the users view:</p>
+<script src="http://gist.github.com/638246.js?file=community.js"></script>
+<p>This might sound wasteful - so we have to go through all our data, even though we&#8217;re only interested in a particular well-defined subset? Somehow, however, CouchDB mitigates this, due to the way the data is stored on disc. It also remembers the result of passing a certain document to a certain map function, making the database every bit as fast and resilient as its table-based counterpart.</p>
+<p>Another view in the Tristania app is the Statistics view, which also uses the Reduce function to return a single, aggregate object:</p>
+<script src="http://gist.github.com/638246.js?file=statistics.js"></script>
+<p>The result the same JSON structure as before, but the rows array now has only one value:</p>
+<script src="http://gist.github.com/638246.js?file=result.js"></script>
+<p>Still early days for the app, so as you can see above, it needs a lot more votes for the statistics data to be meaningful.</p>
+<p>As with the notes on YQL etc, this isn&#8217;t meant to be a CouchDB primer, but merely a way to wet your appetite if you still haven&#8217;t made its acquaintance.&nbsp;</p>
+<h4>GitHub</h4>
+<p>So here we are definitely preaching to the choir, but I just wanted to put it to protocol that without Github, we never would have made it. We&#8217;re situated in different parts of Sweden, and have been working in parallell on different parts of the application. Here&#8217;s a snapshot of our Github app Network graph, showing our intertwined commits:&nbsp;</p>
+<p>[[posterous-content:sEjFvonyyFjxxFHIsgHB]]</p>
+<p>In our horrid pre-using-version-control days, we never could have pulled this off. Github for president!</p>
+<h3>PS</h3>
+<p>And, we know we&#8217;ve said it before, but it cannot be said too many times - go buy Rubicon, Tristania&#8217;s new album! Now! :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/book-review-javascript-patterns/">Book Review - JavaScript Patterns</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-10T00:00:00+02:00" pubdate data-updated="true">Oct 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Does Stoyan Stefanov&#8217;s latest book deserve a place on the bookshelf of a JavaScript ninja, in spite of having a partridge on the cover? Read on to find out!</div>
+<p>Back in April, Yahoo&#8217;s JavaScript guru&nbsp;<a href="http://www.phpied.com" title="Stoyan's blog" target="_blank">Stoyan Stefanov</a> set a very ambitious goal for himself; to <a href="http://www.phpied.com/publishing-5-books-this-year/" title="Stoyan's promise" target="_blank">publish 5 books</a> before the end of the year. An amazing feat, even when accounting for his generous definition of the task.</p>
+<p>So, how did he fare? Well:</p>
+<ol>
+<li>His &#8220;High Performance WebSites for <span style="text-decoration: line-through;">dummies</span> designers&#8221; book titled <a href="http://www.pearsoned.co.uk/bookshop/detail.asp?item=100000000397964" title="Speed Matters at Peachpit Press" target="_blank">Speed Matters</a> has been postponed to January 2011&#8230;</li>
+<li>&#8230;and there&#8217;s no sign of the promised 2nd edition to 2008&#8217;s <a href="https://www.packtpub.com/object-oriented-javascript-applications-libraries/book" title="Object Oriented JavaScript at Packt" target="_blank">Object Oriented JavaScript</a>&#8230;</li>
+<li>&#8230;nor the &#8220;CSS for web devs&#8221; project.</li>
+<li>But - his participation in <a href="http://nczonline.net/" title="Nicholas Zakas blog" target="_blank">Nicholas Zakas</a>&#8217; <a href="http://oreilly.com/catalog/9780596802806" title="High Performance JavaScript at O'Reilly" target="_blank">High Performance JavaScript</a> worked out beautifully, as <a href="http://blog.krawaller.se/book-review-high-performance-javascript" title="High Performance JavaScript review" target="_blank">previously extolled</a> on this blog&#8230;</li>
+<li>&#8230;and now, O&#8217;Reilly has released <a href="http://oreilly.com/catalog/9780596806767" title="JavaScript Patterns at O'Reilly" target="_blank">JavaScript Patterns</a>&nbsp;(JSP), a solitary book project from Stoyan on design and coding patterns in JavaScript development.</li>
+</ol>
+<p>[[posterous-content:jJjeAFEJdykivBcCpetC]]</p>
+<p>Does this book deserve a place on the bookshelf of a JavaScript ninja, in spite of having a partridge on the cover? Read on to find out!</p>
+<h3>Assumed knowledge</h3>
+<p>First question, is it at all meant for the ninjas? The book claims to be &#8220;targeted&nbsp;at professional developers and programmers who want to take their JavaScript skills to the next level&#8221;. That&#8217;s all well and good, but we&#8217;ve been let down by such phrases before, when the authors didn&#8217;t want to lock out the much bigger and therefore more profitable beginner / intermediate audience, and so diluted the advanced concepts with lots of basic cruft.&nbsp;</p>
+<p>This, however, does not happen in JSP. Stoyan states in the preface that the basics not tying in directly to the ongoing discussion will not be covered at all, and refers instead to a list of suggested reading for those not feeling prepared enough. And throughout the book he stays true to this mission statement, consistently <strong>assuming that the reader is well versed in both JavaScript and general programming paradigms</strong>.&nbsp;</p>
+<p>This makes for a very rewarding read, where focus is kept on the matters at hand. That&#8217;s not to say that it will all be new-found revelations - the first chapter presents JavaScript the language, and the second chapter (titled &#8220;Essentials&#8221;) goes through the established canon of best practices. However, the former is but a few pages, and the latter is so&nbsp;succinct and well-written that I still felt rewarded after reading it, even though I&#8217;ve heard (almost) all of it before. &nbsp;</p>
+<h3>The &#8220;Pattern&#8221; concept</h3>
+<p>Now, I&#8217;ve been looking forward to JavaScript Patterns (JSP) ever since Stoyan&#8217;s initial announcement, but the title also gave me some concern - books that are <strong>forced into an artificial mold</strong> rarely sit right with me. Take the similar cookbook approach, with the<a href="http://oreilly.com/catalog/9780596159788" title="jQuery Cookbook at O'Reilly" target="_blank"> jQuery Cookbook</a> as a somewhat recent example - while the recipe structure has its merits, that book and most of its likes would be better off organized as a &#8220;normal&#8221; book on the subject.</p>
+<p>There&#8217;s no major difference between the jQuery Cookbook and, for example, <a href="http://www.manning.com/bibeault2/" title="jQuery in Action 2nd edition at Manning" target="_blank">jQuery in Action</a>. They both strive to be an all-covering go-to resource for jQuery development. But while the latter is cleanly&nbsp;organized&nbsp;and easy to use, the former is marred by the recipe concept, which sometimes seems to mean &#8220;very specific task&#8221;, and then in the next chapter it is suddenly synonymous with &#8220;this broad subject&#8221;.&nbsp;</p>
+<p>As given away by the title, Stoyan&#8217;s book is organised in a similar fashion. Here, however, <strong>the mold fits the text like a glove</strong>. In no small part thanks to the fact that the author takes great care to define exactly what he means by &#8220;pattern&#8221;, what different flavours he considers the word to encompass, and how this applies to the structure of the book. In the case of JSP, the mold is not a populistic way to make it seem more accessible, but an honest and successful attempt to organise the information.</p>
+<p>Also, Stoyan isn&#8217;t a slave to the structure, and doesn&#8217;t feel forced to include the word &#8220;Pattern&#8221; in every headline. When he sees the need to break the mold he does so.</p>
+<h3>How VS why</h3>
+<p>Also, a proper pattern collection / cookbook would probably be more like a phrasebook - <strong>serving finished solution<em>s</em></strong>&nbsp;without explaining the nuts and bolts, and thus be of little interest to people actually wanting to learn the language. I&#8217;ve always shunned such books, finding that I have shorter journey if I take the time to equip myself first with an understanding of the basics.</p>
+<p>Stoyan has had a recurring column in&nbsp;<a href="http://www.jsmag.com" title="JSMag homepage" target="_blank">JSMag</a>&nbsp;titled &#8220;JavaScript Patterns&#8221;, in which we&#8217;ve been served snack-sized previews of this book. In the magazine, however, there isn&#8217;t much room to elaborate on the context, so the articles in question has mostly consisted of inventorying the different ways to accomplish something (how to define an object literal, how to define a function, etc). Recipes, you could say, or phrases, if you&#8217;re in a worse mood. While interesting on an academic level, I rarely looked up from one of those articles thinking &#8220;hey, I can use this&#8221;. They justified their own existence, they <strong>explained for the sake of explanation</strong>, but without much connecting discussion about real-world application.&nbsp;</p>
+<p>And that was my fear - that the book, like the articles (and OOJS, to a degree), would list the different ways to create an object / emulate class inheritance / bind a function to a context / etc, without providing discussion or meaning. But, as previously stated, JSP is very different from the articles. Stoyan&nbsp;gives <strong>ample room to discussing the why</strong>, and all (well, most) patterns are defined with a clear goal and a problem space. We&#8217;re not simply being told &#8220;42&#8221;, but also what the question in question actually is.</p>
+<p>A prime example is his chapter on inheritance - he opens it by stating that code reuse is the objective, and that the dynamic nature of JavaScript provides other and easier means to achieve that end than the classical inheritance of strongly typed languages. In fact, the chapter isn&#8217;t even called inheritance, but code reuse. He of course covers emulating classes, but in a context of discussing the (lack of) merits of that approach compared to other available solutions.</p>
+<h3>Comparisons</h3>
+<p>Here&#8217;s a few comparisons between JSP and some other tomes you might already have:</p>
+<ul>
+<li><a href="http://apress.com/book/view/159059908x" title="Pro JavaScript Design Patterns at Apress" target="_blank">Pro JavaScript Design Patterns</a>:&nbsp;PJSDP is an excellent book, in which Ross Harmes and Dustin Diaz sets out to convert the design patterns popularized in the game-changing <a href="http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612" title="Design Patterns at Amazon">Design Patterns: Elements of Reusable Object-Oriented Software</a> into JavaScript. This, however, means focusing on a classical approach borrowed from languages with strong types and interfaces. We might be feeling at home with that, but we would be better off embracing JavaScript&#8217;s dynamic, loosely typed nature, and find solutions that work best in this environment. This is what JSP provides. And, JSP discusses &#8220;patterns&#8221; in a broader sense - where PJSDP is only concerned with design patterns, JSP hovers higher and also talks about coding patterns, meaning paradigms in a wider sense; best&nbsp;practices, work flows, approaches, etc. I will continue to enjoy PJSDP, but JSP is where I&#8217;ll go for real-world help.</li>
+<li><a href="http://oreilly.com/catalog/9780596802806" title="High Performance JavaScript at O'Reilly" target="_blank">High Performance JavaScript</a>: There is some overlap here, as JSP adresses some patterns regarding performance. These are all also found in HPJS, covered in greater detail. But mostly the books live in different problem spaces, and there&#8217;s no reason not to have both in your shelf.&nbsp;</li>
+<li><a href="https://www.packtpub.com/object-oriented-javascript-applications-libraries/book" title="Object Oriented JavaScript at Packt" target="_blank">Object Oriented JavaScript</a>:&nbsp;OOJS has already been&nbsp;unfavorably&nbsp;compared to JSP several times in this review. There is a lot of overlap between the two, but where OOJS sets out to verbosely explain <strong>everything</strong> about object-oriented JavaScript (and everything you need to understand that explanation), JPS adresses only the bits relevant to the discussion at hand. JPS is way more succinct, and because it assumes you already have a good foundation, it can afford the luxury of high-level discussion. So: they are very similar, but JSP is the more mature of the two, speaking to a more experienced audience.</li>
+</ul>
+<h3>The bottom line</h3>
+<p>I enjoyed JSP even more than I thought I would. Through being one of the few JavaScript books that dares exclude the beginner crowd completely, I would buy it no matter what. But it is definitely worth reading also from its own merits, as it is full of thoughtful discussion that is bound to expand your horizons even if you are a very seasoned JS developer. So - go get!&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/jumping-onto-the-promotejs-bandwagon/">Jumping Onto the PromoteJS Bandwagon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-04T00:00:00+02:00" pubdate data-updated="true">Oct 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Krawaller supports the commendable PromoteJS initiative!</div>
+<p><a href="https://developer.mozilla.org/en/JavaScript/Guide" title="How To Learn JS"> [[posterous-content:yzzyDEmfqhmImtcloBJs]] </a></p>
+<p>The <a href="http://promotejs.com/">PromoteJS</a> project strives to make a web search for JavaScript documentation yield better results than snippets from &#8216;95 full of bad advice, and W3Schools syntax definitions void of explanation. This is done through promoting <a href="https://developer.mozilla.org/en/javascript">Mozilla Development Center</a>&#8217;s splendid<a href="https://developer.mozilla.org/en/javascript"> JavaScript documentation</a>.</p>
+<p>It&#8217;s a fair guess that the readers of this blog already know all about this stuff (if not, go read Christian Heilmann&#8217;s <a href="http://www.wait-till-i.com/2010/09/26/promote-better-javascript-documentation-with-promotejs/">excellent explanation</a>), so we shall not waste time preaching to the choir but simply do our bit for the SEO lobbying and link to the Mozilla documentation for <a href="https://developer.mozilla.org/en/javascript">JavaScript</a>,&nbsp;<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">Function</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array">Array</a> &amp; <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object">Object</a>.</p>
+<p>PS: If you haven&#8217;t already made yourself at home at the MDC site, do! The JavaScript documentation isn&#8217;t the only worthwhile thing there, they have plenty of tutorials and posts with high quality throughout.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/book-review-javascript-testing/">Book Review - JavaScript Testing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-30T00:00:00+02:00" pubdate data-updated="true">Sep 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Reviewing Packt&#8217;s latest offering on JavaScript testing. Ninja lore or newbie lark? Find out here!</div>
+<p>[[posterous-content:kxyrlHfdoJlJtBzFaxgt]]</p>
+<p>Before we start off, I must admit to my purchase being a badly researched one. I saw the title of this book glancing by in a Packt (&#8220;Since you bought X you might be interested in Y&#8221;) email, and clicked the Purchase button before realising that this book has absolutely  nothing to do with <a href="http://my.safaribooksonline.com/9780321684097" target="_blank">Test-driven JavaScript Development</a>&nbsp;that I was really setting out to buy. However, aspiring to be well versed in JavaScript literature in general because of the JavaScript course I hold at Linnaeus University, I didn&#8217;t cancel my order. Had I bothered to read through the Table of Contents more throroughly, I would have.</p>
+<p><a href="https://www.packtpub.com/javascript-testing-beginner%3F%3F%3Fs-guide/book" title="book page on Packt" target="_blank">JavaScript Testing - A Beginner&#8217;s Guide</a>, by Liang Yuxian Eugene, is a very strange beast. It assumes no prior knowledge whatsoever, and so sets out to explaining everything from basic JavaScript syntax and programming paradigms (without separating the two) to how JavaScript fits together with HTML and CSS. All this is done with a focus on testing, but taking care to explain <strong>everything</strong> as it goes along. This makes for a very peculiar read for newbie and ninja alike.</p>
+<p>Mundane content aside, the book is <strong>very</strong> verbose, to the point of  the forest being lost among the trees. For example, the author spends an entire page (chapter 3, page 95) explaining how to fix the &#8220;error&#8221; of JSLint complaining about &#8220;unexpected use of ++&#8221;. Not with a discussion about the pros and cons, but by repeating a huge chunk of code, the first using ++, then changed to +1. There are definitely times when being verbose helps  getting the point across, especially when trying to communicate the basics of a paradigm new to the receiver. What&#8217;s going on here, however, is pure page bloat. Considering that the book is only 250 pages total, that does not paint a flattering picture of the weight of the actual content.</p>
+<p>The book is also suffering from the usual Packt flaws;</p>
+<ul>
+<li>The typesetting is really strange. I realise that smarter people than me has considered the made choices, but I&#8217;ll never get used to the strangely fat,  seriff-lacking font used for the basic text.</li>
+<li>Since they often have several headlines on each page, the bloated Table of Contents  is rather useless, providing no overview. I really miss Apress&#8217; &#8220;Contents at a Glance&#8221; concept, which is sorely needed here.</li>
+</ul>
+<p>In all fairness, the book does has some merits. The testing focus equips the reader with a good set of best practices, building up a good workflow which makes for less headaches during development. I gave the book flak for being too verbose, but I guess you could also argue that it is rigorous.</p>
+<p>There is, however, nothing in there for the more advanced reader (which the subtitle &#8220;Beginner&#8217;s Guide&#8221; partly excuses, but nevertheless). Unit testing gets a brief mention, but in a context that makes it seems rather periferal. Debugging with alert, if you judge by the number of devoted pages, is much more important according to this book.</p>
+<p>I feel the basic problem with the book is the  premise - it targets a complete novice, aiming to teach him JavaScript, programming  and development planning, all done with a focus on &#8220;testing&#8221;. But, if  you don&#8217;t know some or any of these field, the content in this book is nowhere near enough. And if you DO know them, and just want to hone your testing skills and  mindset, the avalanche of superfluous information will keep you from doing so.</p>
+<p>To conclude: there are some good advice in there, but they would come more to their right as a (much) shorter tutorial article.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/headbanging-with-yql/">Headbanging With YQL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-04T00:00:00+02:00" pubdate data-updated="true">Sep 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Discovering YQL&#8217;s inner heavy metal!</div>
+<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
+<p>During the past month, we&#8217;ve been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo&#8217;s <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>
+<h3>Band app content</h3>
+<p>As the specification for the project was rather vague (us: &#8220;do you want an iPhone app?&#8221;, Tristania: &#8220;yes please!&#8221;), the first step was to figure out what such an app should contain. There aren&#8217;t really that many &#8220;band apps&#8221; as such in the app store, so no&nbsp;precedence&nbsp;as to what a normal band app is has been set. That left us pondering:</p>
+<ul>
+<li>Tristania have several digital presences such as the&nbsp;<a href="http://www.tristania.com" title="Official homepage of Tristania" target="_blank">official homepage</a>, a&nbsp;<a href="http://www.theilluminated.net" title="Tristania official forums" target="_blank">forum</a>, a&nbsp;<a href="http://www.myspace.com/tristania" title="Tristania myspace" target="_blank">myspace site</a>, a <a href="http://www.youtube.com/user/TristaniaVideos" title="Tristania youtube channel" target="_blank">youtube channel</a>,&nbsp;<a href="http://www.facebook.com/pages/Official-Tristania/124865974216395" title="Tristania Facebook" target="_blank">facebook page</a>,&nbsp;<a href="http://twitter.com/tristaniaband" title="Tristania twitter" target="_blank">twitter account</a>, a separate fanmade&nbsp;<a href="http://mvonlonski.com/cpg/index.php" title="Fanmade Tristania picture gallery" target="_blank">picture gallery</a>, etc.&nbsp;Shall we <strong>pull in content</strong> from any of these other online sources?</li>
+<li>Should it be used as a <strong>promotional platform</strong> for their&nbsp;<a href="http://www.napalmrecords.com/hp_aom.php?products_id=12797&amp;osCsid=d8306dab9dfa3ffe4cea707d1d0eb737&amp;hp=aom&amp;typ=prev" title="Rubicon @ Napalm Records">new album Rubicon</a>?&nbsp;</li>
+<li>Should the app have <strong>unique content</strong> not found elsewhere?&nbsp;</li>
+<li>Can we somehow put in some <strong>functionality that&nbsp;actually&nbsp;uses the platform</strong>, to&nbsp;preemptively answer the question &#8220;why not simply surf their homepage in Safari&#8221;?&nbsp;</li>
+</ul>
+<p>In the end, we answered these questions with&nbsp;&#8220;Definitely&#8221;,&nbsp;&#8220;Sort of&#8221;, &#8220;No&#8221; and &#8220;Hopefully&#8221;.&nbsp;</p>
+<p>As the &#8220;Definitely&#8221; suggests, data aggregation became the main justification of existence for the app. As we pull in data from almost all the aforementioned Tristania web resources, the application is a way for the fan to easily stay up to date with what&#8217;s going on. Granted, it doesn&#8217;t take that many extra minutes to manually check these different sources in a browser, but it still gives the app a sense of function.</p>
+<p>The &#8220;Sort of&#8221; regarding promoting Rubicon is simple - we made a spotlight function where individual data from the different sources can be promoted. Right now we have Rubicon-related data in there, and as the next album draws nearer we&#8217;ll promote that instead. This turned out to be an easy way to keep the content fresh and helping the band out, all without denying access to older content or having to code complicated extra functionality.&nbsp;</p>
+<p>Regarding the &#8220;No&#8221; to unique content, we&#8217;ve had to rethink our initial plans. Tristania used to be pretty bad at communicating with their fans, and their official homepage has traditionally been very stale and rarely updated. I therefore thought the app might be a way of getting them to share a bit more on what&#8217;s going on in their world, allowing us fanboys to peek over their shoulders. Lately, however, something has happened - now they&#8217;re suddenly very active on lots of different fronts (as seen in the list above), giving the fans fast and easy access to the goings on in the band. Therefore the need for an accessible information platform has been fulfilled already, and our application can take a back seat with a clear conscious.&nbsp;</p>
+<p>Finally the &#8220;Hopefully&#8221; - we have a plan to use geolocation to display all the app users on a map, and upon clicking a pin, showing that user&#8217;s presentation and favourite album/track (which can be set in the discography section). This, we thought, was a nice way of tying things together, as well as actually putting the platform to use. We felt from the beginning that we need some kind of interaction, to prevent the app from feeling like a webpage crammed into the phone. We&#8217;re still not sure if we&#8217;ll manage to piece this together for the first release, hence the &#8220;Hopefully&#8221; instead of &#8220;Oh yeah&#8221;.</p>
+<h3>YQL to the rescue</h3>
+<p>As seen above, most of the code in the app has to do with collecting and displaying external data. This has many similarities to what little brother Jacob did in his Swedish app store hit <a href="http://blog.krawaller.se/systemet" title="Systemet blog post" target="_blank">Systemet</a>. He there put YQL&nbsp;to good use, and repeatedly sang its praise during the development. I never really understood what the fuss was about, but then again, I didn&#8217;t really understand exactly what problem YQL solves for you, either. Of course I&#8217;ve seen the blog posts, read the JSMag articles, and yes, heard little brother nag, but I never saw the big picture.&nbsp;</p>
+<p>Now, as Tristania was mainly my project, I decided to try it out for myself. And, to make an already too long story short; I&#8217;m in awe. YQL does all the boring parts for me! I&#8217;ve just built the most extensive data collection application I&#8217;ve ever done, and I have almost<strong> no backend</strong> - YQL simply eliminates the need!</p>
+<p>I realise I was slow to get a seat on this band wagon and that I&#8217;m preaching to the choir, but the meaning of this blog post is simply to join the choir and <strong>sing YQL:s praises</strong>. It&#8217;s an absolutely amazing product! During this project alone, I estimate it has saved me, what, maybe 20 hours of (really dull) work. You do the math - I already owe Heilmann &amp; co quite a hefty amount of money!</p>
+<p>In an attempt to go more easy on the fanboy praise and become more concrete, here&#8217;s what YQL has done for me in the Tristania application:</p>
+<ul>
+<li>It is, in essence, my <strong>backend</strong>. In the application I&#8217;m collecting data from several different sources, which I would then normally have to parse and scrape to get what I want and translate to a suitable data format. This is now all instead done by YQL - I simply point it at the correct location, give it a few instructions, and my app is fed with a beautiful JSON object containing exactly what I want. Even when you have a &#8220;good&#8221; data source, such as Tristania&#8217;s homepage&#8217;s RSS news feed, you&#8217;ll still save time by piping it through YQL to get the JSON structure. Granted, I could do that locally, but now I don&#8217;t have to! Of all the aforementioned data sources, only the facebook data isn&#8217;t piped through YQL. Facebook&#8217;s Graph API returns JSON text, which I can digest in the application through a simple call to JSON.parse. Everything else, YQL prechews for me.</li>
+<li>Also, YQL enables me to separate concerns and have several fragile moving parts outside the application, through using what they call a&nbsp;<strong>Data Tables</strong>.&nbsp;Data tables enables you to keep the html-depending logic in an external xml file, which through mingled JavaScript and xml (in a mind-blowingly elegant and easy solution where xml nodes are first-class citizens) defines how the parsing should be done, and what should be returned to your application.&nbsp;My parsing of the picture gallery especially is rather complex; the html is several layers deep, and I need to perform lots of gymnastics to figure out what&#8217;s what and what I need. I could make YQL give the application the entire HTML structure in a JSON object and do the gymnastics locally, but that would mean that when the Gallery html changes, the application would break, and stay broken until we&#8217;ve submitted an update to the app store. Not an ideal situation. But when using Data Tables, if the Gallery changes, I can simply edit that xml file, and the applications will all start working again.&nbsp;</li>
+</ul>
+<p>So: If you are even slower than me and still haven&#8217;t caught on - try out YQL immediately, you won&#8217;t be sorry. If this was all old news to you - why the heck didn&#8217;t you let me in on it earlier?&nbsp;</p>
+<p>Also, buy Rubicon, Tristania&#8217;s new album, which <strong>rocks</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/pretty-search-for-mobile-safari-0/">Pretty Search for Mobile Safari</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-31T00:00:00+02:00" pubdate data-updated="true">Jul 31<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">We&#8217;re releasing a bookmarklet search utility for iOS Safari, bringing the convenience of the desktop search functions into your phone!</div>
+<p>Hey folks!</p>
+<p>We got tired of not having any decent Page Search in iOS, so we did what any programmer with self-esteem and too much time would do, and wrote a bookmarklet to overcome this shortcoming. It&#8217;s still an early release, but it seem to be working, knock on wood.</p>
+<p>[[posterous-content:omebqIafCugpzgipisuA]]</p>
+<p><span style="font-size: medium;">Get it</span></p>
+<p>Please try it out by hitting <a href="http://79.99.1.153/prettySearch.js/demo.html">this page</a> and follow the instructions. Unfortunately we cannot programmatically add bookmarks, so you&#8217;ll have to jump through some hoops. Curious? Feel free to have a look at the source code repository <a href="http://github.com/krawaller/prettySearch.js">here</a>.</p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;">What it does</span></p>
+<p>This is a bookmarklet for iOS devices which lets you search the current page using a search string or a Regular Expression. It highlights the matches and lets you jump between them, and the bar follows you around the page. Also, the search is carried out asynchronously, so your browser won&#8217;t freeze. On top of this, it uses a new nifty caching system to work instantenously, even when offline, yet it is automatically updated whenever a new version is released.</p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;">How it does it</span></p>
+<p>An interesting point in the creation of this bookmarklet was that we developed a brand new way of handling bookmarklet resources caching and auto-updating. The solution is pretty cool if I may say so myself. It relies upon some new HTML5 features - namely window.postMessage and Cache Manifests. What we do is the following:</p>
+<p>When the user taps the bookmarklet, it creates a hidden iFrame pointing to our cache, <a href="http://79.99.1.153/prettySearch.js/cache.html.php">http://79.99.1.153/prettySearch.js/cache.html.php</a>. This file is dynamically generated to contain all the bookmarklet&#8217;s resources as embedded non-active script tags, and since the file has an accompanying Cache Manifest (which is also dynamically updated whenever any of our resources are updated) it is saved on your device. So when we load it, it loads from the local cache. If the device is online, it also checks if the Cache Manifest is updated, and only if it is it updates the cache. When the cache file is done loading in its iFrame, it uses window.postMessage to send the resources over to its parent - the page you&#8217;re currently visiting and would like to search.</p>
+<p>This setup means that our bookmarklet only needs to contain the code to bootstrap the iFrame and evaluate its resources. Also, these are loaded instantly from the local cache, and then we automatically check if the cache needs to be updated and does so if applicable. This check only occurs if the device is online, so otherwise it will just happily execute the bookmarklet from cache even when you&#8217;re offline.</p>
+<p>I&#8217;ll probably write another post about this later on. I think it&#8217;s a pretty nice hack and I haven&#8217;t really found any disadvantages yet. Please ping me if you do!</p>
+<p>&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/building-a-titanium-javascript-library/">Building a Titanium JavaScript Library</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-17T00:00:00+02:00" pubdate data-updated="true">Jul 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">As our hands get dirtier still in Titanium land, our convenience abstractions are slowly growing into a full library (whatever that means).</div>
+<p>As were finally starting to get some real hands-on experience in <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium</a> application creation, we&#8217;ve now amassed a fair share of tools to ease the process. The Titanium API is very low level - which is as it should be, but it can at times feel more than just a little clunky. Getting around that is as simple as abstracting away the parts you don&#8217;t like, which has resulted in our own Krawaller JavaScript framework sitting on top of Titanium. Its nowhere near all-covering, life-altering or complete, but some ideas have come far enough to be thrown at the community, to see what comes back. :)</p>
+<p>Below are a few examples of things we&#8217;ve done to ease the process. I&#8217;m sure there are several similar and presumably superior wheels invented all over the place - don&#8217;t hesitate to share your own efforts in the comments!</p>
+<h3>Element creation logic</h3>
+<p>We have wrapped all element creation through our own K.create function. The argument object will, apart from the normal parameters passed on to Titanium, have a type and a children property. The type is of course the type of native element, and children is an (optional) array of subelements to be contained within the created element. The create function will recursively call itself and add these to the returned object. This enables us to for example create a TableView like this:</p>
+<script src="http://gist.github.com/478333.js?file=framework_tableview.js"></script>
+<p>We&#8217;re also sprinkling some convenience logic throughout this function - for example, children of a tableview or tableviewsection are assumed to be tableviewrows if no type is specified, enabling us to leave that property out if it is a row we want.</p>
+<p>Created elements are also given access to the object that created them, meaning we can later on access the id property in the above example within a clickhandler set on the rows.</p>
+<h3>Styling native elements</h3>
+<p>Another advantage of wrapping the native creation functions is that we can centralise the element styling. A call to our create function results in the execution of something like this:</p>
+<script src="http://gist.github.com/478333.js?file=framework_createwin.js"></script>
+<p>The K.merge function simply merges all arguments together into one object, giving precedence to leftmost properties. Thus, the object you pass in to the create function is always king of the hill, and the options you leave out will get its values from the preset defaults.</p>
+<p>Those values all reside in one single object, where it is very easy to quickly give the whole application a different set of clothes:</p>
+<script src="http://gist.github.com/478333.js?file=framework_defopts.js"></script>
+<p>The url-specific defaults are used when creating windows, allowing us to specify specific styles for different pages.</p>
+<h3>Webviews</h3>
+<p>Most of the work, however, went into the webview creation function. While recently working on the official <a href="http://www.tristania.com">Tristania</a> application we needed several different webviews with slightly different properties, which made the code everything but <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>. With the framework in place, however, a single statement sufficed for each webview:</p>
+<script src="http://gist.github.com/478333.js?file=framework_webview.js"></script>
+<p>The argument object has two properties; the name of the template file, and a data object that will be supplied to that template. You can also optionally specify a masterpage, if you don&#8217;t want the default one to be used.</p>
+<p>The call to the creation function takes care of everything, leaving that single execution line in the application code. Here&#8217;s the definition of the webview creation function:</p>
+<script src="http://gist.github.com/478333.js?file=framework_createwebview.js"></script>
+<p>A template file looks like this:</p>
+<script src="http://gist.github.com/478333.js?file=framework_template.html"></script>
+<p>Being able to write JavaScript logic inbetween the html tags greatly simplifies adding custom behaviour depending on the data.</p>
+<p>The master page is a full html document, into which the template will be injected and rendered:</p>
+<script src="http://gist.github.com/478333.js?file=framework_masterpage.html"></script>
+<p>This system has several advantages:</p>
+<ul>
+<li>The code will be far less dry, and each webview template need only contain the actual html used.</li>
+<li>Styling is centralised to the masterpage, enabling you to have a global css file linked at one single place. Should a template need specific styling, you can simply add that in a style tag within the template itself, as in the previous biography template example.</li>
+<li>You also control the rendering of all webviews. This masterpage contains a neat effect where all webviews are initially transparent, but will fade into full opaqueness when it has finished rendering. This looks nice, and prevents the user from seeing it rendered bit by bit.</li>
+</ul>
+<h3>Going forward</h3>
+<p>Our plan was never to build a full framework, but putting our various convenience functions together and making then conform has started to amount to the same thing. We&#8217;re not committing to any &#8220;soon&#8221; promises, but definitely plan to share what we end up with. I&#8217;m not sure a single, jQuery-style-all-conquering framework is what the Titanium community needs, but we could definitely benefit from sharing what we&#8217;ve done to make everyday Titanium life easier. Perhaps this is one way of accomplishing that?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/systemet/">Systemet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-03T00:00:00+02:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Announcing the release of our new app! Behind-the-scenes bean spillage to follow.</div>
+<p>Yeay!</p>
+<p>[[posterous-content:dcEoHdApAizvGeFbqvJI]]</p>
+<p>We just wanted to let you know that our third app, <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">Systemet</a>, just <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">went live in the App Store</a>. It&#8217;s an inofficial guide to the<span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> Swedish Alcohol Retail Monopoly Systembolaget, and it lets you:</span></span></p>
+<p><span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> </span></span></p>
+<ul>
+<li>Search for nearby stores</li>
+<li>See store opening times</li>
+<li>Call the store directly</li>
+<li>Search for products</li>
+<li>Sort by name, price and other properties</li>
+<li>See product info, qualities, suitable recipes etc</li>
+<li>Find the closest store with a certain product in stock</li>
+<li>Save your favourite stores, products, searches and recipes</li>
+</ul>
+<p> </p>
+<p>We&#8217;ll spill all the beans about the development of Systemet later, but I can tell you right now that it took some serious Titanium, HTML5, and YQL wizardry to make this happen, and that our &#8220;database&#8221; is a plain ol&#8217; Google Docs Spreadsheet.</p>
+<p>Curious, ha? Stay tuned!</p>
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/puzzle-app-step-3-revving-up-the-engine/">Puzzle App Step 3 - Revving Up the Engine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-03T00:00:00+02:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Having finished the level analyser, work starts on actually finishing the game. Read up on the process and try out the playable prototype here!</div>
+<h3>Excusing the sound of silence</h3>
+<p>And suddenly a whole month went by! But we haven&#8217;t just been idling around playing <a href="http://carcassonneapp.com/" title="Carcassonne app official homepage">Carcassone</a> all day (at least not just) - this past month has seen several wheels being set in motion;</p>
+<ul>
+<li>An <strong>iPad/iOS4-friendly version of <a href="http://blog.krawaller.se/tag/golingo" title="Posts on Golingo">Golingo</a></strong> is waiting in the wings! Come on, little brother, type faster!</li>
+<li>We&#8217;re awaiting Apple&#8217;s approval for our next AppStore application [edit: app is now live, read announcement <a href="http://blog.krawaller.se/systemet">here</a>] - an <strong>inofficial app for <a href="http://www.systembolaget.se/hem/" title="Systembolaget">Systembolaget</a></strong> (where swedes go buy their alcohol, since we&#8217;re not trusted to do so without government supervision). There <a href="http://itunes.apple.com/se/app/hittabolaget/id328888218?mt=8" title="HittaBolaget appstore link">already is one</a> on the market, but our not-so-objective opinion is that we blow that out of the water since&nbsp;Titanium &gt; ObjectiveC (and also&nbsp;good design &gt; bad design).</li>
+<li>Communications are underway with the manufacturers behind our very favourite <strong>boardgame</strong> regarding taking it to the iPad/iPhone (inspired by the brilliant appification of Carcassone, which we&#8217;re absolutely not playing all day all the time). Hopefully we can spill some more beans on that in the somewhat near future!</li>
+<li>Continuing the trend of placing ourselves at risk of severe starstruckness, we&#8217;ve also begun development of the <strong>official app for our favourite metal band</strong>. Huge amounts of fun, and having an excuse to communicate with these long-time heroes of ours is simply awesome. Further beanspilling to follow here too [edit: check the related posts <a href="http://blog.krawaller.se/tag/tristania">here</a>] .&nbsp;</li>
+<li>Our biggest pastime, however, has been <strong>involvement with a very promising startup</strong>, spearheaded by a driven entrepeneur duo with a great idea and the know-how to make it happen. Seeing these guys in action has been a privilige; we might have some badass technical knowhow, but direction, ambition, organisation, efficiency and all those adjectives - not so much. So being able to piggyback on them has been a very educative ride. And, you guessed it; more beans later.&nbsp;</li>
+</ul>
+<p>All this action invariably meant less playtime for our less serious (read: turnover-potent) inhouse project, which demoted our puzzle game to the back burner. But before <span style="text-decoration: line-through;">Carcassone took us over completely</span> things got too busy, we did managed to make quite a bit of progress, which is what we wanted to share in this post!</p>
+<h3>Analyse this</h3>
+<p>First and foremost, the<strong> analyser module is finished</strong>. It turned out to be an almost AliceInWonderlandesque journey into some rather esotheric recursive gymnastics, so if you&#8217;re into that sort of thing, do dive into the code and check it out (the code repository can be found&nbsp;<a href="http://github.com/krawaller/labyrinth" title="App Github repository" target="_blank">here</a>, if we haven&#8217;t already said so).</p>
+<p>The idea is detailed in the previous posts, but mainly the idea was to have all game logic in an analyser function that calculates all possible states in a level, including the transitions between these states. The actual <strong>player</strong> module (yet to be finished, but a scaffold is up) therefore doesn&#8217;t need to contain any logic, but simply renders the different states and moves the player between them as he gives his commands. This backward design means&#8230;</p>
+<ul>
+<li>Beautiful <strong>separation of concerns</strong> in the codebase</li>
+<li>We can programmatically check the <strong>integrity</strong> of a level, to see if it&#8217;s actually solvable</li>
+<li>Better yet, we can also calculate the <strong>difficulty</strong>, by checking                  
+<ul>
+<li>the <strong>minimum amount of steps needed</strong> to reach a perfect solution</li>
+<li>how many <strong>different branches</strong> there are</li>
+<li>frequency of <strong>dead ends</strong> and <strong>deathtraps</strong> </li>
+</ul>
+</li>
+<li>This also means that we can include a <strong>level editor</strong> in the game, and give immediate feedback to the level designer.</li>
+<li>With some work it should also be possible to <strong>randomise</strong> levels.</li>
+</ul>
+<h3>Prototyping</h3>
+<p>Ok, enough babbling - here&#8217;s the game in action (if the iframe doesn&#8217;t play nice, here&#8217;s a <a href="http://dl.dropbox.com/u/2287145/labdemo/demo.html" title="labyrinth puzzle game demo" target="_blank">link directly to the demo</a>), using our scaffolded and not-that-lovingly crafted player module. The level isn&#8217;t that interesting, but serves its purpose as a proof of concept rather nicely.&nbsp;Rule-wise&nbsp;it is very simple; whenever you make a move, all player marbles will fall as far as possible in the chosen direction.&nbsp;</p>
+<p><iframe src="http://dl.dropbox.com/u/2287145/labdemo/demo.html" height="300px" width="400px"></iframe></p>
+<p>Here&#8217;s a quick rundown on the different objects in the level:</p>
+<ul>
+<li>The <strong>yellow marbles</strong> are your player objects, which you move with the arrow keys (or touches if you&#8217;re on an iphone/ipad). The game keeps going as long as at least one marble is still in play. In this version, nothing at all happens when two marbles overlap, as we couldn&#8217;t decide if they should block or kill each other.</li>
+<li>The goal is to get them all to the <strong>red heart</strong>&nbsp;(the meaning of life is love?).&nbsp;</li>
+<li>For a perfect solution you must also pick up all the <strong>valuables</strong>, of which there&#8217;re two kinds:                 
+<ul>
+<li>A <strong>small coin</strong>, which is simply picked up as you pass over it</li>
+<li>A <strong>large star</strong>, which is picked up but makes the ball stop in the process.&nbsp;</li>
+</ul>
+</li>
+<li>The blue rotating asterisks are <strong>teleports</strong>, which immediately moves the marble to another position (but doesn&#8217;t interrupt the motion).</li>
+<li>The blue square is a <strong>block of ice</strong>, which will gradually break as you collide with it, needing two hits to disappear completely.</li>
+<li>We&#8217;re not quite sure what the <strong>yellow sun symbol</strong> is supposed to represent, but it stops the marble upon entry.</li>
+<li>The green triangle is a <strong>locked door</strong>, which is impassable until you&#8217;ve collected&#8230;</li>
+<li>&#8230;the green digit 1, which is a <strong>key</strong>.</li>
+<li>The <strong>curved wall</strong> will of course change the direction of the marble accordingly.</li>
+<li>The <strong>red arrow</strong> can only be passed in the direction it is pointing, all other paths are blocked. Not sure if it is intiutive for it to block just the opposite direction or all three non-pointing directions, the jury is still out on that.</li>
+<li>The <strong>grey square</strong> does nothing except blocking, and is thus pretty uninteresting and useless. We&#8217;ll most likely not use it further.</li>
+</ul>
+<h3>The data structure in action</h3>
+<p>None of these behaviours are hard-coded into the game logic. Instead they&#8217;re all defined in the level data object, which is made possible due to the <strong>abstract design</strong> we laid out in the <a href="http://blog.krawaller.se/puzzle-app-step-2-data-structure" title="Puzzle app step 2 - Data structure">previous post</a>. Now, whether or not that was a good idea I&#8217;m still not sure, since it made the engine tougher to code. It does however allow for a lot of agility now, as it would be easy to think up a new labyrinth denizen and define its behaviour with pure data, without having to touch the logic code.</p>
+<p>The behaviours are in essence a description of what will happen upon the collision of two objects. For example, here&#8217;s the definition of a collision between a player marble (plr) and a key square:</p>
+<script src="http://gist.github.com/459206.js?file=collision-key.js"></script>
+<p>Collision with the gate then looks like this:</p>
+<script src="http://gist.github.com/459206.js?file=collision-gate.js"></script>
+<p>While not rocket science, this system allows us to easily accomodate these new ideas as they come along. The initial idea was to allow the level editor to define new objects here, but probably we&#8217;ll stick with predefining lots of objects, and limiting the editor to choosing between these.</p>
+<h3>The missing pieces of the puzzle</h3>
+<p>Obviously, there&#8217;s still a long way to go before we have anything close to a finished product:</p>
+<ul>
+<li>Although a little slab of (CSS-only!) paint made a huge difference, we need to <strong>work on the graphics</strong>. We&#8217;re not at all sure how to approach this, but it will definitely still be CSS3-based as far as possible, meaning a simple yet hopefully elegant design.</li>
+<li>We still have to make the <strong>app infrastructure</strong> to contain the game.</li>
+<li>The aforementioned <strong>level editor</strong> is probably a rather huge project in and of itself, so that will also take some time.</li>
+<li>As is the <strong>randomiser</strong>, if it is at all possible.</li>
+<li>We also need some <strong>more ideas regarding in-game objects</strong>. Having multiple player balls is a good one, but we need to freshen it all up some more. Balls travelling against gravity, pushable boxes, the list goes on and on.</li>
+</ul>
+<p>And since all the excuses we made at the beginning of the post applies for the foreseeable future as well, completion of the labyrinth puzzle game is definitely far off. But, we&#8217;re slowly but surely getting there!</p>
+<p>Also, again: Carcassone is a brilliant game! The application rendition really does the real-life counterpart justice. Buy it, play it, send fan-mail to the developers!&nbsp;</p>
+<ul>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/krablog/opensourcing-golingo/">Opensourcing Golingo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-18T00:00:00+02:00" pubdate data-updated="true">May 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="summarytext">Come on in to the Golingo Source Release party! There will be stripping! (open sourcing of code, that is&#8230;)</div>
+<p>Hey folks! Thanks for sticking with us even when we&#8217;re not the fastest guys around. I&#8217;m <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you&#8217;ve been sleeping under a rock (without any means of browsing the intertube), here&#8217;s a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>&#8217;s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
+<p>If you&#8217;re not at all interested in how to create top paid apps using only Titanium with JavaScript, HTML5 and CSS3, this post not for you. Otherwise, please go ahead!</p>
+<p>The code is hosted <strong><a href="https://github.com/krawaller/Golingo">here</a></strong> at our brand spanking new Github account. Hold your horses or check it out straight a way!</p>
+<p>[[posterous-content:pmbIdvfjEuDqxpIsAvca]]</p>
+<p>But let&#8217;s start from the beginning. Golingo was born from a thoroughly cosy word game played using Scrabble©-tiles at Café Agape in the tiny Swedish fishing village of <a href="http://www.bovallstrand.com/bovalldir-s/bilder.html">Bovall</a>. We&#8217;ve tried to create an electronic adaption that stayed true to the concept of a blazingly quick, enthralling word juggling game. But how did we do it? Come along!</p>
+<p>The first experimental version was created as part of a school project back in 2008. It wasn&#8217;t much more than a concept, but still hade multiplayer capabilities courtesy of <a href="http://orbited.org/">Orbited</a>. Back then it looked like this:</p>
+<p>[[posterous-content:wwAdaDjyktyGdmtmIFdt]]</p>
+<p>It fell out of grace in my busy brain while some other idea events bubbled up to my master node. But at the 16th of febraury this year, I coudn&#8217;t hold it back any more - I had to have a neat project to try Titanium Mobile out, and there it was in the back of my head. I pulled it out and started prototyping straight away. I&#8217;m a hands on, iterative programmer, so I quickly got some initial results looking slightly ugly, but still promising.</p>
+<p>[[posterous-content:vDfDkEfyDhHeCmjstlac]]</p>
+<p>Everything in-game is pure JavaScript, HTML5 and CSS3, which made it possible to develop the game itself in Safari, and dropping it into Titanium only when it was almost done. This was crucial to keep up the speed and sanity during development. Titanium is a great piece of software, but it doesn&#8217;t have very good debugging capabilities, especially not for webviews. And Safari/Chrome/Webkit Nightly have extremely good debugging tools for both logic (JavaScript) and presentation (HTML and CSS), so why not use them?</p>
+<p>I decided to use as many tools as possible to simplify my work, which resulted in the following toolbelt:</p>
+<ul>
+<li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a></li>
+<li> <a href="http://www.w3.org/Style/CSS/current-work">CSS3</a> with <a href="http://www.webkit.org">Webkit</a> <a href="http://webkit.org/blog/324/css-animation-2/">extras</a> </li>
+<li><a href="http://www.jquery.com">jQuery 1.4.2</a></li>
+<li><a href="http://www.danwebb.net/2008/2/3/how-to-use-low-pro-for-jquery">Low Pro for jQuery</a></li>
+<li><a href="http://www.glyphish.com">Glyphish icons</a></li>
+<li><a href="http://blog.stevenlevithan.com/archives/parseuri">Uri-parser</a></li>
+<li><a href="http://www.dsso.se">Swedish word list</a></li>
+<li><a href="http://www.couchdb.org">CouchDB</a></li>
+<li><a href="http://www.nordicfactory.com/creative/illustrations/download-free-flag-set-in-png/">Flag icons</a></li>
+</ul>
+<p>In hindsight, I would probably have replaced jQuery with XUI or tailored code. jQuery is wonderful to use, but it&#8217;s a bit heavy on mobile devices both to load and during execution. However, it does save time for the developer, so it&#8217;s not a crystal clear choice. Also, make sure that you keep up with the flow of new exiting tech that might relieve your work - for example both <a href="http://www.css3please.com">css3please.com</a> and <a href="http://www.cssdesk.com">cssdesk.com</a> were release during Golingo&#8217;s development.</p>
+<p><span style="font-size: medium;">The Construction</span></p>
+<p>Most of the actual game was made in a few weeks time, but from scratch to published app it took almost six weeks of part time work. A lot of this time was spent banging my head into various walls. Again, Titanium is great, but it&#8217;s a young framework with all the kinks that follows. There has been quite a few bugs, and the documentation hasn&#8217;t always been up to date - but this is much better nowadays. What more - since most other developers are as clueless as yourself, It&#8217;s been hard finding <a href="http://developer.appcelerator.com/apidoc/mobile/latest">good resources</a> and <a href="http://developer.appcelerator.com/questions/created">getting help</a>. I did however get a trial for Appcelerator&#8217;s Premium Subscription, with 48-hours guaranteed response, and I must say it&#8217;s really good stuff. The developers themselves answers all your stupid questions and relieves most of the wall banging. If you can afford it, <a href="http://www.appcelerator.com/products/plans-pricing/">go for it</a>!</p>
+<p>By releasing the code for Golingo, we hope to relieve some of the headaches surrounding developing packaged HTML5 apps. I do not say that it&#8217;s not full of faults, because it is, but at least it is a <strong>working example</strong> full of faults. Please don&#8217;t hesitate to dig through the code to see what is going on. We believe we&#8217;ve solved some common problems that you too will run in to when using Titanium, for example transparently calling native functions from a webview (and vice versa) using callbacks and trickery. Here&#8217;s a quick recap of that:</p>
+<p><span style="font-size: medium;">Connecting Titanium Contexts</span></p>
+<p>Your Titanium application is built up of javascript files. There is a main file called app.js which is responsible for bootstrapping your applicaiton. As a matter of fact, you could actually put <strong>all </strong>your code in app.js, but that is only viable for very small apps. Therefore Golingo consists of lots of different files - pretty much one file per window and some util libraries. Whenever you open a webview or a window with a url pointing to a js file, they run their code in a new context - meaning you cannot easily communicate with app.js or any of your other windows or webviews. Or at least, you couldn&#8217;t had the brilliant minds behind Titanium not given us app-wide events. But since they are brilliant, and they do have given us app-wide events, let&#8217;s use them to let the different parts of the app communicate.</p>
+<p>A common problem with this event-driven way of programming is that you cannot pass functions transparently back and forth between contexts since the event bridge serializes all passed data. Because of this, most people have a hard time figuring out how to call a function in another context and pass the result back to a callback specified in the calling function. We use a pattern looking something like the following, where we hijack the event firing and handling functions to hack in support for transparent callbacks.</p>
+<p><script src="https://gist.github.com/403742.js"></script></p>
+<p><span style="font-size: medium;">Low Pro like a low pro</span></p>
+<p>Another nice library helping the development of Golingo is <a href="http://www.danwebb.net/">Dan Webb</a>&#8217;s <a href="http://www.danwebb.net/lowpro">Low Pro</a>. Low Pro is used to make it a breeze to attach beaviour to elements, and does it well. All our letters and boards should behave the same way, so they&#8217;re all instances of the Letter and Board classes respectively. We ended up using Low Pro in a very basic way, but it does actually have support for inheritance as well as event binding and delegation. Our code should probably be rewritten to more accurately follow Low Pro and it&#8217;s object oriented ways, but coding in a hurry sometimes results in less than perfect code. We&#8217;ll fix that as soon as there is peace on earth. Nevertheless, I get a warm feeling from being able to just write:</p>
+<p><script src="https://gist.github.com/404905.js"></script></p>
+<p><span style="font-size: medium;">Sexifying</span></p>
+<p>In Titanium, you use JavaScript to create and layout native elements and windows. This is incredibly powerful out of the box, but my feeling is that Appcelerator care more about laying the groundwork and creating the low level functions than making a sexy API. This is totally fine by me. I love that their focus means a quickly maturing API. But since I&#8217;m also all about the sexy programming, I&#8217;ve taken on the sexifying part. In Golingo, we started this journey by abstracting the menu creation somewhat. However, these we&#8217;re only the first baby steps.</p>
+<p>After finishing Golingo, I&#8217;ve been working on a few different Titanium based projects. And the more I do work with Titanium, the more I like what you can achieve, but also the less I enjoy how Titanium does it out of the box. It&#8217;s way too verbose and clumsy for my liking. Also, there is no good way of separating the layouting from the element creation. Since I love HTML and CSS, I decided to do apply them to Titanium. The result is not present in the current Golingo release, but I&#8217;ll talk about it in an upcoming blogpost. Here is a sneak peek of an exampe:</p>
+<p><script src="https://gist.github.com/404953.js"></script></p>
+<p>Even though the HTML parsing might mean too much of a overhead for big files, a better layouting mechanism is needed, but I&#8217;ll elaborate on that subject in an upcoming post.</p>
+<p><span style="font-size: medium;">Get dirty</span></p>
+<p><span style="font-size: medium;">[[posterous-content:xoiclCBHymycFdExjuuv]]</span>I had planned to get the code in super trim and add an interactive playing guide as well as multiplayer capabilities and other goodies before releasing the source, but I realised there&#8217;s not really any need to wait. If you&#8217;re brave enough to wade through sometimes somewhat semi-stupid code, you should be free to do so, and not wait for our utopian dream. Maybe you could even give us a helping hand at fixing all these new fancy features. For example, it shouldn&#8217;t be too hard getting most of the game to run on Android. Palm should also be within reach if you break out of Titanium or write a shim for it! I dare you!</p>
+<p>I repeat: the code is hosted <strong><a href="https://github.com/krawaller/Golingo">here</a></strong> at our brand  spanking new Github account. Isn&#8217;t it time for you to dive in?</p>
+<p>[[posterous-content:bomImsqFuqIIzgaGqAkD]]</p>
+<p>We are very curious what you&#8217;ll do with the code and all. We&#8217;ll continue to develop Golingo as well as other cool apps, so stay tuned as usual. Also, we promise to catch up on the HTML5 vs Objective-C series, where we&#8217;ll try to match the basic functionality of popular apps in a days worth of programming. Please feel free to leave tips for what apps you&#8217;d like to see us take on in the comments!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/krablog/blog/page/3/">&larr; Older</a>
+    
+    <a href="/krablog/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/krablog/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

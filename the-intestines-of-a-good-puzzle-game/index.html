@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle app step 1 - The intestines of a good puzzle game - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Philosophing our way to what our next application should be! Having finally got Golingo out the door and into the app store, we’re in the process of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Puzzle App Step 1 - the Intestines of a Good Puzzle Game</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-29T00:00:00+02:00" pubdate data-updated="true">Apr 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Philosophing our way to what our next application should be!</div>
+<p>Having finally got <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo">Golingo out the door</a> and into the app store, we’re in the process of dreaming forth our next project. While Golingo will keep us occupied for some time to come;</p>
+<ul>
+<li>As my brother promised, he’s going to <strong>detail the creation</strong> of it in a forthcoming post, highlighting the use of web technologies and the benefits of the Titanium Framework. Start typing, Jacob! [edit: read that post <a href="blog.krawaller.se/opensourcing-golingo">here</a>]</li>
+<li>Community feedback has given more than enough ideas for an <strong>update</strong>, so Jacob is now working on a new version containing..            
+<ul style="margin-left: 3em;">
+<li>more languages (initial release has English and Swedish)</li>
+<li>more game modes</li>
+<li>wifi multiplayer (to complement the split-screen multiplayer already in place)</li>
+</ul>
+</li>
+<li>We’re also considering getting an <strong>Android version</strong> out, which will hopefully result in a blog post on what that transition will entail. The fact that web apps are (mostly) platform independent is one of the main arguments against using Objective C, and this conversion will put that to the test. Will it suffice to simply throw a switch in Titanium and search&amp;replace some proprietary CSS, or is a more deep-going refactoring needed?</li>
+<li>Of course we also want to keep <strong>pushing Golingo sales</strong>, trying our hand at the very strange field of internet marketing. We are completely oblivious as to what makes success there, so it’s a journey of discovery (advice much appreciated!). Golingo did however recently reach the 1000 units sold mark, meaning an wage of $2 per development hour! We just need to release 49999 more apps to get our Mediterranean beach house!</li>
+</ul>
+<p>But, being developers we need to develop, so in parallel to the Golingo caretaking we’ve also started <strong>hunting down the next idea</strong>. Now, like all of you we of course have several dream projects that we’re itching to work on, projects of life-fulfilling promise but of equal complexity. Time, however, is in short supply – Jacob is in the process of securing a contract to create a travel planner application for a major Swedish infrastructure company, and I spend 80% of my time teaching mathematics &amp; programming to the inmates of <a href="http://www.kriminalvarden.se/sv/English/">society’s penalty box</a>. I’ve finished the <a href="http://blog.krawaller.se/tag/ria_university_course">Advanced JavaScript course</a> for <a href="http://lnu.se/?l=en">Linnaeus University</a>, but still, 1 free day a week (minus household chores) doesn’t amount to much. So with the <a href="http://blog.krawaller.se/web-design-lessons-from-an-angry-carpenter">lessons from the angry carpenter</a> fresh in memory, I realised we need to keep things simple and our heads on our shoulders.</p>
+<p>Because of that, and because it’s also in line with a common perversion of ours, we decided to create some kind of <strong style="">puzzle game</strong>. They are by nature rather confined, and might therefore be doable within our limited time. I earned my programming badge in the dungeons of a beautiful <a href="http://en.wikipedia.org/wiki/Multi_User_Dungeon">MUD</a> called <a href="http://midnightsun2.org:3328/">Midnight Sun</a>, where one of my favourite pastimes was making puzzles for the heroes to solve, so as to put their wit to the test and not just their character’s stats. I’m hoping I can draw on that experience to shorten development time even further.</p>
+<p>Now, being a mathematician, I started thinking – what actually constitutes a good puzzler? Are there some mathematical traits that we need to pursue or avoid? There are some obvious answers:</p>
+<ul>
+<li> <span>First off, the idea needs to be both <strong>simple and clearly defined</strong>. The rules of our universe must be few and unambiguous. Take <a href="http://www.subwayshuffle.com/">Subway Shuffle</a>, an early iPhone favourite of mine. To play it, you only need to know that&#8230;</span> 
+<ul style="margin-left: 3em;">
+<li>You can move all cars, but only along tracks with the same colour</li>
+<li>Only one car per station at a time</li>
+<li>The goal is to get your red car to the big red station.</li>
+</ul>
+</li>
+<li>You need to have a <strong>rich choice tree</strong>. Here Subway Shuffle becomes an anti-example – at any given point you only have very few options available, and more often than not the correct one is also the only one, if you eliminate backtracking.</li>
+<li>There also needs to be some <strong>possibility of lookahead</strong>. If the game is completely opaque and you’re not      sure how you’re doing, it’s hard to have fun. <a href="http://nonverbal.ch/colorbind.html">Colorbind</a> is an excellent example of this, where it’s always possible to deduct how close you are to your goal, and whether or not you can get there from the current point. Side point: Colorbind is also really beautiful, which definitely doesn’t hurt sales nor gaming experience.</li>
+<li>However, the <strong>lookahead shouldn&#8217;t be too allowing</strong>. Case in point: <a href="http://www.mobigame.net/">Cross      Fingers</a>. After having stared at the board for a while and having realised how to solve a level, the actual solving is just a tedious walk through the motions.</li>
+</ul>
+<table class="pictable" border="0" style="margin-left: 15px; text-align: center;">
+
+<tr>
+<td valign="bottom"><img title="subway shuffle" src="http://dl.dropbox.com/u/2287145/livepics/subwayshuffle.jpg" alt="subway shuffle" /></td>
+<td valign="bottom"><img title="colorbind" src="http://dl.dropbox.com/u/2287145/livepics/colorbind.jpg" alt="colorbind" /></td>
+<td><img title="cross fingers" src="http://dl.dropbox.com/u/2287145/livepics/crossfingers.jpg" alt="cross fingers" /></td>
+</tr>
+<tr>
+<td><span style="font-style: italic; font-size: 0.9em;">Subway Shuffle</span></td>
+<td><span style="font-style: italic; font-size: 0.9em;">Colorbind</span></td>
+<td><span style="font-style: italic; font-size: 0.9em;">Cross Fingers</span></td>
+</tr>
+
+</table>
+<p>Having reread the above list umpteen times without managing to come up with a novel idea of our own, we eventually decided to do like all successful developers - <strong>steal one</strong>! There are innumerable basic puzzle concepts that have been reincarnated more times than Buddha, and can therefore be considered part of the public domain.</p>
+<p>One such concept quickly rose to the top of our list of potential thieving targets: <strong>Labyrinth</strong>. At least, that&#8217;s what the first reincarnation I encountered was called, which I played in the attic on my father&#8217;s Macintosh more than 20 years ago. You&#8217;ve all experienced it in one form or other, I&#8217;m sure. Below is a screenshot from <a href="http://www.mikegagnon.com/roadblocks/rb1.html">Roadblocks</a>, a more recent (but less beautiful) flash incarnation:</p>
+<p style="margin-left: 15px;"><img title="Roadblocks" src="http://dl.dropbox.com/u/2287145/livepics/roadblocks.JPG" alt="Roadblocks" /></p>
+<p>The idea is very simple: You have to reach the goal. You&#8217;re able to travel in any cardinal direction, but cannot stop mid-flight. In a way, you could say you&#8217;re controlling gravity - whenever you press an arrow key (or tilt the iPhone, perhaps?) in a certain direction, the player object will travel as far as possible in that direction.</p>
+<p>And, that&#8217;s pretty much it! I think the simplicity explains the longevity of this seemingly bland concept. The labyrinth will always be much smaller than it seems, since only a few positions are actually reachable. To make things more interesting and to increase the branches on the choice tree, various spices are usually added: teleports, breaking blocks, etc. So while the basic concept is simple enough to implement, there seems to be ample opportinuty to breathe some fresh air into it all by thinking up new ways to spice things up!</p>
+<p>Having finally decided on what to aim for, I sat down to make a sketch of the project. First I jotted down some basic thoughts &amp; premises:</p>
+<ul>
+<li>We will of course follow the path Golingo cleared, and program this game using <strong>only web technologies</strong>. Probably we&#8217;ll pack it up in Titanium, but we don&#8217;t need to make that decision until way further down the path.</li>
+<li>To allow for lots of exotic spices, I want to make an <strong>abstract, flexible game engine</strong> that can easily incorporate the new ideas which will inevitably pop up along the line (movable blocks! enemies! multiple player objects! levers! inventory! delayed effects! etc etc ad infinitum).</li>
+<li> <a href="http://www.mobygames.com/developer/sheet/view/developerId,4217/">Will Wright</a> has many claims to fame, but for me the most important lesson he taught is that of the humongous size of peoples&#8217; pride. How come <a href="http://thesims.ea.com/">The Sims</a>, a game by definition utterly boring (your characters use the toilet, for Christ&#8217;s sake), has had such a remarkable success? It is based on user generated content, that&#8217;s why! Incorporating a <strong>level editor</strong> into our game would be a neat way to capitalise on that, as well as making it easier for us to create the levels to be packaged with the game.</li>
+<li>Since we&#8217;re short on both time and graphics skill, we&#8217;ll use our otherwise unhealthy fascination of new web tech to give the game a simple but hopefully <strong>stylish look using mostly (only?) CSS</strong>.</li>
+<li>I also want the game to <strong>feel at home on the iPhone</strong>. Colorbind is again a prime example, using the touchscreen and gimmicks (shake the phone to clear what you&#8217;ve done) to great effect. Contrast this to <a href="http://itunes.apple.com/us/app/puzzlequest-chapter-1-and-2/id300573601?mt=8" title="Puzzle quest">Puzzle Quest</a>, which was ported straight to the platform without any regards as to what makes it special, leaving the game feeling rather alien to play.</li>
+</ul>
+<p>A further brainstorming session in front of this list gave birth to the idea of the <strong>Analyzer</strong>. If we are to allow players to make levels of their own, they need to have some tools to make sure that their level is actually solvable. So why not put all game logic into this tool? I&#8217;m going to make a module that analyzes a given level, and spits out a data object containing all possible board positions, and the connections between them. That allows us not just to check the integrity of a level, but also to sort them difficultywise programmatically. </p>
+<p>The <strong>gaming module</strong> will therefore not contain any game logic at all, but just perform the animations when transitioning from one state to another, and keep track of the current state. This should allow for a very neat separation of concerns in the codebase.</p>
+<p>It also makes the whole project split neatly down the middle, meaning me and my brother can wrestle with one half each! I already have most of the Analyzer code written down in my head (I have an editor in my brain, but unfortunately it can&#8217;t yet run any code), so I&#8217;m going to call dibs on that. Which will suit Jacob fine, as he&#8217;s quite skilled in the CSS graphics department anyway - he made Golingo using almost no actual pictures, save the wooden background. </p>
+<p>So that&#8217;s where we&#8217;re at now! I&#8217;m in the process of writing some specs of the data objects to be passed around, but when that&#8217;s done we can both get to work individually, without depending on the progress of one another. Time (and a <a href="http://blog.krawaller.se/puzzle-app-step-2-data-structure">follow-up post</a>) will tell how it all turns out!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-29T00:00:00+02:00" pubdate data-updated="true">Apr 29<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/development/'>development</a>, <a class='category' href='/krablog/blog/categories/golingo/'>golingo</a>, <a class='category' href='/krablog/blog/categories/labyrinth/'>labyrinth</a>, <a class='category' href='/krablog/blog/categories/smartphone-webapp/'>smartphone_webapp</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/book-review-high-performance-javascript/" title="Previous Post: Book review - High Performance JavaScript">&laquo; Book review - High Performance JavaScript</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/krawaller-goes-github/" title="Next Post: Krawaller goes Github">Krawaller goes Github &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

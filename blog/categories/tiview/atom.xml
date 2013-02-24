@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tiview | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/blog/categories/tiview/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-24T16:55:26+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium app for explaining layout mechanisms]]></title>
+    <link href="http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
+    <updated>2011-08-04T00:00:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms</id>
+    <content type="html"><![CDATA[<div class="summarytext">Wrapping our brains around Titanium View layouts!</div>
+
+
+<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
+
+
+<p>I constantly had to pause my work to peruse the Titanium docs/kitchensink/sourcecode, or (more often) do some experimenting on the side, regarding stuff that I suspected I really should have nailed down. It felt like doing maths without having memorized the multiplication tables!&nbsp;</p>
+
+
+<h3>The TiView app</h3>
+
+
+<p>Eventually the added-up frustration got too great, so I set aside some time for grokking and getting comfortable with the API. This resulted in a small Titanium application we call <strong>TiView</strong>. It has a number of demos, showing on screen what various layout properties will actually result in. Most of it probably already obvious to most of you out there, but I felt it helped me to "say it out loud" in this way.</p>
+
+
+<p>As stated the app is very simple. It has a number of demos, ordered into categories. The screenshot below shows the current content, I hope to add some more to it before I move on too far:&nbsp;</p>
+
+
+<p>[[posterous-content:frowHAoziJDnxttahjCg]]Each category then consists of a ScrollableView, where each view is a demo of some layout code. The properties used are displayed inside the laid-out child:</p>
+
+
+<p>[[posterous-content:ufiCtpiiqrnHFAacpcgH]]</p>
+
+
+<p>The source code is available in the Git repo <a href="http://github.com/krawaller/tiview" title="TiView git repo" target="_blank">here</a>. Have a snoop and see if might be of any help. Or even better, add more demos of your own! It's just 250 lines in a single file, and all the demos are just object literals sent into a constructor function, so getting your own ideas in there shouldn't require that strong a shoe-horn:</p>
+
+
+<script src="https://gist.github.com/1125138.js?file=gistfile1.js"></script>
+
+
+<h3>Android VS iPhone</h3>
+
+
+<p>When we ran the app on an Android, it turned out that there where even more difference in behaviour between the platforms that we had originally thought! Therefore we gave the demos platform-specific descriptions.</p>
+
+
+<p>This process was hugely informative for us - not only did we gain a better understanding of the layout API:s, but also of the (many) differences between the platforms! Having a good map of these differences will make it much easier to write code that won't behave differently on the other platform.</p>
+
+
+<p>So we encourage you to try out TiView, and hope it will be of use!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

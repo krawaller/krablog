@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Book review - High Performance JavaScript - Krawaller webdev blog</title>
+  <meta name="author" content="Krawaller">
+
+  
+  <meta name="description" content="Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can High Performance JavaScript hold its own against Even Faster &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://krawaller.github.com/krablog/book-review-high-performance-javascript/">
+  <link href="/krablog/favicon.png" rel="icon">
+  <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/krablog/javascripts/modernizr-2.0.js"></script>
+  <script src="/krablog/javascripts/ender.js"></script>
+  <script src="/krablog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/krablog/atom.xml" rel="alternate" title="Krawaller webdev blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/krablog/">Krawaller webdev blog</a></h1>
+  
+    <h2>Musings on programming in general and JavaScript in particular</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/krablog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:krawaller.github.com/krablog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/krablog/">Blog</a></li>
+  <li><a href="/krablog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Book Review - High Performance JavaScript</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T00:00:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="summarytext">Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can High Performance JavaScript hold its own against Even Faster Websites? Catch the captivating conclusion here!</div>
+<p><em>Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can the newly released book High Performance JavaScript hold its own against the established bible Even Faster Websites? Catch the captivating conclusion here!</em></p>
+<p>[[posterous-content:ICwhddDkIhIispwxrxzB]]</p>
+<p>Nicholas Zakas, of <a href="http://www.amazon.com/Professional-JavaScript-Developers-Wrox-Programmer/dp/047022780X/">Professional JavaScript for Web Developers</a> authoring fame, recently had his latest book released, titled <a href="http://oreilly.com/catalog/9780596802806/">High Performance JavaScript</a> (HPJS). Having found <a href="http://www.nczonline.net/">his blog</a> to be an excellent resource on JavaScript insights, I was very much looking forward to this book. The fact that he&rsquo;d also enlisted frontend rock stars such as&#8230;</p>
+<ul>
+<li> <a href="http://www.phpied.com/">Stoyan Stefanov</a>, performance guru, writer of <a href="https://www.packtpub.com/object-oriented-javascript-applications-libraries/book">Object Oriented JavaScript</a> </li>
+<li> <a href="http://techfoolery.com/">Ross Harmes</a>, co-author of the very excellent <a href="http://jsdesignpatterns.com/">Pro JavaScript Design Patterns</a> </li>
+<li>Matt Sweeney, YUI architect</li>
+<li> <a href="http://blog.stevenlevithan.com/">Steven Levithan</a>, regexp wizard extraordinaire</li>
+<li> <a href="http://www.julienlecomte.net/blog/">Julien Lecomte</a>, Yahoo! frontend engineer</li>
+</ul>
+<p>&#8230;to contribute chapters didn&rsquo;t do much to damper my excitement, so I was childishly happy when the book finally knocked on my door last week!</p>
+<p>The title of the book is of course a throwback to <a href="http://stevesouders.com/">Steve Souders</a>&rsquo; epitomous <a href="http://stevesouders.com/hpws/">High Perfomance Web Sites</a>, released a few years back by the same publisher. In much the same way it covers all aspects of performance in its chosen realm. That book gained Souders much appraise for making the web developer community at large aware of the various performance issues connected to the frontend, and how &amp; why optimizing time was better spent there than on the backend which had previously been the prime target for such efforts. Last year Souders piggybacked on that appraise by releasing a sequel titled <a href="http://stevesouders.com/efws/">Even Faster Websites</a> (EFWS), where he &ndash; along with a group of co-authors, including Zakas &ndash; delved even deeper into frontend performance.</p>
+<p>Souders&rsquo; first book touched on JavaScript here and there but in EFWS it plays a much more dominant role, being the focus of half of the chapters. Even though the context is still websites, the insights it offers can easily be applied to any realm in which JavaScript performance is a concern. This is why we used it as course literature for our <a href="http://blog.krawaller.se/tag/ria_university_course">university course on developing JavaScript RIA applications</a> where it was much appreciated by the students, even though we weren&rsquo;t making websites as such. I myself love the book, and it is one of the most thumb-through tomes on my shelf.</p>
+<p>My being a part of EFWS fandom was also the reason behind my prime fear regarding HPJS &ndash; just how big would the overlap between the two turn out to be? After all, the ideas behind them seem almost identical (minus the website bits); have a team of JavaScript performance ninjas each write a piece on their individual expertise. Would it really be justified to have these two books in the same shelf? Is this town big enough for the two of them?</p>
+<p>Definitely yes. While a Venn diagram would show quite a bit of overlap;</p>
+<ul>
+<li>HPJS chapter 1 (Loading and Execution) is largely made up of the same content as EFWS chapter 4 (Loading Scripts without blocking)</li>
+<li>EFWS chapter 7 (Writing Efficient JavaScript) contains the gist of HPJS chapters 4 (Algorithms and Flow      Control), 6 (Responsive Interfaces) and 8 (Programming Practices)</li>
+<li>Most of HPJS chapter 9 (Building and Deploying High-Performance JavaScript Applications) can be found sprinkled across various EFWS chapters</li>
+</ul>
+<p>&#8230;the books have enough diverse content, difference in tone of voice and primary focus, to make for two quite different reads.</p>
+<p>The question of unique content, I feel, is largely moot anyway, as it is very rare to find a book containing knowledge that cannot be found elsewhere. That&rsquo;s not a bad thing, it&rsquo;s just the way of the web. When buying a programming book, you&rsquo;re paying for the convenience of having lots of related material collected in one place. The research behind HPJS chapter 2 (Data Access), for instance, has been detailed on Zakas&rsquo; blog, just as Stoyan has already blogged a lot of what ended up in chapter 3 (DOM Scripting).</p>
+<p>So downrating the book for being a &ldquo;compilation&rdquo;, as one of the few not-so-positive amazon reviewers does, is rather unfair and beside the point. HPJS should be judged, instead, by how well it weaves it all together, and of course by the quality of the individual chapters. In my book, it receives top scores in both of these categories.</p>
+<p>Some co-authored books while inevitably feel rather fragmented. There are moments in EFWS when the (very) different writing styles of contributing authors gets in the way of seeing the whole picture. Similar moments arose for me while reading the semi-recent <a href="http://oreilly.com/catalog/9780596159788/">jQuery CookBook</a>, which &ndash; while excellent &ndash; at times feels very schizophrenic. Of course co-authors need to be given some artistic leeway as to how they express themselves, but when they seem to have different takes on the main ideas behind the book, it becomes a problem.</p>
+<p>This never happens in HPJS, which obviously has been the target of some very loving editing. Even though the different performance aspects have quite a different flavour, as does the writing of the contributing authors, you never lose the sense of context. The fact that the book stays true to its gospel &ndash; performance &ndash; is one of its biggest strengths.</p>
+<p>There must have been innumerable temptations to mention non-performance related things that could be made to sort under a chapter&rsquo;s domain, but not fit inside the book as a whole. I&rsquo;m sure, for example, that Steven Levithan bit his tongue while writing the (brilliant!) chapter on regexes, forcing himself not to share parts of his vast regexp knowledge that doesn&rsquo;t relate directly to performance. Because he and his peers withstood that temptation, HPJS is a better book.</p>
+<p>Also worth mentioning is how succinct the book is. It is not very thick, but the information density is very high. While maybe not everyone&rsquo;s cup of tea, this is something I very much appreciate. Much like how&nbsp;<a href="http://crockford.com/">Crockford</a>&rsquo;s renowned <a href="http://oreilly.com/catalog/9780596517748/">JavaScript &ndash; The Good Parts</a> delivers the message in few but well-chosen words without much air between them, HPJS is very clear and efficient in its teachings, with no filler content to increase page count.</p>
+<p>Another merit is the &ldquo;general knowledge level&rdquo; of the content. Mostly, the teachings in the book are applicable to whatever JavaScript coding you&rsquo;re doing, today and in five years from now. We recently <a href="http://blog.krawaller.se/book-review-building-iphone-apps-with-html-cs">sang the praise</a> of <a href="http://jonathanstark.com/">Jonathan Stark</a>&rsquo;s new <a href="http://oreilly.com/catalog/9780596805791/">book on iPhone web apps</a>, making that same point &ndash; it gives you ideas, which won&rsquo;t be made obsolete when the involved API:s inevitably change a few steps down the path.</p>
+<p>So, to finally bottom-line this; the promised showdown never happened. EFWS and HPJS are partly speaking about the same things, but in different voices under different headlines to different people. Also, HPJS is a bloody brilliant book, and not owning it should be reason enough for ostracication from the frontend community.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Krawaller</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T00:00:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/krablog/blog/categories/review/'>review</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://krawaller.github.com/krablog/book-review-high-performance-javascript/" data-via="krawaller" data-counturl="http://krawaller.github.com/krablog/book-review-high-performance-javascript/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/krablog/krawaller-proudly-presents-golingo/" title="Previous Post: Krawaller proudly presents Golingo">&laquo; Krawaller proudly presents Golingo</a>
+      
+      
+        <a class="basic-alignment right" href="/krablog/the-intestines-of-a-good-puzzle-game/" title="Next Post: Puzzle app step 1 - The intestines of a good puzzle game">Puzzle app step 1 - The intestines of a good puzzle game &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/krablog/testing-backbone-objects/">Testing Backbone Objects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/slides-form-sfis-talk-october-2012/">Slides form SFIS talk October 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/software-passion/">Software Passion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/coffeescript-overview-and-resource-inventory/">CoffeeScript overview and resource inventory</a>
+      </li>
+    
+      <li class="post">
+        <a href="/krablog/krawaller-real-life-appearances/">Krawaller real-life appearances</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+	<h1>Categories</h1>
+	<ul id="category-list"><li><a href='/krablog/krablogblog/categories/android'>android (1)</a></li><li><a href='/krablog/krablogblog/categories/auktionera'>auktionera (1)</a></li><li><a href='/krablog/krablogblog/categories/backbone'>Backbone (1)</a></li><li><a href='/krablog/krablogblog/categories/couchone'>couchone (1)</a></li><li><a href='/krablog/krablogblog/categories/development'>development (12)</a></li><li><a href='/krablog/krablogblog/categories/github'>github (2)</a></li><li><a href='/krablog/krablogblog/categories/golingo'>golingo (3)</a></li><li><a href='/krablog/krablogblog/categories/instaviz'>instaviz (1)</a></li><li><a href='/krablog/krablogblog/categories/ipad'>ipad (1)</a></li><li><a href='/krablog/krablogblog/categories/iphone'>iphone (1)</a></li><li><a href='/krablog/krablogblog/categories/ithoughts'>ithoughts (1)</a></li><li><a href='/krablog/krablogblog/categories/jasmine'>Jasmine (1)</a></li><li><a href='/krablog/krablogblog/categories/labyrinth'>labyrinth (3)</a></li><li><a href='/krablog/krablogblog/categories/livetanium'>livetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/nodejs'>nodejs (1)</a></li><li><a href='/krablog/krablogblog/categories/omnigraffle'>omnigraffle (1)</a></li><li><a href='/krablog/krablogblog/categories/release'>release (6)</a></li><li><a href='/krablog/krablogblog/categories/review'>review (5)</a></li><li><a href='/krablog/krablogblog/categories/ria-university-course'>RIA_university_course (2)</a></li><li><a href='/krablog/krablogblog/categories/sinon'>Sinon (1)</a></li><li><a href='/krablog/krablogblog/categories/smartphone-webapp'>smartphone_webapp (9)</a></li><li><a href='/krablog/krablogblog/categories/struct'>struct (1)</a></li><li><a href='/krablog/krablogblog/categories/systemet'>systemet (1)</a></li><li><a href='/krablog/krablogblog/categories/testing'>Testing (1)</a></li><li><a href='/krablog/krablogblog/categories/titanium'>titanium (7)</a></li><li><a href='/krablog/krablogblog/categories/tiview'>tiview (1)</a></li><li><a href='/krablog/krablogblog/categories/tradera'>tradera (1)</a></li><li><a href='/krablog/krablogblog/categories/tristania'>tristania (2)</a></li><li><a href='/krablog/krablogblog/categories/tweetanium'>tweetanium (1)</a></li><li><a href='/krablog/krablogblog/categories/txtv'>txtv (1)</a></li><li><a href='/krablog/krablogblog/categories/yql'>yql (3)</a></li></ul>
+</section><section>
+	<h1>Tag Cloud</h1>
+	<span id="tag-cloud"><a href='/krablog/krablogblog/categories/android' style='font-size: 105.0%'>android</a> <a href='/krablog/krablogblog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/krablogblog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/krablogblog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/krablogblog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/krablogblog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/krablogblog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/krablogblog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/krablogblog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/krablogblog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='/krablog/krablogblog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/krablogblog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/krablogblog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/krablogblog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/krablogblog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/krablogblog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/krablogblog/categories/release' style='font-size: 130.0%'>release</a> <a href='/krablog/krablogblog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/krablogblog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/krablogblog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/krablogblog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='/krablog/krablogblog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/krablogblog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/krablogblog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/krablogblog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='/krablog/krablogblog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/krablogblog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/krablogblog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/krablogblog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/krablogblog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/krablogblog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+</section>
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("krawaller", 4, false);
+    });
+  </script>
+  <script src="/krablog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/krawaller" class="twitter-follow-button" data-show-count="false">Follow @krawaller</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Krawaller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'krawaller';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

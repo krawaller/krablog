@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: yql | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/blog/categories/yql/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-24T16:55:26+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Releasing Auktionera, a Tradera iPhone app]]></title>
+    <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
+    <updated>2011-02-03T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
+    <content type="html"><![CDATA[<div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
+
+
+<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
+
+
+<p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
+
+
+<p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>'s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
+
+
+<h3>Functionality</h3>
+
+
+<p>The app is a pretty standard auction site app, much like the eBay one. You can peruse auctions, bid, create your own auctions, save favourite searhes / users / auctions, check seller history, etc.</p>
+
+
+<p>[[posterous-content:ItBjeFqdGnhGEbvbsdwz]]</p>
+
+
+<p>Made with love and care, but pretty boring, in other words. This was also our approach as we entered the project. We weren't&nbsp;really intrigued by the technical challenges, but&nbsp;thought this had a good chance of selling well. This mainly because there <a href="http://itunes.apple.com/us/app/id363997028?mt=8" title="The competition!" target="_blank">already was an app in the store</a>, selling better than our Systemet in spite of being rather crap.&nbsp;</p>
+
+
+<p>This competing app is getting flak because of two different things:</p>
+
+
+<ul>
+<li>It is, as stated, rather crappy, being very prone to crash. Also some functions have ceased to work after the latest iOS upgrades.&nbsp;</li>
+<li>It relies completely on <a href="http://api.tradera.com/" title="Tradera API" target="_blank">Tradera's official API</a>, which for whatever reason is missing some vital functionality, such as checking out a seller's previous history. This is, naturally, something that an auctioneer want to be able to do, before taking the plunge and risking those hard-earned dimes!</li>
+</ul>
+
+
+<p>Our tactic was therefore a mirror image of this list:</p>
+
+
+<ul>
+<li>Make sure the app doesn't crash and burn!</li>
+<li>Complement the official API functionality with some YQL scraping on the side.</li>
+</ul>
+
+
+<p>Sounded easy enough, but it turned out that none of the above was as straight-forward as we thought..</p>
+
+
+<h3>Titanium stability</h3>
+
+
+<p>After a lengthy development cycle in Titanium and the emulator, we did a first reality test on an actual device. We weren't really worried, as the app flowed very neatly in the emulator. But, as we fired it up on the phone, we discovered to our dismay that we had managed to copy the very fickleness we wanted to avoid! The app would crash in random places, not leaving any definite clues as to why.&nbsp;</p>
+
+
+<p>Not until we ran the app in an emulator next to the activity monitor did we find out why. It turned out that Titanium did some things rather inefficiently, which would eventually cause the phone to run out of memory or processor juice. The same thing happened in the emulator, but there it wouldn't hit the ceiling as soon, as the computer has much more resources.&nbsp;</p>
+
+
+<p>So, what were these inefficient things that Titanium did? Well:</p>
+
+
+<ul>
+<li>First off - <strong>don't handle XML</strong> in your app, unless you can avoid it. XML is of course painful in and of itself, but Titanium's garbage collection somehow cannot clean up after xml parsing. Try it: open a new window, parse some XML, then close that window (using the back button, for example), and watch the processor usage spike, never to drop again.&nbsp;</li>
+<li>Be careful when doing <strong>advanced table creation</strong>. Use the best practices detailed in the <a href="http://assets.appcelerator.com.s3.amazonaws.com/docs/API_UITableViewClass.pdf" target="_blank">documentation</a>, and test your table generation with the Activity indicator running. For some combinations of table gymnastics, the memory usage will be intolerably high, eventually making the app crash.</li>
+<li>If you have a large data structure, <strong>prefer a sqlite database</strong> to just keeping a big object in memory. This might be obvious to the rest of the world, but took us a bit off guard - intuitively, we thought it would be more efficient to keep a single object and query that, skipping the overhead cost of a database. However, some testing proved us very wrong indeed - the sqlite database is quicker and uses far less memory.</li>
+</ul>
+
+
+<p>So we learned some specifics, but the main lesson for us was this: do <strong>frequent reality checks</strong> on an actual device. Titanium is still a young framework with many rough edges, and some of those edges will not cut you in the emulator since that does not correctly emulate the hardware limitations.&nbsp;</p>
+
+
+<h3>YQL + Tradera = somewhat true</h3>
+
+
+<p>We also had a rough time with the intermingling of official functionality and our home-brewed YQL-fueled queries. There were several authentication and authorization models involved; the Tradera API requires an App-Id, the user must be authenticated through the API, and also through the official site for our scraping to work.&nbsp;</p>
+
+
+<p>When starting off, we had all this in a spaghetti-bowl of code in the app. Lots of moving parts, lots of things that could break at any time. Not until we isolated all of this to a PHP-bridge did the different parts fall into place. This is of course what we should have done from the beginning - separations of concern is something we frequently preach to others. But somehow we fooled ourselves into thinking we'd already done this, as we has lots of logic in the YQL OpenTables. The lesson: you can always abstract your code one step further. :)</p>
+
+
+<h3>API design IS an artform</h3>
+
+
+<p>The biggest challenge, however, was actually using the Tradera API. I now realize that I've taken usability and intuitivity for granted in the API:s that I use, not thinking much of it. It's like appreciating your mom doing all the household chores - you don't, until you move out. I had no idea that designing a good API takes work, until I used a bad one.</p>
+
+
+<p>Now, you shouldn't bite the hand that feeds you, but the Tradera API is pretty horrid. There seems to be no general rule for naming functions (camel casing, lower case, it's the wild west in there). The same property names mean different things in different functions. Documented properties are sometimes populated, sometimes not, depending on the weather and alignent of planets. Functionality between functions overlap, but never so much that you can ignore one function and just use the other.</p>
+
+
+<p>And, most jarringly - there are several spelling errors in the API! When first creating our infrastructure to make calls, I tested it using the most simple function "GetOfficialTime", requiring no parameters and just returning a flat data object. It didn't work. Several hours later of reading SOAP specs and going through the code, I found the error - I needed to spell it "GetOfficalTime", note the missing "i". Fast forward a few weeks, and the same thing happened again when we tried to filter out used goods with the search parameter "ItemCondition". It was supposed to be "ItemConditon", again note the missing "i".&nbsp;</p>
+
+
+<p>In Tradera's&nbsp;defense, the misspellings are also present in the documentation, and they offer free support for developers using the API, which we found very helpful. But still, it made me better at appreciate good API design. And more on my guard when using them.</p>
+
+
+<h3>The result</h3>
+
+
+<p>In the end we feel pretty proud of the result! This in spite of entering the project with little heart, and being in some serious stability trouble mid-journey. So, now to the boring side of things - pushing the app, spreading the word. As previously lamented, this is not what we do best.</p>
+
+
+<p>Anyhow, hope the Swedish speakers among you will check the app out! Next up, Jacob will do a (less chatty) write-up on his neat method for deploying app builds to testers, right, brother? The pressure is on!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Releasing Tristania fan app]]></title>
+    <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
+    <updated>2010-10-21T00:00:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
+    <content type="html"><![CDATA[<div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
+
+
+<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
+
+
+<p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
+
+
+<p>&nbsp;</p>
+
+
+<h3>Features:</h3>
+
+
+<p>To get a feel for the app, please peruse the screenshots below:</p>
+
+
+<p>[[posterous-content:fvArwGHAovhlBCEobCwy]]</p>
+
+
+<p>With the app you can follow Tristania's various digital presences such as the official homepage, Twitter, Facebook, YouTube, gallery etc, from one convenient place. You'll also find a comprehensive discography section with lyrics and band comments, as well as other related band information. Some discussion on the included features can be found in&nbsp;<a href="http://blog.krawaller.se/headbanging-with-yql" title="previous post" target="_self">this blog post</a>.</p>
+
+
+<p>If you're a Tristania fan you probably won't want to read any further, as this blog focuses on the technical side of things. Instead you might want to head on over to <a href="http://theilluminated.net/your-work/tristania-iphone-app/" title="app thread on official Tristania forum" target="_blank">this thread</a> in the official forum, where you can discuss the app, tell us of bugs, etc. But, if you're a nerd, read on!&nbsp;</p>
+
+
+<h3>Used tools:</h3>
+
+
+<p>Although it is unlikely that the average reader of this blog is unfamiliar with any of these JS-Ninja weaponry, here's a quick rundown of the tools used when building the Tristania app. If any of the below is missing from your toolbox, definitely rectify right away!</p>
+
+
+<h4>Titanium</h4>
+
+
+<p>As usual we built the application using <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" title="Titanium mobile" target="_blank">Titanium</a>, so that we can program in the language we know and love (JavaScript, as opposed to Objective C), yet still deploy it as a native application.&nbsp;</p>
+
+
+<p>Although little brother has extensive experience with Titanium by now, this was my first "serious" deep-dive into the framework. Here are some of the lessons learnt during that journey:</p>
+
+
+<ul>
+<li>The emulator is not to be trusted, you need to <strong>make regular sanity checks on an actual device</strong>. In particular, what the emulator will not emulate is lag when a table / webview / somedetailedobject is rendered on the phone. Several times we had to refactor our code, when real-life tests revealed a certain solution to be too slow, in spite of split-second rendering in the emulator.</li>
+<li>F<strong>requently delete everything in the build directory</strong>. Yes, this means that you have to perform a full rebuild to test the next iteration, which some extra takes time. But you will save yourself from hugely annoying bug hunts caused by Titanium erroneously keeping old settings in the build. Take extra care to flush build before building to the device, and definitely flush <strong>thrice</strong> before packaging for upload to app store.&nbsp;</li>
+<li>Just <strong>ignore the official documentation</strong> completely. It is nowhere near complete, and full of half-truths and outright lies. Rely instead on the Kitchen Sink code. While not exactly a shining example of best practices, it has working examples of pretty much everything. When that fails, check the <a href="http://github.com/appcelerator/titanium_mobile" title="Titanium source code" target="_blank">source code</a> of Titanium itself. Also the FAQ discussion on the official homepage is a good resource.</li>
+<li>Titanium is still a <strong>beta-ish platform</strong>, and sometimes the boat will be rocking for no fault of yours. But, it is getting more stable by each release, and being able to code native apps in beautiful JavaScript is worth the frustration.&nbsp;</li>
+<li>The API is <strong>very low-level</strong>, as it should be. So for a large application you definitely need some kind of library to keep you sane, lest you have to type out lots of very verbose code everytime you want to create some non-trivial element. We adressed this through a little library of our own, which is slowly making its way to maturity. Especially with the <a href="http://developer.appcelerator.com/blog/2010/10/appcelerator-announces-9m-in-funding-paypal-partnership.html" title="Titanium blog" target="_blank">added investment just announced today</a>, things are only going to get better!&nbsp;</li>
+</ul>
+
+
+<p>Now, misunderstand me correctly - in spite of the whiny tone of the above notes, I still feel that Titanium is a remarkable framework, and that it is definitely heading in the right direction.&nbsp;</p>
+
+
+<ul>
+</ul>
+
+
+<h4>YQL</h4>
+
+
+<p>Yahoo's web service to transform any online data into beautiful JSON is nothing short of brilliant. I already sang the praise of this service in the <a href="http://blog.krawaller.se/headbanging-with-yql" title="last post" target="_blank">in-progress post</a>, so shall not reiterate that here. The main point for us was to be able to isolate fragile scraping logic outside the application, in a YQL OpenTable. Should the site we scrape change its markup, we just update the table, and all apps will instantly work again. Also, being able to pass pure JSON back to the app is wonderful, making for a beautiful separation of concerns.&nbsp;</p>
+
+
+<h4>CouchOne</h4>
+
+
+<p>This is another road that little brother paved for me, as he has used CouchDB in both <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo" title="Golingo release post" target="_blank">Golingo</a> and <a href="http://blog.krawaller.se/systemet" title="Systemet release post" target="_blank">Systemet</a>. For me, however, it was a completely new experience.</p>
+
+
+<p>[[posterous-content:FaoDhnxvvjBnFzBBzryB]]</p>
+
+
+<p>What's special about CouchDB is not just that it's all JavaScript emitting JSON (which in and of itself is really cool), but it is a (for me) whole new way to think about data. The veterans among you are probably wrinkling your noses over us youngsters never having heard of MapReduce before, but somehow I've managed to completely miss this database approach. In a MapReduce database, data isn't&nbsp;organized&nbsp;in tables. Instead it is all "documents", meaning a simple object of key-value pairs. Here, for instance, is a user document from the Tristania database:</p>
+
+
+<script src="http://gist.github.com/638246.js?file=document.js"></script>
+
+
+<p>Since there are no tables, you cannot simply "SELECT * FROM Users". Instead, you program a "view", using JavaScript. Every document will be sent as an argument to a "Map" function, where you choose what to emit to the result set. The result will be a JSON object with a rows array, containing all the emitted objects. Here is the map function from the users view:</p>
+
+
+<script src="http://gist.github.com/638246.js?file=community.js"></script>
+
+
+<p>This might sound wasteful - so we have to go through all our data, even though we're only interested in a particular well-defined subset? Somehow, however, CouchDB mitigates this, due to the way the data is stored on disc. It also remembers the result of passing a certain document to a certain map function, making the database every bit as fast and resilient as its table-based counterpart.</p>
+
+
+<p>Another view in the Tristania app is the Statistics view, which also uses the Reduce function to return a single, aggregate object:</p>
+
+
+<script src="http://gist.github.com/638246.js?file=statistics.js"></script>
+
+
+<p>The result the same JSON structure as before, but the rows array now has only one value:</p>
+
+
+<script src="http://gist.github.com/638246.js?file=result.js"></script>
+
+
+<p>Still early days for the app, so as you can see above, it needs a lot more votes for the statistics data to be meaningful.</p>
+
+
+<p>As with the notes on YQL etc, this isn't meant to be a CouchDB primer, but merely a way to wet your appetite if you still haven't made its acquaintance.&nbsp;</p>
+
+
+<h4>GitHub</h4>
+
+
+<p>So here we are definitely preaching to the choir, but I just wanted to put it to protocol that without Github, we never would have made it. We're situated in different parts of Sweden, and have been working in parallell on different parts of the application. Here's a snapshot of our Github app Network graph, showing our intertwined commits:&nbsp;</p>
+
+
+<p>[[posterous-content:sEjFvonyyFjxxFHIsgHB]]</p>
+
+
+<p>In our horrid pre-using-version-control days, we never could have pulled this off. Github for president!</p>
+
+
+<h3>PS</h3>
+
+
+<p>And, we know we've said it before, but it cannot be said too many times - go buy Rubicon, Tristania's new album! Now! :)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Headbanging with YQL]]></title>
+    <link href="http://krawaller.github.com/krablog/headbanging-with-yql/"/>
+    <updated>2010-09-04T00:00:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/headbanging-with-yql</id>
+    <content type="html"><![CDATA[<div class="summarytext">Discovering YQL's inner heavy metal!</div>
+
+
+<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
+
+
+<p>During the past month, we've been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo's <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>
+
+
+<h3>Band app content</h3>
+
+
+<p>As the specification for the project was rather vague (us: "do you want an iPhone app?", Tristania: "yes please!"), the first step was to figure out what such an app should contain. There aren't really that many "band apps" as such in the app store, so no&nbsp;precedence&nbsp;as to what a normal band app is has been set. That left us pondering:</p>
+
+
+<ul>
+<li>Tristania have several digital presences such as the&nbsp;<a href="http://www.tristania.com" title="Official homepage of Tristania" target="_blank">official homepage</a>, a&nbsp;<a href="http://www.theilluminated.net" title="Tristania official forums" target="_blank">forum</a>, a&nbsp;<a href="http://www.myspace.com/tristania" title="Tristania myspace" target="_blank">myspace site</a>, a <a href="http://www.youtube.com/user/TristaniaVideos" title="Tristania youtube channel" target="_blank">youtube channel</a>,&nbsp;<a href="http://www.facebook.com/pages/Official-Tristania/124865974216395" title="Tristania Facebook" target="_blank">facebook page</a>,&nbsp;<a href="http://twitter.com/tristaniaband" title="Tristania twitter" target="_blank">twitter account</a>, a separate fanmade&nbsp;<a href="http://mvonlonski.com/cpg/index.php" title="Fanmade Tristania picture gallery" target="_blank">picture gallery</a>, etc.&nbsp;Shall we <strong>pull in content</strong> from any of these other online sources?</li>
+<li>Should it be used as a <strong>promotional platform</strong> for their&nbsp;<a href="http://www.napalmrecords.com/hp_aom.php?products_id=12797&amp;osCsid=d8306dab9dfa3ffe4cea707d1d0eb737&amp;hp=aom&amp;typ=prev" title="Rubicon @ Napalm Records">new album Rubicon</a>?&nbsp;</li>
+<li>Should the app have <strong>unique content</strong> not found elsewhere?&nbsp;</li>
+<li>Can we somehow put in some <strong>functionality that&nbsp;actually&nbsp;uses the platform</strong>, to&nbsp;preemptively answer the question "why not simply surf their homepage in Safari"?&nbsp;</li>
+</ul>
+
+
+<p>In the end, we answered these questions with&nbsp;"Definitely",&nbsp;"Sort of", "No" and "Hopefully".&nbsp;</p>
+
+
+<p>As the "Definitely" suggests, data aggregation became the main justification of existence for the app. As we pull in data from almost all the aforementioned Tristania web resources, the application is a way for the fan to easily stay up to date with what's going on. Granted, it doesn't take that many extra minutes to manually check these different sources in a browser, but it still gives the app a sense of function.</p>
+
+
+<p>The "Sort of" regarding promoting Rubicon is simple - we made a spotlight function where individual data from the different sources can be promoted. Right now we have Rubicon-related data in there, and as the next album draws nearer we'll promote that instead. This turned out to be an easy way to keep the content fresh and helping the band out, all without denying access to older content or having to code complicated extra functionality.&nbsp;</p>
+
+
+<p>Regarding the "No" to unique content, we've had to rethink our initial plans. Tristania used to be pretty bad at communicating with their fans, and their official homepage has traditionally been very stale and rarely updated. I therefore thought the app might be a way of getting them to share a bit more on what's going on in their world, allowing us fanboys to peek over their shoulders. Lately, however, something has happened - now they're suddenly very active on lots of different fronts (as seen in the list above), giving the fans fast and easy access to the goings on in the band. Therefore the need for an accessible information platform has been fulfilled already, and our application can take a back seat with a clear conscious.&nbsp;</p>
+
+
+<p>Finally the "Hopefully" - we have a plan to use geolocation to display all the app users on a map, and upon clicking a pin, showing that user's presentation and favourite album/track (which can be set in the discography section). This, we thought, was a nice way of tying things together, as well as actually putting the platform to use. We felt from the beginning that we need some kind of interaction, to prevent the app from feeling like a webpage crammed into the phone. We're still not sure if we'll manage to piece this together for the first release, hence the "Hopefully" instead of "Oh yeah".</p>
+
+
+<h3>YQL to the rescue</h3>
+
+
+<p>As seen above, most of the code in the app has to do with collecting and displaying external data. This has many similarities to what little brother Jacob did in his Swedish app store hit <a href="http://blog.krawaller.se/systemet" title="Systemet blog post" target="_blank">Systemet</a>. He there put YQL&nbsp;to good use, and repeatedly sang its praise during the development. I never really understood what the fuss was about, but then again, I didn't really understand exactly what problem YQL solves for you, either. Of course I've seen the blog posts, read the JSMag articles, and yes, heard little brother nag, but I never saw the big picture.&nbsp;</p>
+
+
+<p>Now, as Tristania was mainly my project, I decided to try it out for myself. And, to make an already too long story short; I'm in awe. YQL does all the boring parts for me! I've just built the most extensive data collection application I've ever done, and I have almost<strong> no backend</strong> - YQL simply eliminates the need!</p>
+
+
+<p>I realise I was slow to get a seat on this band wagon and that I'm preaching to the choir, but the meaning of this blog post is simply to join the choir and <strong>sing YQL:s praises</strong>. It's an absolutely amazing product! During this project alone, I estimate it has saved me, what, maybe 20 hours of (really dull) work. You do the math - I already owe Heilmann &amp; co quite a hefty amount of money!</p>
+
+
+<p>In an attempt to go more easy on the fanboy praise and become more concrete, here's what YQL has done for me in the Tristania application:</p>
+
+
+<ul>
+<li>It is, in essence, my <strong>backend</strong>. In the application I'm collecting data from several different sources, which I would then normally have to parse and scrape to get what I want and translate to a suitable data format. This is now all instead done by YQL - I simply point it at the correct location, give it a few instructions, and my app is fed with a beautiful JSON object containing exactly what I want. Even when you have a "good" data source, such as Tristania's homepage's RSS news feed, you'll still save time by piping it through YQL to get the JSON structure. Granted, I could do that locally, but now I don't have to! Of all the aforementioned data sources, only the facebook data isn't piped through YQL. Facebook's Graph API returns JSON text, which I can digest in the application through a simple call to JSON.parse. Everything else, YQL prechews for me.</li>
+<li>Also, YQL enables me to separate concerns and have several fragile moving parts outside the application, through using what they call a&nbsp;<strong>Data Tables</strong>.&nbsp;Data tables enables you to keep the html-depending logic in an external xml file, which through mingled JavaScript and xml (in a mind-blowingly elegant and easy solution where xml nodes are first-class citizens) defines how the parsing should be done, and what should be returned to your application.&nbsp;My parsing of the picture gallery especially is rather complex; the html is several layers deep, and I need to perform lots of gymnastics to figure out what's what and what I need. I could make YQL give the application the entire HTML structure in a JSON object and do the gymnastics locally, but that would mean that when the Gallery html changes, the application would break, and stay broken until we've submitted an update to the app store. Not an ideal situation. But when using Data Tables, if the Gallery changes, I can simply edit that xml file, and the applications will all start working again.&nbsp;</li>
+</ul>
+
+
+<p>So: If you are even slower than me and still haven't caught on - try out YQL immediately, you won't be sorry. If this was all old news to you - why the heck didn't you let me in on it earlier?&nbsp;</p>
+
+
+<p>Also, buy Rubicon, Tristania's new album, which <strong>rocks</strong>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>
