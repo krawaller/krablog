@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Testing | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:03:54+01:00</updated>
+  <updated>2013-02-24T07:09:04+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -97,14 +97,11 @@ checkErrorField: "CHECKSTUFF"
 <li><strong>Execute the method:</strong> Now we execute the method on our fake context: <code>var result = initialize.call(context);</code></li>
 <li><strong>Test the result:</strong> As the initialize method isn't supposed to return anything, we don't need to test the result.</li>
 <li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let's make sure that happened:
-``` javascript
+<code>javascript
 it("should set a Dishmodel instance on .model",function(){
-
-<pre><code>expect(context.model instanceof Dishmodel).toBe(true);
-</code></pre>
-
-<p>});
-```</p></li>
+expect(context.model instanceof Dishmodel).toBe(true);
+});
+</code></li>
 <li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
 <code>javascript
 it("should call render",function(){

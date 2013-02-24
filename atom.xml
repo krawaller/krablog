@@ -4,7 +4,7 @@
   <title><![CDATA[Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:03:54+01:00</updated>
+  <updated>2013-02-24T07:09:04+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -116,15 +116,20 @@
 <li><strong>Create parameter data:</strong> The initialize method doesn&#8217;t take any arguments, so we don&#8217;t need to decide on any data for that.</li>
 <li><strong>Execute the method:</strong> Now we execute the method on our fake context: <code>var result = initialize.call(context);</code></li>
 <li><strong>Test the result:</strong> As the initialize method isn&#8217;t supposed to return anything, we don&#8217;t need to test the result.</li>
-<li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let&#8217;s make sure that happened:
-&#8220;` javascript
-it(&#8220;should set a Dishmodel instance on .model&#8221;,function(){
+<li><strong>Check context manipulation:</strong> The method was supposed to add a dishmodel instance to <code>.model</code>, so let&#8217;s make sure that happened:</li>
+</ol>
 
-<pre><code>expect(context.model instanceof Dishmodel).toBe(true);
-</code></pre>
 
-<p>});
-&#8220;`</p></li>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should set a Dishmodel instance on .model&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">model</span> <span class="k">instanceof</span> <span class="nx">Dishmodel</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
 <li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
 <code>javascript
 it("should call render",function(){
