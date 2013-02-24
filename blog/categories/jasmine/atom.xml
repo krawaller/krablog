@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jasmine | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/jasmine/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:09:04+01:00</updated>
+  <updated>2013-02-24T07:10:00+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -73,17 +73,15 @@ this.render()
 <p>Using the test philosophy outlined above, how would we test the <code>initialize</code> function? Here's one suggestion, using <a href="[http://pivotal.github.com/jasmine/]">Jasmine</a>, <a href="[http://sinonjs.org/]">Sinon</a> and <a href="[https://github.com/froots/jasmine-sinon]">Jasmine-sinon</a> custom matchers.</p>
 
 <ol>
-<li><strong>Analysis:</strong> First we analyse what the method is supposed to do:</li>
-</ol>
-
-
-<pre><code>1.    It adds a Dishmodel instance to the context
-2.    It calls the render function
-3.    It sets two event listeners
-</code></pre>
+<li><p><strong>Analysis:</strong> First we analyse what the method is supposed to do:</p>
 
 <ol>
-<li><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype: <code>var initialize = AddRecipeView.prototype.initialize</code></li>
+<li>It adds a Dishmodel instance to the context</li>
+<li>It calls the render function</li>
+<li>It sets two event listeners</li>
+</ol>
+</li>
+<li><p><strong>Access the method:</strong> We start the testcode by capturing the method to test from the constructor prototype: <code>var initialize = AddRecipeView.prototype.initialize</code></p></li>
 <li><strong>Context:</strong> We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these spies return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those were correctly passed to <code>listenTo</code>. Here's the full fake context:
 <code>javascript
 var context = {
