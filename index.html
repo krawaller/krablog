@@ -203,31 +203,41 @@
 
 
 <ol>
-<li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
-<code>javascript
-it("should call render",function(){
-   expect(context.render).toHaveBeenCalledOnce();
-});
-</code>
-And finally we test if the two event listeners were set:
-&#8220;` javascript
-it(&#8220;added the event listeners&#8221;,function(){
-   expect(context.listenTo).toHaveBeenCalledTwice();
-   expect(context.listenTo.firstCall.args).toEqual([
-
-<pre><code>   context.model,"invalid",context.renderErrors
-</code></pre>
-
-   ]);
-   expect(context.listenTo.secondCall.args).toEqual([
-
-<pre><code>   context.model,"change",context.checkErrorField
-</code></pre>
-
-<p>   ]);
-});
-&#8220;`</p></li>
+<li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:</li>
 </ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should call render&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">render</span><span class="p">).</span><span class="nx">toHaveBeenCalledOnce</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>And finally we test if the two event listeners were set:
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;added the event listeners&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">).</span><span class="nx">toHaveBeenCalledTwice</span><span class="p">();</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">.</span><span class="nx">firstCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>      <span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">renderErrors</span>
+</span><span class='line'>    <span class="p">]);</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">.</span><span class="nx">secondCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
+</span><span class='line'>      <span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">checkErrorField</span>
+</span><span class='line'>    <span class="p">]);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Here&#8217;s the test code in full:</p>

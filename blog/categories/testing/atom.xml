@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Testing | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-24T07:10:00+01:00</updated>
+  <updated>2013-02-24T07:11:59+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -103,27 +103,21 @@ expect(context.model instanceof Dishmodel).toBe(true);
 <li><strong>Check method calls:</strong> Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
 <code>javascript
 it("should call render",function(){
-   expect(context.render).toHaveBeenCalledOnce();
+expect(context.render).toHaveBeenCalledOnce();
 });
 </code>
 And finally we test if the two event listeners were set:
-``` javascript
+<code>javascript
 it("added the event listeners",function(){
-   expect(context.listenTo).toHaveBeenCalledTwice();
-   expect(context.listenTo.firstCall.args).toEqual([
-
-<pre><code>   context.model,"invalid",context.renderErrors
-</code></pre>
-
-   ]);
-   expect(context.listenTo.secondCall.args).toEqual([
-
-<pre><code>   context.model,"change",context.checkErrorField
-</code></pre>
-
-<p>   ]);
+expect(context.listenTo).toHaveBeenCalledTwice();
+expect(context.listenTo.firstCall.args).toEqual([
+   context.model,"invalid",context.renderErrors
+]);
+expect(context.listenTo.secondCall.args).toEqual([
+   context.model,"change",context.checkErrorField
+]);
 });
-```</p></li>
+</code></li>
 </ol>
 
 
