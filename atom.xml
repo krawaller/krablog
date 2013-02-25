@@ -4,7 +4,7 @@
   <title><![CDATA[Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -420,8 +420,7 @@
     <link href="http://krawaller.github.com/krablog/coffeescript-overview-and-resource-inventory/"/>
     <updated>2011-11-04T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/coffeescript-overview-and-resource-inventory</id>
-    <content type="html"><![CDATA[<div class="summarytext">An overview of CoffeeScript and good learning resources</div>
-<p>As I&#8217;ve <a href="http://blog.krawaller.se/tag/ria_university_course">written about previously</a> (although far from as much as I hoped to), I&#8217;m teaching a course at&nbsp;Linnaeus University&nbsp;on Advanced JavaScript for RIA creation. In the course, parallell to creating a RIA, the students are also tasked with doing a deepdive into&nbsp;a related subject of their own choosing (most often on a technology employed in the RIA creation).</p>
+    <content type="html"><![CDATA[<p>As I&#8217;ve <a href="http://blog.krawaller.se/tag/ria_university_course">written about previously</a> (although far from as much as I hoped to), I&#8217;m teaching a course at&nbsp;Linnaeus University&nbsp;on Advanced JavaScript for RIA creation. In the course, parallell to creating a RIA, the students are also tasked with doing a deepdive into&nbsp;a related subject of their own choosing (most often on a technology employed in the RIA creation).</p>
 <p>Because I&#8217;m still working my way to a 3rd year degree myself, I ended up in the weird situation of getting to take my own course! Although not giving myself a grade, unfortunately. I made my deepdive in CoffeeScript, which I thought might also be fit for the Krawaller blog.</p>
 <p>So here it is: a repost from my student alter ego, an overview of CoffeeScript:</p>
 <p>&nbsp;</p>
@@ -508,8 +507,7 @@
     <link href="http://krawaller.github.com/krablog/krawaller-real-life-appearances/"/>
     <updated>2011-10-27T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/krawaller-real-life-appearances</id>
-    <content type="html"><![CDATA[<div class="summarytext">A summary of Krawaller&#8217;s public appearances over the autumn.</div>
-<p>First and foremost, Jacob attended Appcelerator&#8217;s <a href="http://www.appcelerator.com/showcase/videos/codestrong2011/">CodeStrong conference</a>. He promised a blogpost about that, but I&#8217;m not holding my breath! At the conference, Jacob gave a talk about <a href="http://kraniumjs.com/">Kranium</a>, Krawaller&#8217;s new utility library for Titanium development. The video is available <a href="http://player.vimeo.com/video/30391192?title=0&amp;byline=0&amp;portrait=0&amp;color=9a0707&amp;autoplay=1">here</a>. He promised a blogpost about Kranium too!</p>
+    <content type="html"><![CDATA[<p>First and foremost, Jacob attended Appcelerator&#8217;s <a href="http://www.appcelerator.com/showcase/videos/codestrong2011/">CodeStrong conference</a>. He promised a blogpost about that, but I&#8217;m not holding my breath! At the conference, Jacob gave a talk about <a href="http://kraniumjs.com/">Kranium</a>, Krawaller&#8217;s new utility library for Titanium development. The video is available <a href="http://player.vimeo.com/video/30391192?title=0&amp;byline=0&amp;portrait=0&amp;color=9a0707&amp;autoplay=1">here</a>. He promised a blogpost about Kranium too!</p>
 <p>Together with good friends Alexander and Nicklas, we participated in <a href="http://travelhack.se">Travelhack</a> - a most excellent hackaton in Gothenburg focusing mainly around commuting. It was a brilliant event, fun and engaging! You can watch a video where all teams present their doings <a href="bambuser.com/v/2030502">here</a> (we come on at about 1:20).</p>
 <p>Finally I gave a speech at SFIS (loosely translated as Swedish Society for Information Specialists), who had a day on mobile technology. I talked about mobile app development. The slides (in Swedish) are available at 280 Slides <a href="http://bit.ly/sfis2011">here</a>, or for those of you who use a pretend browser (IE), the individual pictures are attached in the gallery below.</p>
 <p>[[posterous-content:xvbyAlkhilqvphlaGwEj]]</p>
@@ -522,8 +520,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
     <updated>2011-08-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms</id>
-    <content type="html"><![CDATA[<div class="summarytext">Wrapping our brains around Titanium View layouts!</div>
-<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What&#8217;s the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
+    <content type="html"><![CDATA[<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What&#8217;s the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
 <p>I constantly had to pause my work to peruse the Titanium docs/kitchensink/sourcecode, or (more often) do some experimenting on the side, regarding stuff that I suspected I really should have nailed down. It felt like doing maths without having memorized the multiplication tables!&nbsp;</p>
 <h3>The TiView app</h3>
 <p>Eventually the added-up frustration got too great, so I set aside some time for grokking and getting comfortable with the API. This resulted in a small Titanium application we call <strong>TiView</strong>. It has a number of demos, showing on screen what various layout properties will actually result in. Most of it probably already obvious to most of you out there, but I felt it helped me to &#8220;say it out loud&#8221; in this way.</p>
@@ -544,8 +541,7 @@
     <link href="http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app/"/>
     <updated>2011-03-26T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Reviewing our favourite iPad productivity apps!</div>
-<p>While waiting for my younger brother to post some long-promised content, I thought I&#8217;d give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let&#8217;s face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
+    <content type="html"><![CDATA[<p>While waiting for my younger brother to post some long-promised content, I thought I&#8217;d give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let&#8217;s face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
 <p>In quite a few, as it turned out! Obvious as it might be to the rest of the world, a touch screen is a very different input device compared to a touchpad and keyboard. And, as I eventually realised, it is especially well suited for sketching and doing mockups.&nbsp;</p>
 <h2>Our design process</h2>
 <p>We&#8217;ve always done quite a bit of planning before we got our hands dirty in the editors. This planning can take many different forms; napkin scribbles, phone conversations, whiteboard doodling, and sometimes an actual UML diagram.&nbsp;</p>
@@ -610,8 +606,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
-    <content type="html"><![CDATA[<div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
-<p>Up until recently, like so many other lost souls, we&#8217;ve followed the same Titanium application structure as Appcelerator&#8217;s KitchenSink application. In this paradigm, when you want to open a new window, you&#8217;d typically do something like this:</p>
+    <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we&#8217;ve followed the same Titanium application structure as Appcelerator&#8217;s KitchenSink application. In this paradigm, when you want to open a new window, you&#8217;d typically do something like this:</p>
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
 <p>Inside somefile.js the window would be populated with controls, using the Ti.UI.currentWindow reference. We can access the data from the previous window through win.importantdata.</p>
 <p>This approach, even when improved upon, has several disadvantages:</p>
@@ -649,8 +644,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
     <updated>2011-02-03T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
-<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we&#8217;re pulling the Auktionera app from the App Store! One has to choose one&#8217;s battles&#8230;&nbsp;</p>
+    <content type="html"><![CDATA[<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we&#8217;re pulling the Auktionera app from the App Store! One has to choose one&#8217;s battles&#8230;&nbsp;</p>
 <p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
 <p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>&#8217;s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
 <h3>Functionality</h3>
@@ -697,8 +691,7 @@
     <link href="http://krawaller.github.com/krablog/livetanium/"/>
     <updated>2010-12-01T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/livetanium</id>
-    <content type="html"><![CDATA[<div class="summarytext">Our latest experiment, Livetanium, lets you do realtime prototyping when creating Titanium apps. For the lowdown on why this is a good idea, check out this article!</div>
-<p>We&#8217;re proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
+    <content type="html"><![CDATA[<p>We&#8217;re proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>
 <p>Made out of titanium, nodejs and unicorns, our Livetanium library lets you code Titanium Mobile apps and see changes in realtime. It uses a nodejs server to pipe filechanges to the app, and these changes are applied in realtime. It&#8217;s iPhone only at the moment, but works in both the simulator and on the actual device. You can <a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough">see a quick walkthrough here </a>or check out <a href="https://github.com/krawaller/Titanium-Tools/tree/master/Resources/tools/livetanium/" title="Livetanium source code">the source</a>.</p>
 <p>Please try it out and let us know what you think!</p>
@@ -710,8 +703,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
     <updated>2010-10-21T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
-<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
+    <content type="html"><![CDATA[<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
 <p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
 <p>&nbsp;</p>
 <h3>Features:</h3>
@@ -764,8 +756,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-javascript-patterns/"/>
     <updated>2010-10-10T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-javascript-patterns</id>
-    <content type="html"><![CDATA[<div class="summarytext">Does Stoyan Stefanov&#8217;s latest book deserve a place on the bookshelf of a JavaScript ninja, in spite of having a partridge on the cover? Read on to find out!</div>
-<p>Back in April, Yahoo&#8217;s JavaScript guru&nbsp;<a href="http://www.phpied.com" title="Stoyan's blog" target="_blank">Stoyan Stefanov</a> set a very ambitious goal for himself; to <a href="http://www.phpied.com/publishing-5-books-this-year/" title="Stoyan's promise" target="_blank">publish 5 books</a> before the end of the year. An amazing feat, even when accounting for his generous definition of the task.</p>
+    <content type="html"><![CDATA[<p>Back in April, Yahoo&#8217;s JavaScript guru&nbsp;<a href="http://www.phpied.com" title="Stoyan's blog" target="_blank">Stoyan Stefanov</a> set a very ambitious goal for himself; to <a href="http://www.phpied.com/publishing-5-books-this-year/" title="Stoyan's promise" target="_blank">publish 5 books</a> before the end of the year. An amazing feat, even when accounting for his generous definition of the task.</p>
 <p>So, how did he fare? Well:</p>
 <ol>
 <li>His &#8220;High Performance WebSites for <span style="text-decoration: line-through;">dummies</span> designers&#8221; book titled <a href="http://www.pearsoned.co.uk/bookshop/detail.asp?item=100000000397964" title="Speed Matters at Peachpit Press" target="_blank">Speed Matters</a> has been postponed to January 2011&#8230;</li>
@@ -807,8 +798,7 @@
     <link href="http://krawaller.github.com/krablog/jumping-onto-the-promotejs-bandwagon/"/>
     <updated>2010-10-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/jumping-onto-the-promotejs-bandwagon</id>
-    <content type="html"><![CDATA[<div class="summarytext">Krawaller supports the commendable PromoteJS initiative!</div>
-<p><a href="https://developer.mozilla.org/en/JavaScript/Guide" title="How To Learn JS"> [[posterous-content:yzzyDEmfqhmImtcloBJs]] </a></p>
+    <content type="html"><![CDATA[<p><a href="https://developer.mozilla.org/en/JavaScript/Guide" title="How To Learn JS"> [[posterous-content:yzzyDEmfqhmImtcloBJs]] </a></p>
 <p>The <a href="http://promotejs.com/">PromoteJS</a> project strives to make a web search for JavaScript documentation yield better results than snippets from &#8216;95 full of bad advice, and W3Schools syntax definitions void of explanation. This is done through promoting <a href="https://developer.mozilla.org/en/javascript">Mozilla Development Center</a>&#8217;s splendid<a href="https://developer.mozilla.org/en/javascript"> JavaScript documentation</a>.</p>
 <p>It&#8217;s a fair guess that the readers of this blog already know all about this stuff (if not, go read Christian Heilmann&#8217;s <a href="http://www.wait-till-i.com/2010/09/26/promote-better-javascript-documentation-with-promotejs/">excellent explanation</a>), so we shall not waste time preaching to the choir but simply do our bit for the SEO lobbying and link to the Mozilla documentation for <a href="https://developer.mozilla.org/en/javascript">JavaScript</a>,&nbsp;<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">Function</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array">Array</a> &amp; <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object">Object</a>.</p>
 <p>PS: If you haven&#8217;t already made yourself at home at the MDC site, do! The JavaScript documentation isn&#8217;t the only worthwhile thing there, they have plenty of tutorials and posts with high quality throughout.</p>
@@ -820,8 +810,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-javascript-testing/"/>
     <updated>2010-09-30T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-javascript-testing</id>
-    <content type="html"><![CDATA[<div class="summarytext">Reviewing Packt&#8217;s latest offering on JavaScript testing. Ninja lore or newbie lark? Find out here!</div>
-<p>[[posterous-content:kxyrlHfdoJlJtBzFaxgt]]</p>
+    <content type="html"><![CDATA[<p>[[posterous-content:kxyrlHfdoJlJtBzFaxgt]]</p>
 <p>Before we start off, I must admit to my purchase being a badly researched one. I saw the title of this book glancing by in a Packt (&#8220;Since you bought X you might be interested in Y&#8221;) email, and clicked the Purchase button before realising that this book has absolutely  nothing to do with <a href="http://my.safaribooksonline.com/9780321684097" target="_blank">Test-driven JavaScript Development</a>&nbsp;that I was really setting out to buy. However, aspiring to be well versed in JavaScript literature in general because of the JavaScript course I hold at Linnaeus University, I didn&#8217;t cancel my order. Had I bothered to read through the Table of Contents more throroughly, I would have.</p>
 <p><a href="https://www.packtpub.com/javascript-testing-beginner%3F%3F%3Fs-guide/book" title="book page on Packt" target="_blank">JavaScript Testing - A Beginner&#8217;s Guide</a>, by Liang Yuxian Eugene, is a very strange beast. It assumes no prior knowledge whatsoever, and so sets out to explaining everything from basic JavaScript syntax and programming paradigms (without separating the two) to how JavaScript fits together with HTML and CSS. All this is done with a focus on testing, but taking care to explain <strong>everything</strong> as it goes along. This makes for a very peculiar read for newbie and ninja alike.</p>
 <p>Mundane content aside, the book is <strong>very</strong> verbose, to the point of  the forest being lost among the trees. For example, the author spends an entire page (chapter 3, page 95) explaining how to fix the &#8220;error&#8221; of JSLint complaining about &#8220;unexpected use of ++&#8221;. Not with a discussion about the pros and cons, but by repeating a huge chunk of code, the first using ++, then changed to +1. There are definitely times when being verbose helps  getting the point across, especially when trying to communicate the basics of a paradigm new to the receiver. What&#8217;s going on here, however, is pure page bloat. Considering that the book is only 250 pages total, that does not paint a flattering picture of the weight of the actual content.</p>
@@ -842,8 +831,7 @@
     <link href="http://krawaller.github.com/krablog/headbanging-with-yql/"/>
     <updated>2010-09-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/headbanging-with-yql</id>
-    <content type="html"><![CDATA[<div class="summarytext">Discovering YQL&#8217;s inner heavy metal!</div>
-<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
+    <content type="html"><![CDATA[<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
 <p>During the past month, we&#8217;ve been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo&#8217;s <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>
 <h3>Band app content</h3>
 <p>As the specification for the project was rather vague (us: &#8220;do you want an iPhone app?&#8221;, Tristania: &#8220;yes please!&#8221;), the first step was to figure out what such an app should contain. There aren&#8217;t really that many &#8220;band apps&#8221; as such in the app store, so no&nbsp;precedence&nbsp;as to what a normal band app is has been set. That left us pondering:</p>
@@ -877,8 +865,7 @@
     <link href="http://krawaller.github.com/krablog/pretty-search-for-mobile-safari-0/"/>
     <updated>2010-07-31T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/pretty-search-for-mobile-safari-0</id>
-    <content type="html"><![CDATA[<div class="summarytext">We&#8217;re releasing a bookmarklet search utility for iOS Safari, bringing the convenience of the desktop search functions into your phone!</div>
-<p>Hey folks!</p>
+    <content type="html"><![CDATA[<p>Hey folks!</p>
 <p>We got tired of not having any decent Page Search in iOS, so we did what any programmer with self-esteem and too much time would do, and wrote a bookmarklet to overcome this shortcoming. It&#8217;s still an early release, but it seem to be working, knock on wood.</p>
 <p>[[posterous-content:omebqIafCugpzgipisuA]]</p>
 <p><span style="font-size: medium;">Get it</span></p>
@@ -901,8 +888,7 @@
     <link href="http://krawaller.github.com/krablog/building-a-titanium-javascript-library/"/>
     <updated>2010-07-17T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/building-a-titanium-javascript-library</id>
-    <content type="html"><![CDATA[<div class="summarytext">As our hands get dirtier still in Titanium land, our convenience abstractions are slowly growing into a full library (whatever that means).</div>
-<p>As were finally starting to get some real hands-on experience in <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium</a> application creation, we&#8217;ve now amassed a fair share of tools to ease the process. The Titanium API is very low level - which is as it should be, but it can at times feel more than just a little clunky. Getting around that is as simple as abstracting away the parts you don&#8217;t like, which has resulted in our own Krawaller JavaScript framework sitting on top of Titanium. Its nowhere near all-covering, life-altering or complete, but some ideas have come far enough to be thrown at the community, to see what comes back. :)</p>
+    <content type="html"><![CDATA[<p>As were finally starting to get some real hands-on experience in <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium</a> application creation, we&#8217;ve now amassed a fair share of tools to ease the process. The Titanium API is very low level - which is as it should be, but it can at times feel more than just a little clunky. Getting around that is as simple as abstracting away the parts you don&#8217;t like, which has resulted in our own Krawaller JavaScript framework sitting on top of Titanium. Its nowhere near all-covering, life-altering or complete, but some ideas have come far enough to be thrown at the community, to see what comes back. :)</p>
 <p>Below are a few examples of things we&#8217;ve done to ease the process. I&#8217;m sure there are several similar and presumably superior wheels invented all over the place - don&#8217;t hesitate to share your own efforts in the comments!</p>
 <h3>Element creation logic</h3>
 <p>We have wrapped all element creation through our own K.create function. The argument object will, apart from the normal parameters passed on to Titanium, have a type and a children property. The type is of course the type of native element, and children is an (optional) array of subelements to be contained within the created element. The create function will recursively call itself and add these to the returned object. This enables us to for example create a TableView like this:</p>
@@ -943,8 +929,7 @@
     <link href="http://krawaller.github.com/krablog/systemet/"/>
     <updated>2010-07-03T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/systemet</id>
-    <content type="html"><![CDATA[<div class="summarytext">Announcing the release of our new app! Behind-the-scenes bean spillage to follow.</div>
-<p>Yeay!</p>
+    <content type="html"><![CDATA[<p>Yeay!</p>
 <p>[[posterous-content:dcEoHdApAizvGeFbqvJI]]</p>
 <p>We just wanted to let you know that our third app, <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">Systemet</a>, just <a href="http://itunes.apple.com/se/app/systemet/id379391397?mt=8">went live in the App Store</a>. It&#8217;s an inofficial guide to the<span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> Swedish Alcohol Retail Monopoly Systembolaget, and it lets you:</span></span></p>
 <p><span style="font-family: arial, sans-serif;"><span style="line-height: 15px; font-size: small;"> </span></span></p>
@@ -970,8 +955,7 @@
     <link href="http://krawaller.github.com/krablog/puzzle-app-step-3-revving-up-the-engine/"/>
     <updated>2010-07-03T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/puzzle-app-step-3-revving-up-the-engine</id>
-    <content type="html"><![CDATA[<div class="summarytext">Having finished the level analyser, work starts on actually finishing the game. Read up on the process and try out the playable prototype here!</div>
-<h3>Excusing the sound of silence</h3>
+    <content type="html"><![CDATA[<h3>Excusing the sound of silence</h3>
 <p>And suddenly a whole month went by! But we haven&#8217;t just been idling around playing <a href="http://carcassonneapp.com/" title="Carcassonne app official homepage">Carcassone</a> all day (at least not just) - this past month has seen several wheels being set in motion;</p>
 <ul>
 <li>An <strong>iPad/iOS4-friendly version of <a href="http://blog.krawaller.se/tag/golingo" title="Posts on Golingo">Golingo</a></strong> is waiting in the wings! Come on, little brother, type faster!</li>
@@ -1047,8 +1031,7 @@
     <link href="http://krawaller.github.com/krablog/opensourcing-golingo/"/>
     <updated>2010-05-18T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/opensourcing-golingo</id>
-    <content type="html"><![CDATA[<div class="summarytext">Come on in to the Golingo Source Release party! There will be stripping! (open sourcing of code, that is&#8230;)</div>
-<p>Hey folks! Thanks for sticking with us even when we&#8217;re not the fastest guys around. I&#8217;m <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you&#8217;ve been sleeping under a rock (without any means of browsing the intertube), here&#8217;s a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>&#8217;s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
+    <content type="html"><![CDATA[<p>Hey folks! Thanks for sticking with us even when we&#8217;re not the fastest guys around. I&#8217;m <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you&#8217;ve been sleeping under a rock (without any means of browsing the intertube), here&#8217;s a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>&#8217;s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
 <p>If you&#8217;re not at all interested in how to create top paid apps using only Titanium with JavaScript, HTML5 and CSS3, this post not for you. Otherwise, please go ahead!</p>
 <p>The code is hosted <strong><a href="https://github.com/krawaller/Golingo">here</a></strong> at our brand spanking new Github account. Hold your horses or check it out straight a way!</p>
 <p>[[posterous-content:pmbIdvfjEuDqxpIsAvca]]</p>

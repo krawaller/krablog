@@ -4,7 +4,7 @@
   <title><![CDATA[Category: github | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/github/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
     <updated>2010-10-21T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
-
-
-<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
+    <content type="html"><![CDATA[<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
 
 
 <p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
@@ -149,10 +146,7 @@
     <link href="http://krawaller.github.com/krablog/krawaller-goes-github/"/>
     <updated>2010-05-05T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/krawaller-goes-github</id>
-    <content type="html"><![CDATA[<div class="summarytext">Finally set up our Github-account, where we'll be releasing lots of front-end &amp; smartphone-related projects. Read up here on what's already there!</div>
-
-
-<p>Hi folks!</p>
+    <content type="html"><![CDATA[<p>Hi folks!</p>
 
 
 <p>We just wanted to let you know that we've set up <a href="http://github.com/krawaller">a fancy new Github accout here</a>, to make way for our upcoming <a href="http://www.golingoapp.com">Golingo</a> source release.</p>

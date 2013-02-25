@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nodejs | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/livetanium/"/>
     <updated>2010-12-01T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/livetanium</id>
-    <content type="html"><![CDATA[<div class="summarytext">Our latest experiment, Livetanium, lets you do realtime prototyping when creating Titanium apps. For the lowdown on why this is a good idea, check out this article!</div>
-
-
-<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
+    <content type="html"><![CDATA[<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
 
 
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>

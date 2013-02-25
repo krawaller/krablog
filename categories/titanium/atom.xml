@@ -4,7 +4,7 @@
   <title><![CDATA[Category: titanium | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/titanium/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -14,14 +14,39 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Software Passion]]></title>
+    <link href="http://krawaller.github.com/krablog/software-passion/"/>
+    <updated>2012-03-25T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/software-passion</id>
+    <content type="html"><![CDATA[<p>Earlier this week, Jacob and I participated in the <a href="http://softwarepassion.se/">Software Passion Conference</a> in Gothenburg. Heaps of fun! It was great to take part in a conference that wasn't all about the web, but programming in general. I find I tend to "stare into my navel" quite a bit, caring nothing about the world outside of JavaScript. So this was a great way to broaden my horizons!</p>
+
+
+<p>Jacob held a lecture on <a href="http://kraniumjs.com/">Kranium</a>, his webifying framework for Titanium. If you want his slides, get in touch with him directly (twitterhandle @litenjacob), or wait for me to get him to post them here (but don't hold your breath).</p>
+
+
+<p>I spoke on CoffeeScript, slides are right here:</p>
+
+
+<p>[[posterous-content:jGtlutziHEHjExmjavEu]]</p>
+
+
+<p>All in all a great experience, thanx to all who turned up for our sessions! Special thanks to mr Crockford, who gave his blessing afterwards. I'll be smiling from ear to ear for weeks! :)</p>
+
+
+<p>Hah... Jacob here. Here are my slides. Take that, brother! :-)</p>
+
+
+<p>[[posterous-content:fxrsFkpiyGFAhCasibtr]]Unfortunately, the embedded videos are missing. However, you could have a look at a recording of my session at <a href="http://vimeo.com/30391192">CodeStrong</a>&nbsp;which is based on the same slides.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Titanium app for explaining layout mechanisms]]></title>
     <link href="http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
     <updated>2011-08-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms</id>
-    <content type="html"><![CDATA[<div class="summarytext">Wrapping our brains around Titanium View layouts!</div>
-
-
-<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
+    <content type="html"><![CDATA[<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
 
 
 <p>I constantly had to pause my work to peruse the Titanium docs/kitchensink/sourcecode, or (more often) do some experimenting on the side, regarding stuff that I suspected I really should have nailed down. It felt like doing maths without having memorized the multiplication tables!&nbsp;</p>
@@ -67,10 +92,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
-    <content type="html"><![CDATA[<div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
-
-
-<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
+    <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
 
 
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
@@ -147,10 +169,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
     <updated>2011-02-03T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
-
-
-<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
+    <content type="html"><![CDATA[<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
 
 
 <p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
@@ -254,10 +273,7 @@
     <link href="http://krawaller.github.com/krablog/livetanium/"/>
     <updated>2010-12-01T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/livetanium</id>
-    <content type="html"><![CDATA[<div class="summarytext">Our latest experiment, Livetanium, lets you do realtime prototyping when creating Titanium apps. For the lowdown on why this is a good idea, check out this article!</div>
-
-
-<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
+    <content type="html"><![CDATA[<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
 
 
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>
@@ -267,137 +283,6 @@
 
 
 <p>Please try it out and let us know what you think!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Releasing Tristania fan app]]></title>
-    <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
-    <updated>2010-10-21T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
-
-
-<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
-
-
-<p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
-
-
-<p>&nbsp;</p>
-
-
-<h3>Features:</h3>
-
-
-<p>To get a feel for the app, please peruse the screenshots below:</p>
-
-
-<p>[[posterous-content:fvArwGHAovhlBCEobCwy]]</p>
-
-
-<p>With the app you can follow Tristania's various digital presences such as the official homepage, Twitter, Facebook, YouTube, gallery etc, from one convenient place. You'll also find a comprehensive discography section with lyrics and band comments, as well as other related band information. Some discussion on the included features can be found in&nbsp;<a href="http://blog.krawaller.se/headbanging-with-yql" title="previous post" target="_self">this blog post</a>.</p>
-
-
-<p>If you're a Tristania fan you probably won't want to read any further, as this blog focuses on the technical side of things. Instead you might want to head on over to <a href="http://theilluminated.net/your-work/tristania-iphone-app/" title="app thread on official Tristania forum" target="_blank">this thread</a> in the official forum, where you can discuss the app, tell us of bugs, etc. But, if you're a nerd, read on!&nbsp;</p>
-
-
-<h3>Used tools:</h3>
-
-
-<p>Although it is unlikely that the average reader of this blog is unfamiliar with any of these JS-Ninja weaponry, here's a quick rundown of the tools used when building the Tristania app. If any of the below is missing from your toolbox, definitely rectify right away!</p>
-
-
-<h4>Titanium</h4>
-
-
-<p>As usual we built the application using <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/" title="Titanium mobile" target="_blank">Titanium</a>, so that we can program in the language we know and love (JavaScript, as opposed to Objective C), yet still deploy it as a native application.&nbsp;</p>
-
-
-<p>Although little brother has extensive experience with Titanium by now, this was my first "serious" deep-dive into the framework. Here are some of the lessons learnt during that journey:</p>
-
-
-<ul>
-<li>The emulator is not to be trusted, you need to <strong>make regular sanity checks on an actual device</strong>. In particular, what the emulator will not emulate is lag when a table / webview / somedetailedobject is rendered on the phone. Several times we had to refactor our code, when real-life tests revealed a certain solution to be too slow, in spite of split-second rendering in the emulator.</li>
-<li>F<strong>requently delete everything in the build directory</strong>. Yes, this means that you have to perform a full rebuild to test the next iteration, which some extra takes time. But you will save yourself from hugely annoying bug hunts caused by Titanium erroneously keeping old settings in the build. Take extra care to flush build before building to the device, and definitely flush <strong>thrice</strong> before packaging for upload to app store.&nbsp;</li>
-<li>Just <strong>ignore the official documentation</strong> completely. It is nowhere near complete, and full of half-truths and outright lies. Rely instead on the Kitchen Sink code. While not exactly a shining example of best practices, it has working examples of pretty much everything. When that fails, check the <a href="http://github.com/appcelerator/titanium_mobile" title="Titanium source code" target="_blank">source code</a> of Titanium itself. Also the FAQ discussion on the official homepage is a good resource.</li>
-<li>Titanium is still a <strong>beta-ish platform</strong>, and sometimes the boat will be rocking for no fault of yours. But, it is getting more stable by each release, and being able to code native apps in beautiful JavaScript is worth the frustration.&nbsp;</li>
-<li>The API is <strong>very low-level</strong>, as it should be. So for a large application you definitely need some kind of library to keep you sane, lest you have to type out lots of very verbose code everytime you want to create some non-trivial element. We adressed this through a little library of our own, which is slowly making its way to maturity. Especially with the <a href="http://developer.appcelerator.com/blog/2010/10/appcelerator-announces-9m-in-funding-paypal-partnership.html" title="Titanium blog" target="_blank">added investment just announced today</a>, things are only going to get better!&nbsp;</li>
-</ul>
-
-
-<p>Now, misunderstand me correctly - in spite of the whiny tone of the above notes, I still feel that Titanium is a remarkable framework, and that it is definitely heading in the right direction.&nbsp;</p>
-
-
-<ul>
-</ul>
-
-
-<h4>YQL</h4>
-
-
-<p>Yahoo's web service to transform any online data into beautiful JSON is nothing short of brilliant. I already sang the praise of this service in the <a href="http://blog.krawaller.se/headbanging-with-yql" title="last post" target="_blank">in-progress post</a>, so shall not reiterate that here. The main point for us was to be able to isolate fragile scraping logic outside the application, in a YQL OpenTable. Should the site we scrape change its markup, we just update the table, and all apps will instantly work again. Also, being able to pass pure JSON back to the app is wonderful, making for a beautiful separation of concerns.&nbsp;</p>
-
-
-<h4>CouchOne</h4>
-
-
-<p>This is another road that little brother paved for me, as he has used CouchDB in both <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo" title="Golingo release post" target="_blank">Golingo</a> and <a href="http://blog.krawaller.se/systemet" title="Systemet release post" target="_blank">Systemet</a>. For me, however, it was a completely new experience.</p>
-
-
-<p>[[posterous-content:FaoDhnxvvjBnFzBBzryB]]</p>
-
-
-<p>What's special about CouchDB is not just that it's all JavaScript emitting JSON (which in and of itself is really cool), but it is a (for me) whole new way to think about data. The veterans among you are probably wrinkling your noses over us youngsters never having heard of MapReduce before, but somehow I've managed to completely miss this database approach. In a MapReduce database, data isn't&nbsp;organized&nbsp;in tables. Instead it is all "documents", meaning a simple object of key-value pairs. Here, for instance, is a user document from the Tristania database:</p>
-
-
-<script src="http://gist.github.com/638246.js?file=document.js"></script>
-
-
-<p>Since there are no tables, you cannot simply "SELECT * FROM Users". Instead, you program a "view", using JavaScript. Every document will be sent as an argument to a "Map" function, where you choose what to emit to the result set. The result will be a JSON object with a rows array, containing all the emitted objects. Here is the map function from the users view:</p>
-
-
-<script src="http://gist.github.com/638246.js?file=community.js"></script>
-
-
-<p>This might sound wasteful - so we have to go through all our data, even though we're only interested in a particular well-defined subset? Somehow, however, CouchDB mitigates this, due to the way the data is stored on disc. It also remembers the result of passing a certain document to a certain map function, making the database every bit as fast and resilient as its table-based counterpart.</p>
-
-
-<p>Another view in the Tristania app is the Statistics view, which also uses the Reduce function to return a single, aggregate object:</p>
-
-
-<script src="http://gist.github.com/638246.js?file=statistics.js"></script>
-
-
-<p>The result the same JSON structure as before, but the rows array now has only one value:</p>
-
-
-<script src="http://gist.github.com/638246.js?file=result.js"></script>
-
-
-<p>Still early days for the app, so as you can see above, it needs a lot more votes for the statistics data to be meaningful.</p>
-
-
-<p>As with the notes on YQL etc, this isn't meant to be a CouchDB primer, but merely a way to wet your appetite if you still haven't made its acquaintance.&nbsp;</p>
-
-
-<h4>GitHub</h4>
-
-
-<p>So here we are definitely preaching to the choir, but I just wanted to put it to protocol that without Github, we never would have made it. We're situated in different parts of Sweden, and have been working in parallell on different parts of the application. Here's a snapshot of our Github app Network graph, showing our intertwined commits:&nbsp;</p>
-
-
-<p>[[posterous-content:sEjFvonyyFjxxFHIsgHB]]</p>
-
-
-<p>In our horrid pre-using-version-control days, we never could have pulled this off. Github for president!</p>
-
-
-<h3>PS</h3>
-
-
-<p>And, we know we've said it before, but it cannot be said too many times - go buy Rubicon, Tristania's new album! Now! :)</p>
 
 ]]></content>
   </entry>

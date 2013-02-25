@@ -4,7 +4,7 @@
   <title><![CDATA[Category: txtv | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/txtv/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/html5-vs-objective-c-round-1/"/>
     <updated>2010-01-28T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/html5-vs-objective-c-round-1</id>
-    <content type="html"><![CDATA[<div class="summarytext">Here we one-up Objective C by recreating a native iPhone app using only web technologies. HTML5 for the win!</div>
-
-
-<p>Welcome to this <strong>series of serious mobile web development</strong>. Here I'll most humbly guide you through some of my recent projects and show you just how much ass HTML5 and JavaScript (and sometimes frameworks like Titanium Mobile) may kick if handled correctly.</p>
+    <content type="html"><![CDATA[<p>Welcome to this <strong>series of serious mobile web development</strong>. Here I'll most humbly guide you through some of my recent projects and show you just how much ass HTML5 and JavaScript (and sometimes frameworks like Titanium Mobile) may kick if handled correctly.</p>
 
 
 <p>All the code will be hosted on <a href="http://github.com/litenjacob/txtv" title="my github">my github</a> and openly licensed. Since I'm a restless soul and my head nearly bursts of all the ideas I'd like to realize, I'll sometimes give you, dear reader, exercises to fork and enhance my projects when I move on. 'nuff said, let's get started.</p>

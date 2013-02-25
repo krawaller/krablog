@@ -4,7 +4,7 @@
   <title><![CDATA[Category: golingo | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/golingo/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/opensourcing-golingo/"/>
     <updated>2010-05-18T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/opensourcing-golingo</id>
-    <content type="html"><![CDATA[<div class="summarytext">Come on in to the Golingo Source Release party! There will be stripping! (open sourcing of code, that is...)</div>
-
-
-<p>Hey folks! Thanks for sticking with us even when we're not the fastest guys around. I'm <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you've been sleeping under a rock (without any means of browsing the intertube), here's a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>'s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
+    <content type="html"><![CDATA[<p>Hey folks! Thanks for sticking with us even when we're not the fastest guys around. I'm <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you've been sleeping under a rock (without any means of browsing the intertube), here's a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>'s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
 
 
 <p>If you're not at all interested in how to create top paid apps using only Titanium with JavaScript, HTML5 and CSS3, this post not for you. Otherwise, please go ahead!</p>
@@ -137,10 +134,7 @@
     <link href="http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game/"/>
     <updated>2010-04-29T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game</id>
-    <content type="html"><![CDATA[<div class="summarytext">Philosophing our way to what our next application should be!</div>
-
-
-<p>Having finally got <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo">Golingo out the door</a> and into the app store, we’re in the process of dreaming forth our next project. While Golingo will keep us occupied for some time to come;</p>
+    <content type="html"><![CDATA[<p>Having finally got <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo">Golingo out the door</a> and into the app store, we’re in the process of dreaming forth our next project. While Golingo will keep us occupied for some time to come;</p>
 
 
 <ul>
@@ -242,12 +236,7 @@
     <link href="http://krawaller.github.com/krablog/krawaller-proudly-presents-golingo/"/>
     <updated>2010-03-30T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/krawaller-proudly-presents-golingo</id>
-    <content type="html"><![CDATA[<div class="summarytext">
-<p>Making our first foray into the app store - Golingo is now released! Read all about it!</p>
-</div>
-
-
-<p>Hey folks!</p>
+    <content type="html"><![CDATA[<p>Hey folks!</p>
 
 
 <p>We're very proud to announce <a href="http://itunes.com/apps/golingo" title="Golingo" target="_blank">our first app on the App Store -  Golingo</a>.</p>

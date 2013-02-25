@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tristania | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/tristania/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
     <updated>2010-10-21T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">The Tristania iPhone app is now finally finished and available in the App Store!</div>
-
-
-<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
+    <content type="html"><![CDATA[<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
 
 
 <p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
@@ -149,10 +146,7 @@
     <link href="http://krawaller.github.com/krablog/headbanging-with-yql/"/>
     <updated>2010-09-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/headbanging-with-yql</id>
-    <content type="html"><![CDATA[<div class="summarytext">Discovering YQL's inner heavy metal!</div>
-
-
-<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
+    <content type="html"><![CDATA[<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
 
 
 <p>During the past month, we've been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo's <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: review | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/review/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app/"/>
     <updated>2011-03-26T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Reviewing our favourite iPad productivity apps!</div>
-
-
-<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
+    <content type="html"><![CDATA[<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
 
 
 <p>In quite a few, as it turned out! Obvious as it might be to the rest of the world, a touch screen is a very different input device compared to a touchpad and keyboard. And, as I eventually realised, it is especially well suited for sketching and doing mockups.&nbsp;</p>
@@ -175,10 +172,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-javascript-patterns/"/>
     <updated>2010-10-10T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-javascript-patterns</id>
-    <content type="html"><![CDATA[<div class="summarytext">Does Stoyan Stefanov's latest book deserve a place on the bookshelf of a JavaScript ninja, in spite of having a partridge on the cover? Read on to find out!</div>
-
-
-<p>Back in April, Yahoo's JavaScript guru&nbsp;<a href="http://www.phpied.com" title="Stoyan's blog" target="_blank">Stoyan Stefanov</a> set a very ambitious goal for himself; to <a href="http://www.phpied.com/publishing-5-books-this-year/" title="Stoyan's promise" target="_blank">publish 5 books</a> before the end of the year. An amazing feat, even when accounting for his generous definition of the task.</p>
+    <content type="html"><![CDATA[<p>Back in April, Yahoo's JavaScript guru&nbsp;<a href="http://www.phpied.com" title="Stoyan's blog" target="_blank">Stoyan Stefanov</a> set a very ambitious goal for himself; to <a href="http://www.phpied.com/publishing-5-books-this-year/" title="Stoyan's promise" target="_blank">publish 5 books</a> before the end of the year. An amazing feat, even when accounting for his generous definition of the task.</p>
 
 
 <p>So, how did he fare? Well:</p>
@@ -267,10 +261,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-javascript-testing/"/>
     <updated>2010-09-30T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-javascript-testing</id>
-    <content type="html"><![CDATA[<div class="summarytext">Reviewing Packt's latest offering on JavaScript testing. Ninja lore or newbie lark? Find out here!</div>
-
-
-<p>[[posterous-content:kxyrlHfdoJlJtBzFaxgt]]</p>
+    <content type="html"><![CDATA[<p>[[posterous-content:kxyrlHfdoJlJtBzFaxgt]]</p>
 
 
 <p>Before we start off, I must admit to my purchase being a badly researched one. I saw the title of this book glancing by in a Packt ("Since you bought X you might be interested in Y") email, and clicked the Purchase button before realising that this book has absolutely  nothing to do with <a href="http://my.safaribooksonline.com/9780321684097" target="_blank">Test-driven JavaScript Development</a>&nbsp;that I was really setting out to buy. However, aspiring to be well versed in JavaScript literature in general because of the JavaScript course I hold at Linnaeus University, I didn't cancel my order. Had I bothered to read through the Table of Contents more throroughly, I would have.</p>
@@ -310,10 +301,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-high-performance-javascript/"/>
     <updated>2010-04-16T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-high-performance-javascript</id>
-    <content type="html"><![CDATA[<div class="summarytext">Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can High Performance JavaScript hold its own against Even Faster Websites? Catch the captivating conclusion here!</div>
-
-
-<p><em>Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can the newly released book High Performance JavaScript hold its own against the established bible Even Faster Websites? Catch the captivating conclusion here!</em></p>
+    <content type="html"><![CDATA[<p><em>Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can the newly released book High Performance JavaScript hold its own against the established bible Even Faster Websites? Catch the captivating conclusion here!</em></p>
 
 
 <p>[[posterous-content:ICwhddDkIhIispwxrxzB]]</p>
@@ -387,10 +375,7 @@
     <link href="http://krawaller.github.com/krablog/book-review-building-iphone-apps-with-html-cs/"/>
     <updated>2010-02-12T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/book-review-building-iphone-apps-with-html-cs</id>
-    <content type="html"><![CDATA[<div class="summarytext">Just how good is Jonathan Stark's new book on iPhone web app development? Find out here!</div>
-
-
-<p>I've just finished <a href="http://oreilly.com/catalog/9780596805791/">Building iPhone Apps</a> by <a href="http://jonathanstark.com/">Jonathan Stark</a>, and what an excellent read it is! My little brother has spent ages and ages trawling docs and blogs and forums, gathering the knowledge he needed to <a href="http://blog.krawaller.se/html5-vs-objective-c-round-1">bester objective C with JavaScript</a>. I had pretty much given up on the hope of ever catching up with him, but thanks to mr Stark we can now do it in just 150 pages! This book really is a remarkable feat; in spite of it's short span, it manages to deliver the full picture on what constitutes making web apps on the iPhone.</p>
+    <content type="html"><![CDATA[<p>I've just finished <a href="http://oreilly.com/catalog/9780596805791/">Building iPhone Apps</a> by <a href="http://jonathanstark.com/">Jonathan Stark</a>, and what an excellent read it is! My little brother has spent ages and ages trawling docs and blogs and forums, gathering the knowledge he needed to <a href="http://blog.krawaller.se/html5-vs-objective-c-round-1">bester objective C with JavaScript</a>. I had pretty much given up on the hope of ever catching up with him, but thanks to mr Stark we can now do it in just 150 pages! This book really is a remarkable feat; in spite of it's short span, it manages to deliver the full picture on what constitutes making web apps on the iPhone.</p>
 
 
 <p>But it's not just the quality of the contained knowledge that makes the book rock, but the way in which it is delivered. This is one of those few and far between books that simply manages to get everything right; the tone, the examples, the difficulty level, explanation lengths, text/code/picture ratio - it is evident that a lot of love and care went into its making. Early on Jonathan states that...</p>

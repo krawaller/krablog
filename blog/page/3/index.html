@@ -9,7 +9,7 @@
   <meta name="author" content="Krawaller">
 
   
-  <meta name="description" content="Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game &hellip;">
+  <meta name="description" content="Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game.">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,48 +93,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game.</div>
-<p>We&#8217;ve already <a href="http://blog.krawaller.se/the-intestines-of-a-good-puzzle-game">laid down the foundation</a> of the project, defining the basic idea: ripping off the age-old idea of a labyrinth where the player object can travel in all cardinal directions, but always as far as possible. The why behind the adoption of this seemingly bland idea can be found in the previous post, now we&#8217;re going to get started on the how!</p>
-<p>In this post we&#8217;re going to define the <strong>data structures</strong> involved. Let&#8217;s start with deciding what a <strong>labyrinth data object</strong> should look like! To do that, we have to jot down our ideas of what a labyrinth can contain:</p>
-<ul>
-<li>Of course, it has to contain some <strong>walls</strong>. </li>
-<li>As the screen real estate on the iPhone is rather limited, we might do well to also allow the <strong>borders </strong>between the squares to block passage.</li>
-<li>We might also want <strong>special squares</strong> which somehow affect the player, for example teleporting him to a different square.</li>
-<li>A neat addition to this otherwise rather stale game concept might be to have <strong>other entities</strong> in the labyrinth apart from the player object. These can be moved along with the player (and kill him upon contact), or pushed along by the player, etc.</li>
-<li>One clone that I played had the concept of <strong>bonus objects</strong>, and you wouldn&#8217;t get a perfect score when you reached the goal if you hadn&#8217;t also collected all the loot on the level.</li>
-<li>We might also want things to happen in certain <strong>conditions</strong>, perhaps allowing passage through a wall if the player has collected the key, or pressed a button no more than three moves ago, etc.</li>
-</ul>
-<p>These wishes can be abstracted into the following concepts:</p>
-<ul>
-<li>Walls, borders and entities are all of a certain <strong>type</strong>. A type has a look (class), and a flag to say if it moves with gravity or not (if it is an entity).</li>
-<li>We need to have <strong>effects</strong>, affecting entities / walls / borders (changing their type, or position if an entity) or the game itself (flags, counters)</li>
-<li>Then we can define what effects should happen in a <strong>collision </strong>between two types.</li>
-<li>In order to spice things up we might also want to allow things to happen <strong>conditionally</strong>.</li>
-</ul>
-<p>Using these concepts we can build up an object defining a level with a somewhat advanced functionality:</p>
-<script src="http://gist.github.com/386993.js?file=datastructure.js"></script>
-<p>With this structure, we should be able to define levels with a wide range of behaviours. Probably we&#8217;d do well to hardcode some shortcuts for the most common usecases, but this should set us off on a good start.</p>
-<p>Now let&#8217;s consider what&#8217;s required to <strong>save the state</strong> of a level. What can change from the definition object?</p>
-<ul>
-<li>We need to track the <strong>position of all entities</strong>, that will fall around the labyrinth as the player makes his moves.</li>
-<li>The entities might also change <strong>type</strong>, so we need to track that as well.</li>
-<li>If a <strong>wall or border</strong> has changed, we have to store that.</li>
-<li>The <strong>flags and variables</strong> of the game must be kept. </li>
-<li>Finally we also need to save the <strong>number of moves</strong>.</li>
-</ul>
-<p>So a save object should look something like this:</p>
-<script src="http://gist.github.com/386993.js?file=gamestate.js"></script>
-<p>In the first post, we mentioned the idea of a <strong>level analyzer </strong>module. It should take a level object, and then use game logic to calculate all possible states, and the transitions between them. The returned analysis object would have keys made up by serialized states. The corresponding values is an object with the states you can reach from that particular state, and what graphical transitions should be shown for this move. This analysis object will then be used for the <strong>gameplayer </strong>module, which will simply transit between the states, performing the animations. </p>
-<p>Here&#8217;s a blueprint for such an analysis object: </p>
-<script src="http://gist.github.com/386993.js?file=analysis.js"></script>
-<p>The <strong>level analyzer</strong> module building that object will look something like this:</p>
-<script src="http://gist.github.com/386993.js?file=analyzer.js"></script>
-<p>And here&#8217;s a sketch of the <strong>gameplayer</strong> module: </p>
-<script src="http://gist.github.com/386993.js?file=gameplayer.js"></script>
-<p>So the bulk of the project consists of creating these two modules! I called dibs on the analyzer, so I&#8217;ll get started on that right away. Little brother, get cracking on some CSS3 magic for the gameplayer module! First one to report back here with a post about the module wins remote control control for a week!</p>
-</div>
-  
-  
+  <div class="entry-content">Follow along as we&#8217;re blogging the development of our new iPhone puzzler! In this post we define the data structures that will control the game.</div>
+    <footer>
+      <a rel="full-article" href="/krablog/puzzle-app-step-2-data-structure/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -167,25 +129,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Finally set up our Github-account, where we&#8217;ll be releasing lots of front-end &amp; smartphone-related projects. Read up here on what&#8217;s already there!</div>
-<p>Hi folks!</p>
-<p>We just wanted to let you know that we&#8217;ve set up <a href="http://github.com/krawaller">a fancy new Github accout here</a>, to make way for our upcoming <a href="http://www.golingoapp.com">Golingo</a> source release.</p>
-<p>However, we&#8217;d feel a bit ashamed if it would have to stay so very reverberatingly empty until then, so we had to throw together a few projects to make it more cosy and homelike. Oh my, the priorities of a creative programmer ;)</p>
-<p><span style="font-size: large;">PubSubHotTub</span></p>
-<p>First out is <a href="http://github.com/krawaller/PubSubHotTub">PubSubHotTub</a> - a lightweight pubsub broker with a lame name. However, it does have more than just a silly name - namely support for wildcard publishing <strong>and</strong> wildcard subscriptions as well as currying. It&#8217;s not very well tested, apart from the test suite that ships with it, but we intend to use it in some of our upcoming projects. So we hope it will grow up to be a pretty and powerful, but still very light, tool. Here&#8217;s how it looks:</p>
-<p><script src="https://gist.github.com/391092.js"></script></p>
-<p>That&#8217;s nice and easy, but still very cunning, no?</p>
-<p><span style="font-size: large;">CSSMol</span></p>
-<p>Second out is <a href="http://github.com/krawaller/CSSMol">CSSMol</a> - a port of the beautiful <a href="http://alteredqualia.com/canvasmol/">CanvasMol</a> to use CSS 3D Transforms instead of canvas. </p>
-<p>Why would anyone do this, you ask? Well, we needed an excuse to play with the cutting edge CSS 3D  Transforms, so why not? Mind the cutting edge-ness though - this is so new that probably only  Mobile Safari, Safari 4 and Webkit Nightly supports it. But why do it then? Well, because Mobile Safari has hardware accelerated  CSS Transforms - meaning we can get decent performance even on a small  weak device as the iPhone.</p>
-<p>Check out <a href="http://79.99.1.153/cssmol/">the demo</a> on your iPhone / iPad and also add it to your homescreen, or check it out in Safari 4 or Webkit Nightly on your desktop (might only work on Mac/Linux). Sweet, hey? If you have an iPad around please let us know how it works. We&#8217;re drooling all over the place after an iPad, but haven&#8217;t bought one&#8230; yet :)</p>
-<p><a href="http://79.99.1.153/cssmol/">[[posterous-content:trnClyraErjuewbtavBG]]</a></p>
-<p>We might do a more detailed write up of CSS 3D Transforms and such if you&#8217;re interested! Please don&#8217;t hesitate to share what you would like to see from us. Very few things are impossible :)</p>
-<p>Also, please feel free to contact us for contract work.</p>
-<p>KTHXBYE</p>
-</div>
-  
-  
+  <div class="entry-content">Finally set up our Github-account, where we&#8217;ll be releasing lots of front-end &amp; smartphone-related projects. Read up here on what&#8217;s already there!</div>
+    <footer>
+      <a rel="full-article" href="/krablog/krawaller-goes-github/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -218,69 +165,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Philosophing our way to what our next application should be!</div>
-<p>Having finally got <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo">Golingo out the door</a> and into the app store, we’re in the process of dreaming forth our next project. While Golingo will keep us occupied for some time to come;</p>
-<ul>
-<li>As my brother promised, he’s going to <strong>detail the creation</strong> of it in a forthcoming post, highlighting the use of web technologies and the benefits of the Titanium Framework. Start typing, Jacob! [edit: read that post <a href="blog.krawaller.se/opensourcing-golingo">here</a>]</li>
-<li>Community feedback has given more than enough ideas for an <strong>update</strong>, so Jacob is now working on a new version containing..            
-<ul style="margin-left: 3em;">
-<li>more languages (initial release has English and Swedish)</li>
-<li>more game modes</li>
-<li>wifi multiplayer (to complement the split-screen multiplayer already in place)</li>
-</ul>
-</li>
-<li>We’re also considering getting an <strong>Android version</strong> out, which will hopefully result in a blog post on what that transition will entail. The fact that web apps are (mostly) platform independent is one of the main arguments against using Objective C, and this conversion will put that to the test. Will it suffice to simply throw a switch in Titanium and search&amp;replace some proprietary CSS, or is a more deep-going refactoring needed?</li>
-<li>Of course we also want to keep <strong>pushing Golingo sales</strong>, trying our hand at the very strange field of internet marketing. We are completely oblivious as to what makes success there, so it’s a journey of discovery (advice much appreciated!). Golingo did however recently reach the 1000 units sold mark, meaning an wage of $2 per development hour! We just need to release 49999 more apps to get our Mediterranean beach house!</li>
-</ul>
-<p>But, being developers we need to develop, so in parallel to the Golingo caretaking we’ve also started <strong>hunting down the next idea</strong>. Now, like all of you we of course have several dream projects that we’re itching to work on, projects of life-fulfilling promise but of equal complexity. Time, however, is in short supply – Jacob is in the process of securing a contract to create a travel planner application for a major Swedish infrastructure company, and I spend 80% of my time teaching mathematics &amp; programming to the inmates of <a href="http://www.kriminalvarden.se/sv/English/">society’s penalty box</a>. I’ve finished the <a href="http://blog.krawaller.se/tag/ria_university_course">Advanced JavaScript course</a> for <a href="http://lnu.se/?l=en">Linnaeus University</a>, but still, 1 free day a week (minus household chores) doesn’t amount to much. So with the <a href="http://blog.krawaller.se/web-design-lessons-from-an-angry-carpenter">lessons from the angry carpenter</a> fresh in memory, I realised we need to keep things simple and our heads on our shoulders.</p>
-<p>Because of that, and because it’s also in line with a common perversion of ours, we decided to create some kind of <strong style="">puzzle game</strong>. They are by nature rather confined, and might therefore be doable within our limited time. I earned my programming badge in the dungeons of a beautiful <a href="http://en.wikipedia.org/wiki/Multi_User_Dungeon">MUD</a> called <a href="http://midnightsun2.org:3328/">Midnight Sun</a>, where one of my favourite pastimes was making puzzles for the heroes to solve, so as to put their wit to the test and not just their character’s stats. I’m hoping I can draw on that experience to shorten development time even further.</p>
-<p>Now, being a mathematician, I started thinking – what actually constitutes a good puzzler? Are there some mathematical traits that we need to pursue or avoid? There are some obvious answers:</p>
-<ul>
-<li> <span>First off, the idea needs to be both <strong>simple and clearly defined</strong>. The rules of our universe must be few and unambiguous. Take <a href="http://www.subwayshuffle.com/">Subway Shuffle</a>, an early iPhone favourite of mine. To play it, you only need to know that&#8230;</span> 
-<ul style="margin-left: 3em;">
-<li>You can move all cars, but only along tracks with the same colour</li>
-<li>Only one car per station at a time</li>
-<li>The goal is to get your red car to the big red station.</li>
-</ul>
-</li>
-<li>You need to have a <strong>rich choice tree</strong>. Here Subway Shuffle becomes an anti-example – at any given point you only have very few options available, and more often than not the correct one is also the only one, if you eliminate backtracking.</li>
-<li>There also needs to be some <strong>possibility of lookahead</strong>. If the game is completely opaque and you’re not      sure how you’re doing, it’s hard to have fun. <a href="http://nonverbal.ch/colorbind.html">Colorbind</a> is an excellent example of this, where it’s always possible to deduct how close you are to your goal, and whether or not you can get there from the current point. Side point: Colorbind is also really beautiful, which definitely doesn’t hurt sales nor gaming experience.</li>
-<li>However, the <strong>lookahead shouldn&#8217;t be too allowing</strong>. Case in point: <a href="http://www.mobigame.net/">Cross      Fingers</a>. After having stared at the board for a while and having realised how to solve a level, the actual solving is just a tedious walk through the motions.</li>
-</ul>
-<table class="pictable" border="0" style="margin-left: 15px; text-align: center;">
-
-<tr>
-<td valign="bottom"><img title="subway shuffle" src="http://dl.dropbox.com/u/2287145/livepics/subwayshuffle.jpg" alt="subway shuffle" /></td>
-<td valign="bottom"><img title="colorbind" src="http://dl.dropbox.com/u/2287145/livepics/colorbind.jpg" alt="colorbind" /></td>
-<td><img title="cross fingers" src="http://dl.dropbox.com/u/2287145/livepics/crossfingers.jpg" alt="cross fingers" /></td>
-</tr>
-<tr>
-<td><span style="font-style: italic; font-size: 0.9em;">Subway Shuffle</span></td>
-<td><span style="font-style: italic; font-size: 0.9em;">Colorbind</span></td>
-<td><span style="font-style: italic; font-size: 0.9em;">Cross Fingers</span></td>
-</tr>
-
-</table>
-<p>Having reread the above list umpteen times without managing to come up with a novel idea of our own, we eventually decided to do like all successful developers - <strong>steal one</strong>! There are innumerable basic puzzle concepts that have been reincarnated more times than Buddha, and can therefore be considered part of the public domain.</p>
-<p>One such concept quickly rose to the top of our list of potential thieving targets: <strong>Labyrinth</strong>. At least, that&#8217;s what the first reincarnation I encountered was called, which I played in the attic on my father&#8217;s Macintosh more than 20 years ago. You&#8217;ve all experienced it in one form or other, I&#8217;m sure. Below is a screenshot from <a href="http://www.mikegagnon.com/roadblocks/rb1.html">Roadblocks</a>, a more recent (but less beautiful) flash incarnation:</p>
-<p style="margin-left: 15px;"><img title="Roadblocks" src="http://dl.dropbox.com/u/2287145/livepics/roadblocks.JPG" alt="Roadblocks" /></p>
-<p>The idea is very simple: You have to reach the goal. You&#8217;re able to travel in any cardinal direction, but cannot stop mid-flight. In a way, you could say you&#8217;re controlling gravity - whenever you press an arrow key (or tilt the iPhone, perhaps?) in a certain direction, the player object will travel as far as possible in that direction.</p>
-<p>And, that&#8217;s pretty much it! I think the simplicity explains the longevity of this seemingly bland concept. The labyrinth will always be much smaller than it seems, since only a few positions are actually reachable. To make things more interesting and to increase the branches on the choice tree, various spices are usually added: teleports, breaking blocks, etc. So while the basic concept is simple enough to implement, there seems to be ample opportinuty to breathe some fresh air into it all by thinking up new ways to spice things up!</p>
-<p>Having finally decided on what to aim for, I sat down to make a sketch of the project. First I jotted down some basic thoughts &amp; premises:</p>
-<ul>
-<li>We will of course follow the path Golingo cleared, and program this game using <strong>only web technologies</strong>. Probably we&#8217;ll pack it up in Titanium, but we don&#8217;t need to make that decision until way further down the path.</li>
-<li>To allow for lots of exotic spices, I want to make an <strong>abstract, flexible game engine</strong> that can easily incorporate the new ideas which will inevitably pop up along the line (movable blocks! enemies! multiple player objects! levers! inventory! delayed effects! etc etc ad infinitum).</li>
-<li> <a href="http://www.mobygames.com/developer/sheet/view/developerId,4217/">Will Wright</a> has many claims to fame, but for me the most important lesson he taught is that of the humongous size of peoples&#8217; pride. How come <a href="http://thesims.ea.com/">The Sims</a>, a game by definition utterly boring (your characters use the toilet, for Christ&#8217;s sake), has had such a remarkable success? It is based on user generated content, that&#8217;s why! Incorporating a <strong>level editor</strong> into our game would be a neat way to capitalise on that, as well as making it easier for us to create the levels to be packaged with the game.</li>
-<li>Since we&#8217;re short on both time and graphics skill, we&#8217;ll use our otherwise unhealthy fascination of new web tech to give the game a simple but hopefully <strong>stylish look using mostly (only?) CSS</strong>.</li>
-<li>I also want the game to <strong>feel at home on the iPhone</strong>. Colorbind is again a prime example, using the touchscreen and gimmicks (shake the phone to clear what you&#8217;ve done) to great effect. Contrast this to <a href="http://itunes.apple.com/us/app/puzzlequest-chapter-1-and-2/id300573601?mt=8" title="Puzzle quest">Puzzle Quest</a>, which was ported straight to the platform without any regards as to what makes it special, leaving the game feeling rather alien to play.</li>
-</ul>
-<p>A further brainstorming session in front of this list gave birth to the idea of the <strong>Analyzer</strong>. If we are to allow players to make levels of their own, they need to have some tools to make sure that their level is actually solvable. So why not put all game logic into this tool? I&#8217;m going to make a module that analyzes a given level, and spits out a data object containing all possible board positions, and the connections between them. That allows us not just to check the integrity of a level, but also to sort them difficultywise programmatically. </p>
-<p>The <strong>gaming module</strong> will therefore not contain any game logic at all, but just perform the animations when transitioning from one state to another, and keep track of the current state. This should allow for a very neat separation of concerns in the codebase.</p>
-<p>It also makes the whole project split neatly down the middle, meaning me and my brother can wrestle with one half each! I already have most of the Analyzer code written down in my head (I have an editor in my brain, but unfortunately it can&#8217;t yet run any code), so I&#8217;m going to call dibs on that. Which will suit Jacob fine, as he&#8217;s quite skilled in the CSS graphics department anyway - he made Golingo using almost no actual pictures, save the wooden background. </p>
-<p>So that&#8217;s where we&#8217;re at now! I&#8217;m in the process of writing some specs of the data objects to be passed around, but when that&#8217;s done we can both get to work individually, without depending on the progress of one another. Time (and a <a href="http://blog.krawaller.se/puzzle-app-step-2-data-structure">follow-up post</a>) will tell how it all turns out!</p>
-</div>
-  
-  
+  <div class="entry-content">Philosophing our way to what our next application should be!</div>
+    <footer>
+      <a rel="full-article" href="/krablog/the-intestines-of-a-good-puzzle-game/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -313,39 +201,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can High Performance JavaScript hold its own against Even Faster Websites? Catch the captivating conclusion here!</div>
-<p><em>Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can the newly released book High Performance JavaScript hold its own against the established bible Even Faster Websites? Catch the captivating conclusion here!</em></p>
-<p>[[posterous-content:ICwhddDkIhIispwxrxzB]]</p>
-<p>Nicholas Zakas, of <a href="http://www.amazon.com/Professional-JavaScript-Developers-Wrox-Programmer/dp/047022780X/">Professional JavaScript for Web Developers</a> authoring fame, recently had his latest book released, titled <a href="http://oreilly.com/catalog/9780596802806/">High Performance JavaScript</a> (HPJS). Having found <a href="http://www.nczonline.net/">his blog</a> to be an excellent resource on JavaScript insights, I was very much looking forward to this book. The fact that he&rsquo;d also enlisted frontend rock stars such as&#8230;</p>
-<ul>
-<li> <a href="http://www.phpied.com/">Stoyan Stefanov</a>, performance guru, writer of <a href="https://www.packtpub.com/object-oriented-javascript-applications-libraries/book">Object Oriented JavaScript</a> </li>
-<li> <a href="http://techfoolery.com/">Ross Harmes</a>, co-author of the very excellent <a href="http://jsdesignpatterns.com/">Pro JavaScript Design Patterns</a> </li>
-<li>Matt Sweeney, YUI architect</li>
-<li> <a href="http://blog.stevenlevithan.com/">Steven Levithan</a>, regexp wizard extraordinaire</li>
-<li> <a href="http://www.julienlecomte.net/blog/">Julien Lecomte</a>, Yahoo! frontend engineer</li>
-</ul>
-<p>&#8230;to contribute chapters didn&rsquo;t do much to damper my excitement, so I was childishly happy when the book finally knocked on my door last week!</p>
-<p>The title of the book is of course a throwback to <a href="http://stevesouders.com/">Steve Souders</a>&rsquo; epitomous <a href="http://stevesouders.com/hpws/">High Perfomance Web Sites</a>, released a few years back by the same publisher. In much the same way it covers all aspects of performance in its chosen realm. That book gained Souders much appraise for making the web developer community at large aware of the various performance issues connected to the frontend, and how &amp; why optimizing time was better spent there than on the backend which had previously been the prime target for such efforts. Last year Souders piggybacked on that appraise by releasing a sequel titled <a href="http://stevesouders.com/efws/">Even Faster Websites</a> (EFWS), where he &ndash; along with a group of co-authors, including Zakas &ndash; delved even deeper into frontend performance.</p>
-<p>Souders&rsquo; first book touched on JavaScript here and there but in EFWS it plays a much more dominant role, being the focus of half of the chapters. Even though the context is still websites, the insights it offers can easily be applied to any realm in which JavaScript performance is a concern. This is why we used it as course literature for our <a href="http://blog.krawaller.se/tag/ria_university_course">university course on developing JavaScript RIA applications</a> where it was much appreciated by the students, even though we weren&rsquo;t making websites as such. I myself love the book, and it is one of the most thumb-through tomes on my shelf.</p>
-<p>My being a part of EFWS fandom was also the reason behind my prime fear regarding HPJS &ndash; just how big would the overlap between the two turn out to be? After all, the ideas behind them seem almost identical (minus the website bits); have a team of JavaScript performance ninjas each write a piece on their individual expertise. Would it really be justified to have these two books in the same shelf? Is this town big enough for the two of them?</p>
-<p>Definitely yes. While a Venn diagram would show quite a bit of overlap;</p>
-<ul>
-<li>HPJS chapter 1 (Loading and Execution) is largely made up of the same content as EFWS chapter 4 (Loading Scripts without blocking)</li>
-<li>EFWS chapter 7 (Writing Efficient JavaScript) contains the gist of HPJS chapters 4 (Algorithms and Flow      Control), 6 (Responsive Interfaces) and 8 (Programming Practices)</li>
-<li>Most of HPJS chapter 9 (Building and Deploying High-Performance JavaScript Applications) can be found sprinkled across various EFWS chapters</li>
-</ul>
-<p>&#8230;the books have enough diverse content, difference in tone of voice and primary focus, to make for two quite different reads.</p>
-<p>The question of unique content, I feel, is largely moot anyway, as it is very rare to find a book containing knowledge that cannot be found elsewhere. That&rsquo;s not a bad thing, it&rsquo;s just the way of the web. When buying a programming book, you&rsquo;re paying for the convenience of having lots of related material collected in one place. The research behind HPJS chapter 2 (Data Access), for instance, has been detailed on Zakas&rsquo; blog, just as Stoyan has already blogged a lot of what ended up in chapter 3 (DOM Scripting).</p>
-<p>So downrating the book for being a &ldquo;compilation&rdquo;, as one of the few not-so-positive amazon reviewers does, is rather unfair and beside the point. HPJS should be judged, instead, by how well it weaves it all together, and of course by the quality of the individual chapters. In my book, it receives top scores in both of these categories.</p>
-<p>Some co-authored books while inevitably feel rather fragmented. There are moments in EFWS when the (very) different writing styles of contributing authors gets in the way of seeing the whole picture. Similar moments arose for me while reading the semi-recent <a href="http://oreilly.com/catalog/9780596159788/">jQuery CookBook</a>, which &ndash; while excellent &ndash; at times feels very schizophrenic. Of course co-authors need to be given some artistic leeway as to how they express themselves, but when they seem to have different takes on the main ideas behind the book, it becomes a problem.</p>
-<p>This never happens in HPJS, which obviously has been the target of some very loving editing. Even though the different performance aspects have quite a different flavour, as does the writing of the contributing authors, you never lose the sense of context. The fact that the book stays true to its gospel &ndash; performance &ndash; is one of its biggest strengths.</p>
-<p>There must have been innumerable temptations to mention non-performance related things that could be made to sort under a chapter&rsquo;s domain, but not fit inside the book as a whole. I&rsquo;m sure, for example, that Steven Levithan bit his tongue while writing the (brilliant!) chapter on regexes, forcing himself not to share parts of his vast regexp knowledge that doesn&rsquo;t relate directly to performance. Because he and his peers withstood that temptation, HPJS is a better book.</p>
-<p>Also worth mentioning is how succinct the book is. It is not very thick, but the information density is very high. While maybe not everyone&rsquo;s cup of tea, this is something I very much appreciate. Much like how&nbsp;<a href="http://crockford.com/">Crockford</a>&rsquo;s renowned <a href="http://oreilly.com/catalog/9780596517748/">JavaScript &ndash; The Good Parts</a> delivers the message in few but well-chosen words without much air between them, HPJS is very clear and efficient in its teachings, with no filler content to increase page count.</p>
-<p>Another merit is the &ldquo;general knowledge level&rdquo; of the content. Mostly, the teachings in the book are applicable to whatever JavaScript coding you&rsquo;re doing, today and in five years from now. We recently <a href="http://blog.krawaller.se/book-review-building-iphone-apps-with-html-cs">sang the praise</a> of <a href="http://jonathanstark.com/">Jonathan Stark</a>&rsquo;s new <a href="http://oreilly.com/catalog/9780596805791/">book on iPhone web apps</a>, making that same point &ndash; it gives you ideas, which won&rsquo;t be made obsolete when the involved API:s inevitably change a few steps down the path.</p>
-<p>So, to finally bottom-line this; the promised showdown never happened. EFWS and HPJS are partly speaking about the same things, but in different voices under different headlines to different people. Also, HPJS is a bloody brilliant book, and not owning it should be reason enough for ostracication from the frontend community.</p>
-</div>
-  
-  
+  <div class="entry-content">Is the town of JavaScript performance big enough for both Souders &amp; Zakas? Can High Performance JavaScript hold its own against Even Faster Websites? Catch the captivating conclusion here!</div>
+    <footer>
+      <a rel="full-article" href="/krablog/book-review-high-performance-javascript/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -378,37 +237,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">
-<p>Making our first foray into the app store - Golingo is now released! Read all about it!</p>
-</div>
-<p>Hey folks!</p>
-<p>We&#8217;re very proud to announce <a href="http://itunes.com/apps/golingo" title="Golingo" target="_blank">our first app on the App Store -  Golingo</a>.</p>
-<p>[[posterous-content:wsBjFbslkCjEjbvGqFIk]]</p>
-<p>What started out as a simple board game in a cosy café is now a full featured and oh-so-funny digital adaption of the very same. OK, so it&#8217;s a nice app and all, but what is there to be excited about for a web dev as yourself? Here&#8217;s a list for ya:</p>
-<ul>
-<li>Not a single line of Objective-C written, courtesy of <a href="http://www.appcelerator.com">Titanium Mobile</a>
-</li>
-<li>Only one (!) image ingame - the rest is CSS3 magic</li>
-<li>Fluid gameplay thanks to CSS Transitions and Animations</li>
-<li>
-<strong>All</strong> logic using pure, beautiful JavaScript</li>
-<li>Multitouch draggables using iPhone Touch API</li>
-<li>Logic encapsulated using Low Pro - meaning split screen mode was easy pie</li>
-<li>jQuery 1.4.2 for development speed (and sanity of developer)</li>
-<li>CouchDB as highscore storage, with storage logic in JavaScript</li>
-<li>Predictable randomness means replayable games, all courtesy of excellent <a href="http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html">seedrandom</a>
-</li>
-</ul>
-<p>How sweet is that? Well, quite a lot, but it&#8217;s not enough. Here comes an even sweeter treat for you - we&#8217;re planning to write an <strong>in depth post </strong>fleshing out all the details about the development, from idea to implementation. And on top of that, we&#8217;ll <strong>open source the whole code</strong>, so you can see just how easy and beautiful it can be to create awesome apps. How about that?</p>
-<p>Oh, and in the upcoming versions we&#8217;re planning to implement both local multiplayer using bonjour, and online multiplayer using nodejs and WebSockets. These are exiting times&#8230;</p>
-<p><span style="font-size: large;">Score</span></p>
-<p>Objective-C: 0</p>
-<p>HTML5, JavaScript and CSS3: 2</p>
-<p> </p>
-<p>&#8230;to be continued</p>
-</div>
-  
-  
+  <div class="entry-content">Making our first foray into the app store - Golingo is now released! Read all about it!</div>
+    <footer>
+      <a rel="full-article" href="/krablog/krawaller-proudly-presents-golingo/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -441,22 +273,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">As it turns out, common sense applies to web design! Who knew?</div>
-<p>Earlier today, JavaScript performance guru extraordinaire Nicholas Zakas wrote a <a href="http://www.nicholaszakas.com/2010/03/23/leadership-lessons-from-gordon-ramsay/">note on his personal blog</a> about his admiration for the notorious chef Gordon Ramsay&#8217;s leadership skills. While Zakas didn&#8217;t relate this directly to web development - although he could have, as what he describes applies to any work involving more than 1 person - it made me think of a somewhat related pseudo-religious experience I had some months back, that definitely made me a better web programmer.&nbsp;</p>
-<p>In Sweden we have a <a href="http://svt.se/">public service TV channel</a>, funded by a mandatory fee from all households. They don&#8217;t have to show commercials or pimp themselves to whatever popular trends seep across the pond, so the content is to a big part made up by highbrow cultural home-produced programs. Since I&#8217;m a&nbsp;snobbish elitist academic and all,&nbsp;this channel is where I spend most of my (not very extensive) TV time.</p>
-<p>But for reasons long forgotten, I one day strayed from my safe state-sanctioned pen into the wilderness of private, commercial-funded television. And not just to any channel, I ended up in front of the worst of the worst:&nbsp;<a href="http://kanal5.se/">Kanal 5</a>, a really cheesy plastic channel showing absolutely nothing but reruns of pop-culture american series. In the few cases where they do produce their own material, it has to be piggybacking on some very safe popular trend, so as to guarantee that they meet their minimum quota. And right now my poor country is plagued by a home-styling craze, which the commercial channels are falling over themselves in the rush to&nbsp;capitalize&nbsp;from.&nbsp;</p>
-<p>[[posterous-content:yuFlagvAFvdoDoizrIHr]]</p>
-<p>So what I ended up in front of was Kanal 5:s attempt to cut their piece of the home-styling pie, a program that according to all laws of nature should be not just awful, but downright hellish. So imagine my surprise when <a href="http://kanal5.se/web/guest/argasnickaren">Arga snickaren</a>&nbsp;turned out to be not just not mediocre, but really really good! The concept of the show is really simple - the angry carpenter (which is what the title translates to) visits families whose house renovations have derailed, and helps them to get back on track. He does this both by contributing know-how and a big-ass team to do the work, but also by fixing the families&#8217; social relations, which inevitably are either the cause of the standstill or severely damaged by it.</p>
-<p>Much like what Zakas appreciated about Ramsay, the angry carpenter accomplishes all this by letting the residents know what they&#8217;re doing wrong and where they&#8217;re fucking up. In other words: by yelling. Laziness, stupidity, failure to plan and lack of skill pisses him off no end, which he makes sure to make his surroundings aware of. Still, his outburst are always justified, and inevitably helps the poor target to step up his or her game and get closer to the goal. At the end of the show, the families all worship him for having set them straight, even though he did this by harassing them&nbsp;incessantly&nbsp;for a whole week.</p>
-<p>Now, a geek through and through, I really don&#8217;t care much for home styling, probably because it exposes me as both impractical and lacking in taste. Still, whether due to the angry carpenter&#8217;s undeniable charisma or the love and professionalism with which the show was put together I don&#8217;t know, but I found myself&nbsp;glued&nbsp;to the screen, loving every second. The biggest reason for my fascination, however, was that almost all of the lessons he knocked the poor family fathers over the head with could&nbsp;be directly applied to my web development work.</p>
-<p>In that first show I stumbled into, Anders - that&#8217;s the angry carpenter&#8217;s name - was berating a man with some severe priority problems. &#8220;So&#8221;, he said to the harrowed man. &#8220;You decided to rip out the only livable room in the house, in order to make a sauna&#8221;. &#8220;Yes&#8221;, the man feebly responds, shuffling his feet. &#8220;And you did this&#8221;, Anders relentlessly goes on, &#8220;even though you DON&#8217;T HAVE A FUNCTIONING KITCHEN!&#8221;.</p>
-<p>Immediately I thought of the project I was currently working on, and suddenly Anders is leaning out through the screen, adressing me: &#8220;So, David, you&#8217;ve spent all your time on this project thus far on trying to refactor your classes to use a meta-tastic factory factory pattern, reducing the total code size by 5% and increasing the ninja factor by 500%.&#8221;. &#8220;Yep&#8221;, I smugly responed, even though I definitely should have seen what was coming: &#8220;Yet you still haven&#8217;t written a single line of code concerning the main infrastructure, meaning that come&nbsp;Wednesday&nbsp;when you&#8217;re all to showcase your progress so far, you&#8217;ll be sitting there with a bunch of fancy&nbsp;generalizations&nbsp;of NOTHING WHATSOEVER!&#8221;.&nbsp;</p>
-<p>This process has been repeated every&nbsp;Wednesday&nbsp;at eight in the evening ever since. Every time he delivers some common sense words of wisdom to make right some renovation gone wrong, and every time I find an equivalent digital mistake of mine in recent web work. That poor dude in episode five should have matched his ambitions to his budget (and probably skipped the digging of a new basement just to be able to fit a huge jacuzzi in), and I should have matched my web site&#8217;s planned feature set to the timeframe available to the project. Every week, almost without fail, Anders&#8217; hammer-and-nail advice to the houseowners translated to JavaScript dito to me.</p>
-<p>So, what&#8217;s the lesson here? That pop-culture television can sometimes be worth your while, even if you&#8217;re a culture snob? That a kitchen is actually more important than a sauna, even if you&#8217;ve wanted one ever since you finally left your mum&#8217;s place? That might all be true, but the real lesson for me was that <strong>common sense applies to web development</strong>. Probably that&#8217;s _very_ obvious to all of you, but somehow I&#8217;ve always seen our craft as this somewhat esoteric&nbsp;art form that&#8217;s above all that, a perfect blend of&nbsp;aesthetics&nbsp;and logic, where both halves of the brain need to be in full working order if you are to prevail, etc etc blah blah. That you still need to be pragmatic about it, as you do with any craft, I&#8217;ve remained blissfully ignorant of. I chose to focus on the ninja aspects, opting to forget that you need to be a peon too.&nbsp;</p>
-<p>But ever since the angry carpenter straightened me out, I&#8217;m making sure give the plow more time than the&nbsp;nunchaku. Meaning I actually plan my work and prioritize not _only_ according to how many guru points I&#8217;d score. Although the&nbsp;occasional maybe not totally life-savingly necessary refactoring does still sneak in. At times.</p>
-</div>
-  
-  
+  <div class="entry-content">As it turns out, common sense applies to web design! Who knew?</div>
+    <footer>
+      <a rel="full-article" href="/krablog/web-design-lessons-from-an-angry-carpenter/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -489,19 +309,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Just how good is Jonathan Stark&#8217;s new book on iPhone web app development? Find out here!</div>
-<p>I&#8217;ve just finished <a href="http://oreilly.com/catalog/9780596805791/">Building iPhone Apps</a> by <a href="http://jonathanstark.com/">Jonathan Stark</a>, and what an excellent read it is! My little brother has spent ages and ages trawling docs and blogs and forums, gathering the knowledge he needed to <a href="http://blog.krawaller.se/html5-vs-objective-c-round-1">bester objective C with JavaScript</a>. I had pretty much given up on the hope of ever catching up with him, but thanks to mr Stark we can now do it in just 150 pages! This book really is a remarkable feat; in spite of it&#8217;s short span, it manages to deliver the full picture on what constitutes making web apps on the iPhone.</p>
-<p>But it&#8217;s not just the quality of the contained knowledge that makes the book rock, but the way in which it is delivered. This is one of those few and far between books that simply manages to get everything right; the tone, the examples, the difficulty level, explanation lengths, text/code/picture ratio - it is evident that a lot of love and care went into its making. Early on Jonathan states that&#8230;</p>
-<blockquote class="posterous_short_quote">Theory is great, but I&#8217;m a &#8220;show me, don&#8217;t tell me&#8221; kinda guy.</blockquote>
-<p>&#8230;and this philosophy is evident throughout the book. It is full of accompanying examples, illustrating pictures and table overviews. The code segments are often annotated, with points of interest explained in further detail. Many times Jonathan introduces new concepts in the code and explains them afterwards in this manner, instead of giving that theory ahead of the example. This works really well, giving the book a very practical feel, in spite of communicating some quite advanced concepts. The teacher in me is full of professional envy and admiration!</p>
-<p>So who is this book meant for? Jonathan assumes basic knowledge of HTML, CSS, JavaScript and jQuery, enabling him to focus on the subject: how to apply your existing web development skills to building iPhone web applications. He&#8217;ll teach you how to architect the application using jQTouch, how to apply some manifest magic to make it available offline, how to nativify it using Phonegap, and finally how to deploy it to the app store. In other words the answer to the whom-for question is you, by the virtue of the fact that you&#8217;re reading this blog. Other reviews have labeled the book as being for novices, but I&#8217;d wager they&#8217;re letting themselves be fooled by the low threshold of the book, mistaking the accessibility for entry-level knowledge. The ideal reader is someone well versed with front-end development, wanting to extend into the mobile space. </p>
-<p>However, Stark&#8217;s obvious proficiency with web technologies makes this book a boost not only to your iPhone app knowledge, but to your web development skills in general. I found several golden nuggets of things I didn&#8217;t previously know sprinkled throughout the code, like how jQuery&#8217;s load function argument can include a selection, or how you can make trailing ellipsis using CSS only. That might say more about my ignorance, but the fact remains that the code examples given are of a very high quality throughout.</p>
-<p>Another thing I really appreciate is that Jonathan not only explains the details of app weaving, but takes care to give you the big picture. This, I feel, is something that&#8217;s often lacking in books of this nature. Dan Wellman&#8217;s jQuery UI springs to mind - it&#8217;s an excellent book, but apart for a short overview in the first chapter, the rest of it is spent with the nose one inch above the floor, discussing minute details of the API. Jonathan could have taken a similar route here, but he makes sure to always put things into context before he dives into the details. Thus, reading this book will really give you a helicopter view of what constitutes iPhone web app creation; the difference between web and native apps, what problems jQTouch solves, what role Phonegap plays, etc. This knowledge will remain relevant long after jQTouch/Phonegap is changed or toppled by some other framework, ensuring that this book will age well (while the jQuery UI book was obsolete before it made publication). </p>
-<p>Also there is the eerie fact that Jonathan can read your mind! Several times during my reading session a question would pop up, only to be answered by Jonathan in the very next paragraph. Couldn&#8217;t I apply the rounded corners to the ul directly, instead of to the first and last li? Wondered I. No, Jonathan immediately responds in a note on the next page, explaining why that wouldn&#8217;t work. Hey, why not use a CSS-sprite instead of two pics? I asked. I turn the page, and sure enough, Jonathan has anticipated my question and gives a succint answer. In fact, when putting the book down after having finished it, I can&#8217;t think of a single concern of mine not having been put at ease in a similar fashion. Almost made me throw a glance over my shoulder&#8230;</p>
-<p>All in all, I warmly recommend you pick up this book. It gives you the full lowdown on building iPhone web apps, and it does so in a really brilliant way.</p>
-</div>
-  
-  
+  <div class="entry-content">Just how good is Jonathan Stark&#8217;s new book on iPhone web app development? Find out here!</div>
+    <footer>
+      <a rel="full-article" href="/krablog/book-review-building-iphone-apps-with-html-cs/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -534,27 +345,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Here we continue the story on our trials while developing the uni course on JavaScript.</div>
-<p><span style="">In a </span><span style=""><a href="http://blog.krawaller.se/advanced-javascript-in-academia-developing-a">previous post</a></span><span style="">, I described the raison d’être for a new course in Advanced JavaScript at Linnaeus University,  Sweden. As a quick synopsis, suffice to say that there simply isn’t any course at all (in Sweden at least) teaching any front-end theory from this side of the Ajax revolution, it’s all framesets and DHTML. Linnaeus University, recognising both the demand and lack of supply, wanted to bridge the void, and I hijacked that task.</span></p>
-<p><span style="">Enough about the why, now onto the what! An academic to the bone, my interest in JavaScript is of a very nerdy nature. I love delving into the intricacies of the language’s esoteric aspects, without much thought or care for their practical applications. <a href="http://www.danwebb.net/">Dan Webb’s</a> chapter on metaprogramming in <a href="http://www.sitepoint.com/books/jsdesign1/">The Art &amp; Science of JavaScript</a> made my heart sing, I found <a href="http://smokejumperit.com/">Robert Fishers</a> red pill functional programming article in <a href="http://www.jsmag.com/main.issues.description/id=1/">jsmag #1</a> to be truly beautiful, and Crockfords article about <a href="http://javascript.crockford.com/little.html">the little JavaScripter</a> sent me on a month-long recursive adventure through all <a href="http://www.amazon.com/Little-Schemer-Daniel-P-Friedman/dp/0262560992/">three</a> <a href="http://www.amazon.com/Seasoned-Schemer-Daniel-P-Friedman/dp/026256100X/">schemer</a> <a href="http://www.amazon.com/Reasoned-Schemer-Daniel-P-Friedman/dp/0262562146/">books</a>. That’s the flavour of the knowledge I initially planned to share in the course.</span></p>
-<p><span style="">Fortunately, my contact at Linnaeus was of a more practical nature, realising the importance of matching the needs of (to-be) professional RIA developers. My initial package of advanced JavaScript might help you to ace <a href="http://dmitry.baranovskiy.com/post/91403200">Baranovskiys JavaScript quiz</a> (although maybe not quite as well as <a href="http://www.nczonline.net/blog/2010/01/26/answering-baranovskiys-javascript-quiz/">Zakas did</a>), but when tasked with something actually useful like, say, recreating an Objective-C iPhone app using JavaScript, my exact understanding of obscure closure behaviours won’t be of much aid.</span></p>
-<p><span style="">Thus wisened up, I set out to take a more practical approach. Well aware of my lack of experience in the “real world” of web development, I went on a parasitic mission to leech the knowledge of the people in the trenches – people who value knowledge from its practical use, and not its obscureness. I talked to a lot of developers (many thanks here goes to the Öresund JavaScript meetup), read up on the upcoming platforms where JavaScript would be applicable, and distilled forth a toolkit that I hope will actually prove useful.</span></p>
-<p><span style="">Since my target audience for the course are students taking the third year of the web programming programme, I can thankfully presume the existence of all mundane knowledge (OOP, basic JS, HTML, CSS, UML, etc), and focus solely on the weapons of a JavaScript RIA Ninja. This is the recipe we ended up with for the course:</span></p>
-<ol>
-<li>First up we define our <strong style="">developing environment</strong>. We look at editors and what we should demand of them (Aptana), at browsers and testing tools (Firebug), version control solutions (Git &amp; Github), filesharing (Dropbox), tidbit sharing (JSBin). I also found some excuse to fit <a href="http://www.jslint.com">JSLint</a> into this part.</li>
-<li>We then deliver some <strong style="">advanced JavaScript concepts</strong>, but confined to what you need for code organisation and reuse. Mostly this consists of making the students read <a href="http://oreilly.com/catalog/9780596517748">The Good Parts</a> and traverse through <a href="http://ejohn.org/apps/learn">Resigs learn app</a>.</li>
-<li>Throughout the course, the students will then put together a small application, but using best practises for a major project. First off they will <strong style="">design their model</strong>, isolating the “classes” needed through UML. They’ll start of by creating the stubs for these objects, and choosing their inheritance framework. Also we’ll look at documentation generation.</li>
-<li>Next we’ll start <strong style="">implementing the model</strong>, using test-driven development, a concept new to most of the students. They’ll get to taste different testing frameworks and make their own choice.</li>
-<li>Then comes the <strong style="">controller</strong>, in my adaption meaning the application structure and flow. We’ll look at different patterns, funneling user input through event delegation, and decoupling application logic and DOM manipulation. After this step, they’ll have a working, if spartan, application.</li>
-<li>&#8230;which is remedied in the next step, dealing with the <strong style="">view</strong>. Here we give some love to the UI, looking at the different frameworks available. They’ll get to incorporate widgets, create dynamic graphics (DOM manipulation, canvas, SVG/VML) and simplify styling through use of semantic class names (jQuery UI CSS framework classes or similar). We’ll also wedge in some ARIA discussion and accessibility issues.</li>
-<li>Next comes a <strong style="">porting</strong> step, where we underline the importance of JavaScript knowledge through making the students adapt their application to a different platform. Having used the best practices outlined above, they shouldn’t have much trouble redeploying to another JavaScript environment.</li>
-<li>Finally we’ll give them a throgough run in <strong style="">optimization</strong>, something the first two years of our training haven’t really given much attention to. We’ll cover all the bases here, meaning the full JavaScript half of Souders’ excellent <a href="http://oreilly.com/catalog/9780596522308/">Even Faster Websites</a>.</li>
-</ol>
-<p><span style="">The journey is now well underway, with the students having reached steps 3-5. In spite of the contents having received the blessing from many a talented veteran developer, I do have some fear of the blind-leading-blinds thing biting us later on. But, so far so good! I hope to share a progress report here as we’ve rappelled a bit deeper down the rabbit hole&#8230;</span></p>
-<p> </p>
-</div>
-  
-  
+  <div class="entry-content">Here we continue the story on our trials while developing the uni course on JavaScript.</div>
+    <footer>
+      <a rel="full-article" href="/krablog/advanced-javascript-in-academia-killing-my-da/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -587,17 +381,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">Half-time filler!</div>
-<p>Hi folks!</p>
-<h3>[[posterous-content:FBrEiFtnafqAquCkIAhw]]</h3>
-<p>As your might have noticed, or cetainly soon will, this is unfortunately not a new post in the HTML5 vs Objective-C series. &#8220;Why not?&#8221; you say. Well, do not despair my friends, and let me first and foremost assure you there will be more posts. Heck, I&#8217;ve already coded the next project for the post-to-be (yes, it&#8217;s pretty cool too, I dare say).</p>
-<p>However, mighty men out there wanted otherwise. Well, no, they didn&#8217;t really - I think they&#8217;d like it more than anyone else, but this is the result - me postponing the next post a week or so. I&#8217;m not sure how much I&#8217;ll be able to tell you of all this, but what&#8217;s certain is that I&#8217;ll be going to the Mekka of web development and see what these brilliant men want from me :)</p>
-<p>So please bear with me as I set out to follow the ways of the interwebz.</p>
-<p>Cheers!</p>
-<p>Jacob</p>
-</div>
-  
-  
+  <div class="entry-content">Procrastination! :)</div>
+    <footer>
+      <a rel="full-article" href="/krablog/html5-vs-objective-c-round-15/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -630,22 +417,10 @@
   </header>
 
 
-  <div class="entry-content"><div class="summarytext">The how and why behind our developing of a new course on Advanced JavaScript for Linnaeus University in Kalmar, Sweden.</div>
-<p>This post details the inception of a newly started course in Advanced JavaScript at Linnaeus University in the city of Kalmar, Sweden. I hope to follow this up with more posts detailing the journey of trying to wedge the RIA revolution into the conservative world of academia!</p>
-<p>As all us Crockford fanboys and Ajaxian hangarounds are well aware, JavaScript has had an amazing renaissance the last few years, riding the Ajax wave to unforeseen fame and glory. Suddenly we find ourselves constructing fully fledged RIA:s using the same tool that was previously deemed capable only of minor website spiceups (and even that only when a Flash developer couldn&#8217;t be found or bothered).</p>
-<p><img src="http://lnu.se/img/logo_symbol.png" alt="Linnaeus University" /> <img src="http://lnu.se/img/logo_en.png" alt="Linnaeus University" /></p>
-<p>Last spring, I completed a 2-year university education in web programming at the Linnaeus University in Kalmar. In contrast to most other academic institutions, Kalmar (or at least the web development department) has managed to stay on the rapidly moving cutting edge. Thus we were always up to date with the latest and greatest toys, for example<span> 
-
-</span>being taught Silverlight and .NET MVC shortly after their release. All in all, I&#8217;ve been extremely pleased with the education, and being kicked out the door I felt well prepared to take on whatever web-related challenges were coming.</p>
-<p>Like almost all web educations, however, it was heavily geared towards the server side of things. Which was useful and fun, to be sure, but for me C# and PHP both paled in comparison to the quicksilvery beauty of JavaScript. Maybe teaching mathematics as a dayjob has made me more susceptible to that sort of thing, I don&#8217;t know, but somehow JavaScript&#8217;s expressionistic quality, naked logic and formability (for lack of a better word) really struck a chord in me. I was in love!</p>
-<p>The Kalmar web education has an optional third year where you have quite a bit of freedom in choosing what to dive into, the idea of course being allowing you find your niche in the surprisingly broad world of web work. Due to the previously mentioned JavaScript affliction I contracted during my two years, I wanted to dig deeper into that. And so I set out to try to find courses teaching advanced JavaScript. Kalmar didn&#8217;t have any, but no matter, I thought – since I study over the internet anyway, if I could find a suitable course at any of the swedish universities, it could count towards my third year degree in Kalmar.</p>
-<p>But, I found absolutely <strong>nothing</strong>. It turns out we&#8217;d been really spoiled in Kalmar, and being up to date is not something you can take for granted in a university education. Who knew? Not even in the ever changing landscape of web development, where knowledge grows stale with eerie speed. I found umpteen courses teaching &#8220;DHTML&#8221;, using literature published in 2001, but absolutely nothing trying to sell JavaScript as anything else than a somewhat useful compliment to HTML.</p>
-<p>I needed my JavaScript fix desperately, but there really was no course to be found. There was plenty of advanced courses in the server side realm, but none that let me embark on JavaScript adventures like the one my brother just posted about. So what&#8217;s a guy to do? As it turned out, the solution was in a contemporary problem of mine; I hadn&#8217;t finished (or started) my final exam project, in big part due to not finding an idea tasty enough to sink my teeth into. So I ended up creating my dream course myself, as my exam project. Suddenly spending evenings and nights (re)reading Secrets of the JavaScript Ninja, Object Oriented JavaScript, JavaScript Design Patterns, uncountable blogs and source codes, etc etc etc, was not slacking about, but doing my job!</p>
-<p>The result of those evenings is a new course titled &#8220;RIA-utveckling med JavaScript&#8221;, translating to &#8220;Developing RIA with JavaScript&#8221;. The maiden journey started a few weeks back, embarked on by ten brave students all doing the optional third year of the Linnaeus University Web Programming education.</p>
-<p>In a following post I&#8217;ll outline the content of the course, and talk a bit about how we arrived at the particular recipe used.</p>
-</div>
-  
-  
+  <div class="entry-content">The how and why behind our developing of a new course on Advanced JavaScript for Linnaeus University in Kalmar, Sweden.</div>
+    <footer>
+      <a rel="full-article" href="/krablog/advanced-javascript-in-academia-developing-a/">Read on &rarr;</a>
+    </footer>
 
 
     </article>
@@ -690,7 +465,7 @@
 </section>
 <section>
 	<h1>Tag Cloud</h1>
-	<span id="tag-cloud"><a href='http://krawaller.github.com/krablog/categories/android' style='font-size: 105.0%'>android</a> <a href='http://krawaller.github.com/krablog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='http://krawaller.github.com/krablog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='http://krawaller.github.com/krablog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='http://krawaller.github.com/krablog/categories/development' style='font-size: 160.0%'>development</a> <a href='http://krawaller.github.com/krablog/categories/github' style='font-size: 110.0%'>github</a> <a href='http://krawaller.github.com/krablog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='http://krawaller.github.com/krablog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='http://krawaller.github.com/krablog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='http://krawaller.github.com/krablog/categories/iphone' style='font-size: 105.0%'>iphone</a> <a href='http://krawaller.github.com/krablog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='http://krawaller.github.com/krablog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='http://krawaller.github.com/krablog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='http://krawaller.github.com/krablog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='http://krawaller.github.com/krablog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='http://krawaller.github.com/krablog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='http://krawaller.github.com/krablog/categories/release' style='font-size: 130.0%'>release</a> <a href='http://krawaller.github.com/krablog/categories/review' style='font-size: 125.0%'>review</a> <a href='http://krawaller.github.com/krablog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='http://krawaller.github.com/krablog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='http://krawaller.github.com/krablog/categories/smartphone-webapp' style='font-size: 145.0%'>smartphone_webapp</a> <a href='http://krawaller.github.com/krablog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='http://krawaller.github.com/krablog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='http://krawaller.github.com/krablog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='http://krawaller.github.com/krablog/categories/titanium' style='font-size: 135.0%'>titanium</a> <a href='http://krawaller.github.com/krablog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='http://krawaller.github.com/krablog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='http://krawaller.github.com/krablog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='http://krawaller.github.com/krablog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='http://krawaller.github.com/krablog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='http://krawaller.github.com/krablog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
+	<span id="tag-cloud"><a href='/krablog/categories/auktionera' style='font-size: 105.0%'>auktionera</a> <a href='/krablog/categories/backbone' style='font-size: 105.0%'>Backbone</a> <a href='/krablog/categories/coffeescript' style='font-size: 110.0%'>coffeescript</a> <a href='/krablog/categories/couchone' style='font-size: 105.0%'>couchone</a> <a href='/krablog/categories/development' style='font-size: 160.0%'>development</a> <a href='/krablog/categories/github' style='font-size: 110.0%'>github</a> <a href='/krablog/categories/golingo' style='font-size: 115.0%'>golingo</a> <a href='/krablog/categories/instaviz' style='font-size: 105.0%'>instaviz</a> <a href='/krablog/categories/ipad' style='font-size: 105.0%'>ipad</a> <a href='/krablog/categories/ithoughts' style='font-size: 105.0%'>ithoughts</a> <a href='/krablog/categories/jasmine' style='font-size: 105.0%'>Jasmine</a> <a href='/krablog/categories/kranium' style='font-size: 105.0%'>kranium</a> <a href='/krablog/categories/labyrinth' style='font-size: 115.0%'>labyrinth</a> <a href='/krablog/categories/livetanium' style='font-size: 105.0%'>livetanium</a> <a href='/krablog/categories/mobilesafari' style='font-size: 105.0%'>mobilesafari</a> <a href='/krablog/categories/nodejs' style='font-size: 105.0%'>nodejs</a> <a href='/krablog/categories/omnigraffle' style='font-size: 105.0%'>omnigraffle</a> <a href='/krablog/categories/promotejs' style='font-size: 105.0%'>promotejs</a> <a href='/krablog/categories/review' style='font-size: 125.0%'>review</a> <a href='/krablog/categories/ria-university-course' style='font-size: 110.0%'>RIA_university_course</a> <a href='/krablog/categories/sinon' style='font-size: 105.0%'>Sinon</a> <a href='/krablog/categories/smartphone-webapp' style='font-size: 105.0%'>smartphone_webapp</a> <a href='/krablog/categories/struct' style='font-size: 105.0%'>struct</a> <a href='/krablog/categories/systemet' style='font-size: 105.0%'>systemet</a> <a href='/krablog/categories/talk' style='font-size: 110.0%'>talk</a> <a href='/krablog/categories/talk-titanium-kranium-travelhack' style='font-size: 105.0%'>talk titanium kranium travelhack</a> <a href='/krablog/categories/testing' style='font-size: 105.0%'>Testing</a> <a href='/krablog/categories/titanium' style='font-size: 145.0%'>titanium</a> <a href='/krablog/categories/tiview' style='font-size: 105.0%'>tiview</a> <a href='/krablog/categories/tradera' style='font-size: 105.0%'>tradera</a> <a href='/krablog/categories/tristania' style='font-size: 110.0%'>tristania</a> <a href='/krablog/categories/tweetanium' style='font-size: 105.0%'>tweetanium</a> <a href='/krablog/categories/txtv' style='font-size: 105.0%'>txtv</a> <a href='/krablog/categories/yql' style='font-size: 115.0%'>yql</a> </span>
 </section>
 <section>
   <h1>Latest Tweets</h1>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: development | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/development/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
     <updated>2011-08-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms</id>
-    <content type="html"><![CDATA[<div class="summarytext">Wrapping our brains around Titanium View layouts!</div>
-
-
-<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
+    <content type="html"><![CDATA[<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
 
 
 <p>I constantly had to pause my work to peruse the Titanium docs/kitchensink/sourcecode, or (more often) do some experimenting on the side, regarding stuff that I suspected I really should have nailed down. It felt like doing maths without having memorized the multiplication tables!&nbsp;</p>
@@ -67,10 +64,7 @@
     <link href="http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app/"/>
     <updated>2011-03-26T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Reviewing our favourite iPad productivity apps!</div>
-
-
-<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
+    <content type="html"><![CDATA[<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
 
 
 <p>In quite a few, as it turned out! Obvious as it might be to the rest of the world, a touch screen is a very different input device compared to a touchpad and keyboard. And, as I eventually realised, it is especially well suited for sketching and doing mockups.&nbsp;</p>
@@ -224,10 +218,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
-    <content type="html"><![CDATA[<div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
-
-
-<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
+    <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
 
 
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
@@ -304,10 +295,7 @@
     <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
     <updated>2011-02-03T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
-    <content type="html"><![CDATA[<div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
-
-
-<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
+    <content type="html"><![CDATA[<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
 
 
 <p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
@@ -411,10 +399,7 @@
     <link href="http://krawaller.github.com/krablog/livetanium/"/>
     <updated>2010-12-01T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/livetanium</id>
-    <content type="html"><![CDATA[<div class="summarytext">Our latest experiment, Livetanium, lets you do realtime prototyping when creating Titanium apps. For the lowdown on why this is a good idea, check out this article!</div>
-
-
-<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
+    <content type="html"><![CDATA[<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
 
 
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>

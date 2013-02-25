@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: talk titanium kranium travelhack | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/categories/talk-titanium-kranium-travelhack/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-25T17:09:55+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Krawaller real-life appearances]]></title>
+    <link href="http://krawaller.github.com/krablog/krawaller-real-life-appearances/"/>
+    <updated>2011-10-27T00:00:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/krawaller-real-life-appearances</id>
+    <content type="html"><![CDATA[<p>First and foremost, Jacob attended Appcelerator's <a href="http://www.appcelerator.com/showcase/videos/codestrong2011/">CodeStrong conference</a>. He promised a blogpost about that, but I'm not holding my breath! At the conference, Jacob gave a talk about <a href="http://kraniumjs.com/">Kranium</a>, Krawaller's new utility library for Titanium development. The video is available <a href="http://player.vimeo.com/video/30391192?title=0&amp;byline=0&amp;portrait=0&amp;color=9a0707&amp;autoplay=1">here</a>. He promised a blogpost about Kranium too!</p>
+
+
+<p>Together with good friends Alexander and Nicklas, we participated in <a href="http://travelhack.se">Travelhack</a> - a most excellent hackaton in Gothenburg focusing mainly around commuting. It was a brilliant event, fun and engaging! You can watch a video where all teams present their doings <a href="bambuser.com/v/2030502">here</a> (we come on at about 1:20).</p>
+
+
+<p>Finally I gave a speech at SFIS (loosely translated as Swedish Society for Information Specialists), who had a day on mobile technology. I talked about mobile app development. The slides (in Swedish) are available at 280 Slides <a href="http://bit.ly/sfis2011">here</a>, or for those of you who use a pretend browser (IE), the individual pictures are attached in the gallery below.</p>
+
+
+<p>[[posterous-content:xvbyAlkhilqvphlaGwEj]]</p>
+
+
+<p>Here's a Swedish PS for the librarians who were in the audience at SFIS: Jacob, den andra h&auml;lften av Krawaller, har lekt med en prototyp f&ouml;r en bokutl&aring;ningsapp, vilket jag givetvis borde haft vett att skvallra om f&ouml;r er! Ni kan se en film av den <a href="http://t.co/MJUrM4dy">h&auml;r</a>.&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+</feed>

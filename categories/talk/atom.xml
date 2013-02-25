@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: talk | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/categories/talk/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-25T17:09:55+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Slides form SFIS talk October 2012]]></title>
+    <link href="http://krawaller.github.com/krablog/slides-form-sfis-talk-october-2012/"/>
+    <updated>2012-11-01T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/slides-form-sfis-talk-october-2012</id>
+    <content type="html"><![CDATA[<p>Thanks to all who attended, it was a great time! Here be a link to the slides: <a href="http://bit.ly/sfis2012">http://bit.ly/sfis2012</a></p>
+
+
+<p>...and here's a powerpoint version:&nbsp;<a href="http://bit.ly/TXQNBI">http://bit.ly/TXQNBI</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Software Passion]]></title>
+    <link href="http://krawaller.github.com/krablog/software-passion/"/>
+    <updated>2012-03-25T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/software-passion</id>
+    <content type="html"><![CDATA[<p>Earlier this week, Jacob and I participated in the <a href="http://softwarepassion.se/">Software Passion Conference</a> in Gothenburg. Heaps of fun! It was great to take part in a conference that wasn't all about the web, but programming in general. I find I tend to "stare into my navel" quite a bit, caring nothing about the world outside of JavaScript. So this was a great way to broaden my horizons!</p>
+
+
+<p>Jacob held a lecture on <a href="http://kraniumjs.com/">Kranium</a>, his webifying framework for Titanium. If you want his slides, get in touch with him directly (twitterhandle @litenjacob), or wait for me to get him to post them here (but don't hold your breath).</p>
+
+
+<p>I spoke on CoffeeScript, slides are right here:</p>
+
+
+<p>[[posterous-content:jGtlutziHEHjExmjavEu]]</p>
+
+
+<p>All in all a great experience, thanx to all who turned up for our sessions! Special thanks to mr Crockford, who gave his blessing afterwards. I'll be smiling from ear to ear for weeks! :)</p>
+
+
+<p>Hah... Jacob here. Here are my slides. Take that, brother! :-)</p>
+
+
+<p>[[posterous-content:fxrsFkpiyGFAhCasibtr]]Unfortunately, the embedded videos are missing. However, you could have a look at a recording of my session at <a href="http://vimeo.com/30391192">CodeStrong</a>&nbsp;which is based on the same slides.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

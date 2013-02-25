@@ -4,7 +4,7 @@
   <title><![CDATA[Category: struct | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/struct/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-25T06:00:12+01:00</updated>
+  <updated>2013-02-25T17:09:55+01:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -18,10 +18,7 @@
     <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
-    <content type="html"><![CDATA[<div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
-
-
-<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
+    <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
 
 
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
