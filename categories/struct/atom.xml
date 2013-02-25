@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: struct | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/categories/struct/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-25T05:58:03+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Titanium application structure – learning from Tweetanium]]></title>
+    <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
+    <updated>2011-02-16T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
+    <content type="html"><![CDATA[<div class="summarytext">Struct - learning from Tweetanium regarding application structure best practices!</div>
+
+
+<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
+
+
+<script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
+
+
+<p>Inside somefile.js the window would be populated with controls, using the Ti.UI.currentWindow reference. We can access the data from the previous window through win.importantdata.</p>
+
+
+<p>This approach, even when improved upon, has several disadvantages:</p>
+
+
+<ul>
+<li> If you have a file with application helper functions, you need to import that in every other file that needs the functionality. In my Tristania app for example, pretty much every file starts with Ti.include(&ldquo;../assets/utils.js&rdquo;).</li>
+<li> Every time a window is meant to be created, the relevant file must be read and code parsed.</li>
+<li>The structure of the app becomes rather opaque.</li>
+<li>It is very difficult to unittest this approach.</li>
+</ul>
+
+
+<p>It all works, sure, but I've never been comfortable with my application structures, feeling there must be a better way. Even though there are (many) ways to improve on the above example, I wanted a different structure paradigm alltogether. Alas, I was too lazy to get around to experiment with it, so &ldquo;it remained but a beautiful thought&rdquo;, as we say in Sweden.</p>
+
+
+<p>Fortunately, <a href="http://twitter.com/kevinwhinnery">Kevin Whinnery</a>, <a href="http://twitter.com/chadauld">Chad Auld</a> and the rest of the Appcelerator team have no such character flaws! Recently they <a href="http://developer.appcelerator.com/blog/2011/01/tweetanium-source-code-release.html">opensourced Tweetanium</a>, a fully functioning Twitter client coded with best practices regarding both JavaScript in general and Titanium in particular.</p>
+
+
+<p>Which was like christmas to me! The only non-Krawaller Titanium source code I've gleaned (with a few none-noteworthy exceptions) is the aforementioned KitchenSink, which &ndash; let's be honest &ndash; is not a great piece of work at all. It demonstrates the API very well (which is great since the docs are crap), but as an application example, it leaves me wanting.</p>
+
+
+<p>So, enter Tweetanium. As soon as you open up the sourcecode, it is evident that they're doing things very differently! I have created a stripped-down, barebones version of it called Struct, aiming to expose the new structure paradigm. You'll find the git repo <a href="https://github.com/krawaller/struct">here</a>. This is what it looks like &ndash; isn't knowledge beautiful? :)</p>
+
+
+<p>[[posterous-content:GjClsyjFxfyzfhrEvEFH]]</p>
+
+
+<p>The main point in the Tweetanium approach is that my various files (like somefile.js in the above example) are not messing with Ti.UI.currentWindow &ndash; instead, it augments a global namespace with a constructor variable. In Struct, I end up with the following global object:</p>
+
+
+<script src="https://gist.github.com/829615.js?file=globalobject.js"></script>
+
+
+<p>The program flow is that the otherwise pretty empty app.js imports struct.js, which can be considered your main app definition file. This file creates the global namespace and maybe some utility functions, and then includes the other files to populate the rest of the namespace.</p>
+
+
+<p>This means that as soon as the struct.js file is included, the entire app structure is created in memory. No more parsing of files will be done during the session.</p>
+
+
+<p>App.js will then call the createApplicationWindow function, call the open method on the returned window, and maybe do some other app initialization stuff. Now the app is up and running! In Struct, app.js looks like this:</p>
+
+
+<script src="https://gist.github.com/829615.js?file=app.js"></script>
+
+
+<p>So what are the great advantages to this approach? I've already found quite a few, but it boils down to a single keyword: closure. Every single function is executed in the same closure (ok, maybe subclosures, but you get the gist). Read that sentence again until the implications set in.</p>
+
+
+<p>This is good news from a performance perspective (and most likely stability) &ndash; no more importing the same file a gazillion times! But from an infrastructure point of view its even yummier:</p>
+
+
+<ul>
+<li> As we always have access to the same scope, we can keep app-wide data in a single object, instead of JSON:ing back and forth with Ti.App.Properties. </li>
+<li> All kinds of other convenience     structures are suddenly very easy to build. In Struct there is a global messaging system, using one single view, instantiated only once. Tweetanium does a similar thing with a loader view, and has a  very neat Model baseclass thing going. </li>
+<li> You can instantiate all app windows and views immediately, as they all live in the same closure. Windows opened at a later point will also live in the same closure, since that's where the constructor function is defined. </li>
+<li> Creating your own navigation system ("immersive UI", to use Apple's lingo) is a breeze. In Struct I've stolen the home-brewed tabs from Tweetanium. </li>
+</ul>
+
+
+<p>Now, having autopsied Tweetanium, created Struct and looking at the layout before me, it seems very obvious and self-evident. Perhaps it already was to the rest of you, but for me it was a new-found revelation, and I can't wait to test it out in our next project! So, for those of you who like me hadn't caught on to this train before, check out <a href="https://github.com/krawaller/struct">Struct</a> &amp; <a href="http://developer.appcelerator.com/blog/2011/01/tweetanium-mobile.html">Tweetanium</a> and try it out!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

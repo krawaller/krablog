@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: auktionera | Krawaller webdev blog]]></title>
+  <link href="http://krawaller.github.com/krablog/categories/auktionera/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.com/krablog/"/>
+  <updated>2013-02-25T05:58:03+01:00</updated>
+  <id>http://krawaller.github.com/krablog/</id>
+  <author>
+    <name><![CDATA[Krawaller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Releasing Auktionera, a Tradera iPhone app]]></title>
+    <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
+    <updated>2011-02-03T00:00:00+01:00</updated>
+    <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
+    <content type="html"><![CDATA[<div class="summarytext">Releasing Auktionera, our iPhone app for the Swedish auction site Tradera!</div>
+
+
+<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
+
+
+<p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
+
+
+<p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>'s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
+
+
+<h3>Functionality</h3>
+
+
+<p>The app is a pretty standard auction site app, much like the eBay one. You can peruse auctions, bid, create your own auctions, save favourite searhes / users / auctions, check seller history, etc.</p>
+
+
+<p>[[posterous-content:ItBjeFqdGnhGEbvbsdwz]]</p>
+
+
+<p>Made with love and care, but pretty boring, in other words. This was also our approach as we entered the project. We weren't&nbsp;really intrigued by the technical challenges, but&nbsp;thought this had a good chance of selling well. This mainly because there <a href="http://itunes.apple.com/us/app/id363997028?mt=8" title="The competition!" target="_blank">already was an app in the store</a>, selling better than our Systemet in spite of being rather crap.&nbsp;</p>
+
+
+<p>This competing app is getting flak because of two different things:</p>
+
+
+<ul>
+<li>It is, as stated, rather crappy, being very prone to crash. Also some functions have ceased to work after the latest iOS upgrades.&nbsp;</li>
+<li>It relies completely on <a href="http://api.tradera.com/" title="Tradera API" target="_blank">Tradera's official API</a>, which for whatever reason is missing some vital functionality, such as checking out a seller's previous history. This is, naturally, something that an auctioneer want to be able to do, before taking the plunge and risking those hard-earned dimes!</li>
+</ul>
+
+
+<p>Our tactic was therefore a mirror image of this list:</p>
+
+
+<ul>
+<li>Make sure the app doesn't crash and burn!</li>
+<li>Complement the official API functionality with some YQL scraping on the side.</li>
+</ul>
+
+
+<p>Sounded easy enough, but it turned out that none of the above was as straight-forward as we thought..</p>
+
+
+<h3>Titanium stability</h3>
+
+
+<p>After a lengthy development cycle in Titanium and the emulator, we did a first reality test on an actual device. We weren't really worried, as the app flowed very neatly in the emulator. But, as we fired it up on the phone, we discovered to our dismay that we had managed to copy the very fickleness we wanted to avoid! The app would crash in random places, not leaving any definite clues as to why.&nbsp;</p>
+
+
+<p>Not until we ran the app in an emulator next to the activity monitor did we find out why. It turned out that Titanium did some things rather inefficiently, which would eventually cause the phone to run out of memory or processor juice. The same thing happened in the emulator, but there it wouldn't hit the ceiling as soon, as the computer has much more resources.&nbsp;</p>
+
+
+<p>So, what were these inefficient things that Titanium did? Well:</p>
+
+
+<ul>
+<li>First off - <strong>don't handle XML</strong> in your app, unless you can avoid it. XML is of course painful in and of itself, but Titanium's garbage collection somehow cannot clean up after xml parsing. Try it: open a new window, parse some XML, then close that window (using the back button, for example), and watch the processor usage spike, never to drop again.&nbsp;</li>
+<li>Be careful when doing <strong>advanced table creation</strong>. Use the best practices detailed in the <a href="http://assets.appcelerator.com.s3.amazonaws.com/docs/API_UITableViewClass.pdf" target="_blank">documentation</a>, and test your table generation with the Activity indicator running. For some combinations of table gymnastics, the memory usage will be intolerably high, eventually making the app crash.</li>
+<li>If you have a large data structure, <strong>prefer a sqlite database</strong> to just keeping a big object in memory. This might be obvious to the rest of the world, but took us a bit off guard - intuitively, we thought it would be more efficient to keep a single object and query that, skipping the overhead cost of a database. However, some testing proved us very wrong indeed - the sqlite database is quicker and uses far less memory.</li>
+</ul>
+
+
+<p>So we learned some specifics, but the main lesson for us was this: do <strong>frequent reality checks</strong> on an actual device. Titanium is still a young framework with many rough edges, and some of those edges will not cut you in the emulator since that does not correctly emulate the hardware limitations.&nbsp;</p>
+
+
+<h3>YQL + Tradera = somewhat true</h3>
+
+
+<p>We also had a rough time with the intermingling of official functionality and our home-brewed YQL-fueled queries. There were several authentication and authorization models involved; the Tradera API requires an App-Id, the user must be authenticated through the API, and also through the official site for our scraping to work.&nbsp;</p>
+
+
+<p>When starting off, we had all this in a spaghetti-bowl of code in the app. Lots of moving parts, lots of things that could break at any time. Not until we isolated all of this to a PHP-bridge did the different parts fall into place. This is of course what we should have done from the beginning - separations of concern is something we frequently preach to others. But somehow we fooled ourselves into thinking we'd already done this, as we has lots of logic in the YQL OpenTables. The lesson: you can always abstract your code one step further. :)</p>
+
+
+<h3>API design IS an artform</h3>
+
+
+<p>The biggest challenge, however, was actually using the Tradera API. I now realize that I've taken usability and intuitivity for granted in the API:s that I use, not thinking much of it. It's like appreciating your mom doing all the household chores - you don't, until you move out. I had no idea that designing a good API takes work, until I used a bad one.</p>
+
+
+<p>Now, you shouldn't bite the hand that feeds you, but the Tradera API is pretty horrid. There seems to be no general rule for naming functions (camel casing, lower case, it's the wild west in there). The same property names mean different things in different functions. Documented properties are sometimes populated, sometimes not, depending on the weather and alignent of planets. Functionality between functions overlap, but never so much that you can ignore one function and just use the other.</p>
+
+
+<p>And, most jarringly - there are several spelling errors in the API! When first creating our infrastructure to make calls, I tested it using the most simple function "GetOfficialTime", requiring no parameters and just returning a flat data object. It didn't work. Several hours later of reading SOAP specs and going through the code, I found the error - I needed to spell it "GetOfficalTime", note the missing "i". Fast forward a few weeks, and the same thing happened again when we tried to filter out used goods with the search parameter "ItemCondition". It was supposed to be "ItemConditon", again note the missing "i".&nbsp;</p>
+
+
+<p>In Tradera's&nbsp;defense, the misspellings are also present in the documentation, and they offer free support for developers using the API, which we found very helpful. But still, it made me better at appreciate good API design. And more on my guard when using them.</p>
+
+
+<h3>The result</h3>
+
+
+<p>In the end we feel pretty proud of the result! This in spite of entering the project with little heart, and being in some serious stability trouble mid-journey. So, now to the boring side of things - pushing the app, spreading the word. As previously lamented, this is not what we do best.</p>
+
+
+<p>Anyhow, hope the Swedish speakers among you will check the app out! Next up, Jacob will do a (less chatty) write-up on his neat method for deploying app builds to testers, right, brother? The pressure is on!</p>
+
+]]></content>
+  </entry>
+  
+</feed>
