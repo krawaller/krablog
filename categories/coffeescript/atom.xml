@@ -4,7 +4,7 @@
   <title><![CDATA[Category: coffeescript | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/coffeescript/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,25 +19,12 @@
     <updated>2012-03-25T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/software-passion</id>
     <content type="html"><![CDATA[<p>Earlier this week, Jacob and I participated in the <a href="http://softwarepassion.se/">Software Passion Conference</a> in Gothenburg. Heaps of fun! It was great to take part in a conference that wasn't all about the web, but programming in general. I find I tend to "stare into my navel" quite a bit, caring nothing about the world outside of JavaScript. So this was a great way to broaden my horizons!</p>
-
-
 <p>Jacob held a lecture on <a href="http://kraniumjs.com/">Kranium</a>, his webifying framework for Titanium. If you want his slides, get in touch with him directly (twitterhandle @litenjacob), or wait for me to get him to post them here (but don't hold your breath).</p>
-
-
 <p>I spoke on CoffeeScript, slides are right here:</p>
-
-
 <p>[[posterous-content:jGtlutziHEHjExmjavEu]]</p>
-
-
 <p>All in all a great experience, thanx to all who turned up for our sessions! Special thanks to mr Crockford, who gave his blessing afterwards. I'll be smiling from ear to ear for weeks! :)</p>
-
-
 <p>Hah... Jacob here. Here are my slides. Take that, brother! :-)</p>
-
-
 <p>[[posterous-content:fxrsFkpiyGFAhCasibtr]]Unfortunately, the embedded videos are missing. However, you could have a look at a recording of my session at <a href="http://vimeo.com/30391192">CodeStrong</a>&nbsp;which is based on the same slides.</p>
-
 ]]></content>
   </entry>
   
@@ -47,207 +34,84 @@
     <updated>2011-11-04T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/coffeescript-overview-and-resource-inventory</id>
     <content type="html"><![CDATA[<p>As I've <a href="http://blog.krawaller.se/tag/ria_university_course">written about previously</a> (although far from as much as I hoped to), I'm teaching a course at&nbsp;Linnaeus University&nbsp;on Advanced JavaScript for RIA creation. In the course, parallell to creating a RIA, the students are also tasked with doing a deepdive into&nbsp;a related subject of their own choosing (most often on a technology employed in the RIA creation).</p>
-
-
 <p>Because I'm still working my way to a 3rd year degree myself, I ended up in the weird situation of getting to take my own course! Although not giving myself a grade, unfortunately. I made my deepdive in CoffeeScript, which I thought might also be fit for the Krawaller blog.</p>
-
-
 <p>So here it is: a repost from my student alter ego, an overview of CoffeeScript:</p>
-
-
 <p>&nbsp;</p>
-
-
 <ol> </ol>
-
-
 <h2>What is CoffeeScript?</h2>
-
-
 <p>Briefly explained, CoffeeScript is a thin syntactical layer on top of JavaScript. You write CoffeeScript, it compiles to JavaScript, which is then run in the browser (or Node, or wherever) in the usual way.</p>
-
-
 <p>As has been widely realised the last few years, JavaScript is a most excellent language when wielded right, utilizing its expressiveness and applying functional programming.</p>
-
-
 <p>However, the syntax is far from as elegant as the underlying language. We all know the story of how Brendan Eich, JavaScript's creator, was forced to make it "look like Java". Had he not been wearing that shackle at the time (and not had the very short timespan to work with), JavaScript would have been looking very differently, and there likely would be no need for CoffeeScript.</p>
-
-
 <p>But this, in essence, is the problem space that CoffeeScript tries to solve: it aims to negate the clunky syntax, exposing the beautiful language beneath. It does this by:</p>
-
-
 <ul>
 <li>...using <strong>significant whitespace</strong>. We're already indenting our code, so why should we also have to enclose a function body in curly braces? In CoffeeScript, we can declare objects and function, and use controlstructures such as if or switch, with just whitespace to signify the depth.</li>
 <li>...<strong>cleaning the syntax</strong>. By sacrificing the (unnecessary) ability to have many statements on a single line, we negate the need for semicolons completely. CoffeeScript also strives to be more readable, by changing existing keywords and operators to more succinct and self-explanatory versions. Thus "function" is distilled down to the simple dash rocket "-&gt;", equality is "is" instead of "===", etc.</li>
 <li>...adding <strong>new keywords</strong>&nbsp;to simplify commonly occuring patterns. This includes class declaration, prototype access, destructuring assignments, loops, and many more. Users of Ruby or Lisp will recognize much of this. These concepts are a very powerful way of shortening your code, and the reason that CoffeeScript code is almost always half or less of the size of the generated JavaScript.</li>
 </ul>
-
-
 <p>For actual examples, there is a long list of learning and demonstrating resources in the how section. If you're eager to see it right now, take a quick look at the&nbsp;<a href="http://coffeescript.org/">official homepage</a>.</p>
-
-
 <p>So, underneath it all, it's the same old JavaScript. One of the creator's, Jeremy Ashkenas, goals was for there to always be a 1 to 1 correspondence with JavaScript and CoffeeScript. This makes it easy for someone already into JavaScript to adopt CoffeeScript and sharpen his game. It also means that your CoffeeScript can be used with any and all JavaScript library, and that you can use all JavaScript libraries in your CoffeeScript. In fact, CoffeeScript and jQuery makes for a very sexy combination, as <a href="http://buhrmi.tumblr.com/post/5371876452/how-coffeescript-makes-jquery-more-fun-than-ever">this article</a> notes.</p>
-
-
 <p>&nbsp;</p>
-
-
 <h2>Why (not) use CoffeeScript?</h2>
-
-
 <p>There are two main advantages to CoffeeScript:</p>
-
-
 <ul>
 <li>The code is<strong> more readable</strong>. This is not a trivial thing - being able to glance through someone's code and deduce what it does is a very commonly occuring task, and CoffeeScript will at times read almost as pseudo code, clearly communicating the intent.&nbsp;</li>
 <li>The code is <strong>shorter</strong>. This, too, will of course contribute to readability. Not just by taxing less patience - the extra lines that you don't have to write in CoffeeScript are commonly rather abstract and thus hard to decipher, such as loop juggling, inheritance gymnastics, etc.</li>
 <li>A third, inofficial advantage, significant to my proud self, is that you <strong>feel smarter</strong> when using it. Being able to more with less was always the badge of the ninja, and CoffeeScript opens up even more ways of accomplishing that (and more ways to abuse it, of course...).</li>
 </ul>
-
-
 <p>Lets now instead touch on the more interesting subject of why <strong>not</strong> to use it!</p>
-
-
 <ul>
 <li>It requires <strong>new tools</strong>. This isn't necessarily a big problem, as many of the popular editors out there have plugins for CoffeeScript already. But finding and installing that plugin is a hoop you have to jump through, and if you're not using one of the editors with a plugin available, you have to invest the time to learn a new editor (which you probably should be doing anyway, as you're likely using an editor without a plugin API).&nbsp;</li>
 <li>It introduced a <strong>new step in the build process</strong>, as the code has to be compiled to JavaScript before it is used (at least for now, see the last bullet below). This is pretty trivial once you set it up to autocompile whenever the CoffeeScript file is saved, but that initial setup still has to be done.</li>
 <li>It is a <strong>threshold in any collaboration project</strong>, which most projects are. Even though, for an experienced JavaScript programmer, grokking CoffeeScript can be done in a few hours, it is a few hours that every non-CoffeeScript developer has to invest before he or she can contribute to the code. This will have a serious impact on the amount of people ending up actually contributing.&nbsp;</li>
 <li>For runtime errors, you'll get <strong>linenumbers referencing the generated JavaScript</strong>. Mostly you'll immediately know where in the CoffeeScript code the bug is located, but when you don't it is a real drag: you have to open the generated file, find the line, deduce from the context what CoffeeScript function this correlates to, then find that corresponding section in the CoffeeScript file and fix the error. There are projects in the work to mitigate this (CoffeeScript execution is coming to Firefox, and already present in Rails), but at the time of writing it remains a very real problem.</li>
 </ul>
-
-
 <p>Whether the pros outweigh the cons is of course heavily situational, depending both on the individuals and the project.&nbsp;</p>
-
-
 <p>&nbsp;</p>
-
-
 <ul>
 </ul>
-
-
 <h2>Who is CoffeeScript for?</h2>
-
-
 <p>To me, the answer to this question is very short: it is for <strong>someone who already knows JavaScript</strong>, and preferrably knows it rather well. Two reasons for this:</p>
-
-
 <ol>
 <li>If you only know CoffeeScript but not JavaScript (although obviously knowledge in one will spill over to the other), you are very limited in finding use for your services.</li>
 <li>Someone who is already well versed in JavaScript is also equally familiar with its downsides. He or she will therefore understand the point of CoffeeScript, and be able to use its strengths even better.</li>
 </ol>
-
-
 <p>If you're looking to get into web development, CoffeeScript (in my humble opinion) is not a good place to start. Learn JavaScript the traditional way, and when you know it well enough to be annoyed by the verbose syntax (and have thought through the pros &amp; cons above), adopt CoffeeScript!</p>
-
-
 <p>&nbsp;</p>
-
-
 <p><span style="font-size: 20px; font-weight: bold;">How is CoffeeScript used?</span></p>
-
-
 <p>The primary resource for learning CoffeeScript is definitely the excellent&nbsp;<a href="http://jashkenas.github.com/coffee-script/">official homepage</a>, which is a testimony to good web design. Apart from a very accessible documentation it also has an interactive console, where you can type CoffeeScript code, see the generated JavaScript in real time, and execute it to see the result. The code examples in the documentation uses the same functionality, enabling you to toy around with it for easy understanding.</p>
-
-
 <p>That said, there are several other good resources for learning CoffeeScript. I've done an inventory below, split into various categories depending on their media.</p>
-
-
 <h3>Books</h3>
-
-
 <h3><span style="font-size: 13px; font-weight: normal;">First and foremost we have&nbsp;</span><a href="http://coffeescript-book.com/" style="font-size: 13px; font-weight: normal;">CoffeeScript - accelerated JavaScript development</a><span style="font-size: 13px; font-weight: normal;">&nbsp;by Trevor Burnham was my foremost resource when learning the language. It is published by Pragmatic Programmers, available as both paper book and ebook. Normally, when a book is published on something that has just recently been made available (or, as in CoffeeScript's case, reached critical popularity mass), you'd expect a greedy rush-job. This is not the case here, and it is evident that Trevor has lovingly crafted the book over a length of time. The book assumes previous familiarity with JavaScript, and so focuses on CoffeeScript's additions.</span></h3>
-
-
 <p><span style="font-size: 13px; font-weight: normal;">One of my favourite JavaScript books for beginners is the free online book&nbsp;</span><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a>&nbsp;by Marijn Haverbeke (recently also made available in an edited&nbsp;<a href="http://www.amazon.com/Eloquent-JavaScript-Marijn-Haverbeke/dp/1593272820">paper&nbsp;version</a>). He made this available to the public domain, which enabled E. Hoigaard to "port" the book to CoffeeScript, resulting in&nbsp;<a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a>. His book retains the charm and razor-sharp teaching skills from its predecessor, successfully translated to CoffeeScript's concepts. Do note, however, that both books also teach basic programming at the same time, so Smooth CoffeeScript is not just a dedicated syntax-learning resource.</p>
-
-
 <p>The two now mentioned books stand apart in regards to scope and author-spent time, but there are a few more books I'd like to mention. First off we have <a href="http://arcturo.com/library/coffeescript/">Little book on CoffeeScript</a>&nbsp;by Alex MacCaw. It is not as meaty as the others, but very succinct and to-the-point. He also employs a very neat function where, for all CoffeScript code examples, you can see the corresponding JavaScript (by clicking the small grey square in the top-right corner). Alex also adopts the neat new trend of housing the book's code at Github, enabling readers to quickly make pull requests to fix errata.</p>
-
-
 <p>Finally we have the community-driven&nbsp;<a href="http://coffeescriptcookbook.com/">CoffeeScript Cookbook</a>, also on Github. As the title implies it is not a narrative book as such, but a recipe collection of CoffeeScript snippets. However it is still worth checking out, and I really like the collaboration initiative (although so far, my contribution is limited to removing a few unnecessary invocation parens).</p>
-
-
 <h3>Screencasts</h3>
-
-
 <p>I cannot not have the <a href="http://peepcode.com/products/coffeescript">Peepcode CoffeeScript screencast</a>&nbsp;on top here. It is a commercial product ($12), but well worth the price. Sometimes, with professionally created teaching products, I find that the money is spent more on superficial production values than anything else, but this is not the case here - although it is a very polished product, it is evident that it is also very well though-ought, and that a lot of testing and planning has foregone the recording. Heartily recommended! You'll also learn some Jasmine unit testing at the same time, just for good measures! There are some&nbsp;teasers on their supporting&nbsp;<a href="http://peepcode.com/blog/2011/coffeescript-in-motion">blog post</a>&nbsp;(which is also well worth reading).</p>
-
-
 <p>There is a really good&nbsp;<a href="http://screencasts.org/episodes/introduction-to-coffeescript">introduction to CoffeeScript</a>&nbsp;18-minute video at <a href="http://screencasts.org">screencasts.org</a>&nbsp;(who also have a lot of other high-quality web-related content). Extensive transcript is included, which is something I appreciate. The title is apt, meaning it is an introduction and not a full coverage, but as a starting point it serves it's purpose very well, and it does manage to touch on mostly all important concepts.</p>
-
-
 <p>If you (like many CoffeeScript adopters) come from a Rails background, there is a good 11-minute episode on <a href="http://railscasts.com/">Railscast</a> about <a href="http://railscasts.com/episodes/267-coffeescript-basics">CoffeeScript basics</a>. Rails knowledge is not mandatory, though, as the video focuses on a walkthrough of a conversion of a JavaScript code to CoffeeScript, explaining the concepts in the process. There are some extensive written-out shownotes <a href="http://asciicasts.com/episodes/267-coffeescript-basics">here</a>. The video gets extra credits from me for the hands-on approach - the teaching while translating concept works really well!</p>
-
-
 <p>Charles MaxWood at&nbsp;<a href="http://teachmetocode.com/">TeachMeToCode</a> has done an episode called <a href="http://teachmetocode.com/screencasts/coffeescript-basics-a-teach-me-to-code-tutorial/">CoffeeScript basics</a>, which is a nice, slow-paced walk through how to get started. If you don't want to download the video, it is also available on youtube <a href="http://www.youtube.com/watch?v=fvsKkwbhfs8">here</a>. As the other TMTC videos, it is done in a "live" setting where we see Charles hacking away in the editor. The style is not for all, but for someone who is dipping their first toe into the coffee and want to hear the thoughts of someone else doing the same thing, it is spot on.</p>
-
-
 <p>The same guys later followed up with another CoffeeScript episode called <a href="http://teachmetocode.com/screencasts/coffeescript-the-cool-parts/">CoffeeScript - the Cool Parts</a>, which is more or less a continuation of the first video. It is done in exactly the same style, but moves on to the more advanced concepts (mainly inheritance). This episode is <a href="http://www.youtube.com/watch?v=43P0kWswWWI">available on youtube too</a>.</p>
-
-
 <h3>Tutorials</h3>
-
-
 <p>If you prefer to do your learning through more static means, here follows a few articles on CoffeeScript. First out is the&nbsp;<a href="http://net.tutsplus.com/tutorials/javascript-ajax/rocking-out-with-coffeescript/">Rocking out with CoffeeScript</a>&nbsp;on the <a href="http://net.tutsplus.com/">net</a> section (well worth exploring) of <a href="http://tutsplus.com/">tutsplus</a>. It is from late 2010, so there are a few things missing (classes). Still, CoffeeScript has been very stable since then, so what's there is all up to date. The article is also very well written - assuming no prior knowledge, it immediately gives you a context, a pro-con discussion, and then delves into the details to be put into that context. Well done.</p>
-
-
 <p>Stefan Buhrmeister wrote a short but sweet piece on <a href="http://buhrmi.tumblr.com/post/5371876452/how-coffeescript-makes-jquery-more-fun-than-ever">How CoffeeScript makes jQuery more fun than ever</a>. It is a pretty "standard" CoffeeScript quicklook, but also making the point of how integrating JavaScript libraries such as jQuery is no problem. He also manages to highlight how CoffeeScript makes some aspects of jQuery (iterations, callbacks) just plain beautiful.&nbsp;</p>
-
-
 <p><a href="http://elegantcode.com/">ElegantCode</a> has a nice tutorial series by Jan Van Ryswyck titled&nbsp;<a href="http://elegantcode.com/2011/06/21/exploring-coffeescript-part-1-and-then-there-was-coffee/">Exploring CoffeeScript</a>. They start at the very beginning with installing it, and then holds your hand through getting over the initial threshold. Be sure not to miss the later installments, as they are not linked from the first post!&nbsp;</p>
-
-
 <p>For a quick overview, there is a neat article on <a href="http://javascriptatoms.com/">JavaScriptAtoms</a> called <a href="http://javascriptatoms.com/2011/05/coffeescript-the-other-javascript/">CoffeeScript - the other JavaScript</a>. It's not a language primer, but gives you the context and an idea on what CoffeeScript is all about.</p>
-
-
 <h3>Slides</h3>
-
-
 <p>I'm not a fan of digesting slides without the accompanying talk, but I've found a couple that can stand somewhat well on their own legs, if you want a lightning-fast powerpointy CoffeeScript fix. First off we have <a href="http://yobriefca.se/blog/2011/10/10/coffeescript-the-awesome-talk/">CoffeeScript the Awesome</a>&nbsp;by James Hughes, which quickly walks through the various syntactic sugars by peppering you with bi-JavaScript-CoffeeScript code examples. James finishes up by offering some tips for using CoffeeScript in a .NET environment.</p>
-
-
 <p>Jacques Crocker made a <a href="http://coffeescript-seattlejs.heroku.com/#1">really neat in-browser presentation</a> for SeattleJS (navigate using the arrow keys). Again we see the various features demonstrated through code examples, but they are well chosen and crafted, and you very quickly get a feel for the language. Also, the programming behind the presentation itself is pretty impressive.</p>
-
-
 <h3>Twitter</h3>
-
-
 <p>If found it useful to follow the following two Twitter accounts. First off <a href="http://twitter.com/#!/coffeescript">@CoffeeScript</a>, which is the official account. It is run by Trevor Burnham, author of the book. He is really fast at replying, and - needless to say - knows what he is talking about, so this feed is a great resource when you get stumped while coding. Of course, it is also a good way to keep up to date with what's going on in the CoffeeScript world.</p>
-
-
 <p>Another good resource for that is <a href="http://twitter.com/#!/coffeescript_m8">@CoffeeScript_m8</a>. They are very quick to pick up and tweetlink to new CoffeeScript-related content popping up, and indeed claim that "Follow us, and you won't miss a thing about CoffeeScript!".</p>
-
-
 <h3>Communities</h3>
-
-
 <p>On&nbsp;<a href="http://stackoverflow.com/">StackOverflow</a>, putting the <a href="http://stackoverflow.com/questions/tagged/coffeescript">CoffeScript tag</a> on your question will quickly give you a slew of answers. Trevor Burnham is pretty active here too, and in general the responses given seem to be of very high quality.</p>
-
-
 <p>There are also quite a lot of interesting related content on the <a href="http://www.quora.com/CoffeeScript">CoffeeScript section</a> of <a href="http://www.quora.com/CoffeeScript">Quora.com</a>. Unlike StackOverflow this is not a place for help with code matters, but deals more with higher level discussion. Thus you'll find questions like "what are the disadvantages of using coffeescript", "what kinds of programmer are more likely to use coffeescript over javascript", etc.</p>
-
-
 <p>You'll also find quite a bit of life in the <a href="https://groups.google.com/forum/#!forum/coffeescript">CoffeeScript google group</a>, both troubleshooting and news relays.&nbsp;</p>
-
-
 <h3>Other resources</h3>
-
-
 <p>As stated initially, the official homepage is the best and quickest way if you just want to try your hand at some CoffeeScript hacking. However, if you're using the excellent <a href="http://jsfiddle.net/">JSFiddle</a>, it might be good to know that they have added CoffeeScript support (albeight a bit hidden: open the Panels panel and change JavaScript to CoffeScript in the dropdown). As JSFiddle can persist code this is a good way of sharing CoffeeScript snippets, if you don't want to create a github gist.</p>
-
-
 <p>The <a href="http://ace.ajax.org/">web-based Ace editor</a> (formerly Bespin) also has syntax highlighting for CoffeeScript.</p>
-
-
 <p>If you're using Firefox and Firebug, you'd do well to check out the&nbsp;<a href="https://addons.mozilla.org/en-US/firefox/addon/acebug/">Acebug addon</a>. Among other things, it gives you CoffeeScript straight in the console!</p>
-
-
 <p>There is an excellent&nbsp;<a href="https://github.com/jashkenas/coffee-script-tmbundle">CoffeeScript bundle</a> available for the TextMate editor, maintained by mr Ashkenas himself. If you're using TextMate, picking this up is a no-brainer. You get syntax highlighting, a runtime environment, and can quickly inspect the generated JavaScript. For plugins to other editors, see the <a href="https://github.com/jashkenas/coffee-script/wiki/Text-editor-plugins">list in the wiki</a> of the official coffeescript page.</p>
-
-
 <p>While not a learning resource, the <a href="http://coffeekup.org/">CoffeeKup project</a>&nbsp;(also see readme file <a href="https://github.com/mauricemach/coffeekup#readme">here</a>) is well worth checking out; It lets you declare your markup in CoffeeScript! Sounds weird, and it is, but it is surprisingly elegant, and it lets you do content and behaviour with one single language. There has been similar attempts in JavaScript, but due to the verboseness of that language, the result was always even clunkier than html. Now, with CoffeeScript, the idea works!</p>
-
 ]]></content>
   </entry>
   

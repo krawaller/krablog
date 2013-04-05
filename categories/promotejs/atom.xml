@@ -4,7 +4,7 @@
   <title><![CDATA[Category: promotejs | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/promotejs/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,16 +19,9 @@
     <updated>2010-10-04T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/jumping-onto-the-promotejs-bandwagon</id>
     <content type="html"><![CDATA[<p><a href="https://developer.mozilla.org/en/JavaScript/Guide" title="How To Learn JS"> [[posterous-content:yzzyDEmfqhmImtcloBJs]] </a></p>
-
-
 <p>The <a href="http://promotejs.com/">PromoteJS</a> project strives to make a web search for JavaScript documentation yield better results than snippets from '95 full of bad advice, and W3Schools syntax definitions void of explanation. This is done through promoting <a href="https://developer.mozilla.org/en/javascript">Mozilla Development Center</a>'s splendid<a href="https://developer.mozilla.org/en/javascript"> JavaScript documentation</a>.</p>
-
-
 <p>It's a fair guess that the readers of this blog already know all about this stuff (if not, go read Christian Heilmann's <a href="http://www.wait-till-i.com/2010/09/26/promote-better-javascript-documentation-with-promotejs/">excellent explanation</a>), so we shall not waste time preaching to the choir but simply do our bit for the SEO lobbying and link to the Mozilla documentation for <a href="https://developer.mozilla.org/en/javascript">JavaScript</a>,&nbsp;<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">Function</a>, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array">Array</a> &amp; <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object">Object</a>.</p>
-
-
 <p>PS: If you haven't already made yourself at home at the MDC site, do! The JavaScript documentation isn't the only worthwhile thing there, they have plenty of tutorials and posts with high quality throughout.</p>
-
 ]]></content>
   </entry>
   

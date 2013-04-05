@@ -4,7 +4,7 @@
   <title><![CDATA[Category: txtv | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/txtv/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,121 +19,48 @@
     <updated>2010-01-28T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/html5-vs-objective-c-round-1</id>
     <content type="html"><![CDATA[<p>Welcome to this <strong>series of serious mobile web development</strong>. Here I'll most humbly guide you through some of my recent projects and show you just how much ass HTML5 and JavaScript (and sometimes frameworks like Titanium Mobile) may kick if handled correctly.</p>
-
-
 <p>All the code will be hosted on <a href="http://github.com/litenjacob/txtv" title="my github">my github</a> and openly licensed. Since I'm a restless soul and my head nearly bursts of all the ideas I'd like to realize, I'll sometimes give you, dear reader, exercises to fork and enhance my projects when I move on. 'nuff said, let's get started.</p>
-
-
 <p><span style="font-size: large;">This week's challenge:</span></p>
-
-
 <blockquote class="posterous_short_quote">
 <p>One-upping one of the most popular iPhone apps in Sweden in less than a days worth of development</p>
 </blockquote>
-
-
 <p>"Which one might it be?" you ask. GTA Chinatown Wars? Nah... sorry to let you down, but it's not. We have to start this series somewhere, though, so let's one-up the Teletext-reader TextTV, which is currently at place 13 among the Top Paid Apps.</p>
-
-
 <p>For all impatient coders, here's the obligatory <a href="http://bit.ly/texttv" title="txtv">demo</a>, working in iPhone, Safari 4 and Chrome. Enjoy it, and then come back for the rest of the post too, pretty please!</p>
-
-
 <p> </p>
-
-
 <p>Let's be honest and realize that it's impossible to beat the TextTV app on all points in this short amount of time. I'm sure there are at least a few hundred hours behind it, and it supports a wide range of channels, all with their own web implementation. The point here, however, is that we'll have our prototype up and running in a day, and there's really nothing the TextTV app can do that we couldn't match or enhance.</p>
-
-
 <p>To stand any chance at acheiving these challenges, it's crucial to have a thorough toolbox with the latest tools. I'll be using:</p>
-
-
 <ul>
 <li>jQuery 1.4</li>
 <li>Titanium Mobile</li>
 <li>other fellow web developer's frameworks and snippets as seem fit</li>
 </ul>
-
-
 <p>Let's start with the markup</p>
-
-
 <p><span style="font-size: large;">Markup</span></p>
-
-
 <p><script src="https://gist.github.com/288624.js?file=index.html"></script></p>
-
-
 <p>Ok. So lets dissect it. Did you notice the doctype? Take a look. Yes go on!</p>
-
-
 <p><span style="font-size: medium;">HTML5</span></p>
-
-
 <p>Was your first thought "This dude doesn't even know how to copy and paste a valid doctype"?<br />Well, it <strong>is</strong> valid. Welcome to HTML5 - leaner and meaner in every way. I'll be sprinkling more tips and tricks all over this blog, so keep your eyes open.</p>
-
-
 <p><span style="font-size: medium;">Manifest</span></p>
-
-
 <p>Did you spot the weird attribute on the html tag as well? That's a cache manifest, my friend. It's a plain text file containing paths to which files may be cached, and which must not. When a supporting browser encouters this attribute, it downloads and caches the specified files. Using this and the html5 database or localStorage, we can create <strong>web apps</strong> <strong>that functions without</strong> <strong>connectivity</strong>. Now this might sound like an oxymoron, but think about the possibilities. We can create apps that caches the users interactions while offline, and then sync them to the server once online.</p>
-
-
 <p>The manifest in action looks something like this:</p>
-
-
 <p><script src="https://gist.github.com/288624.js?file=txtv.manifest"></script></p>
-
-
 <p>It tells the browser to cache all assets neccessary to start the app, but keep away from the API endpoint. Wanna read more? Checkout <a href="https://developer.mozilla.org/En/Offline_resources_in_Firefox" title="Cache Manifest">mozillas documentation</a>. And for the love of good, do serve the cache manifest with a mime type of <code>text/cache-manifest </code>or your browser will either cry out in pain or just do nothing.</p>
-
-
 <p><span style="font-size: medium;">Web app tags</span></p>
-
-
 <p>Worth noting is also the iPhone-specific meta and link tags in the markup. These help you create web apps that are quite native looking. They let us get rid of all the ugly bars and also lets us specify a nice icon for our webapp.</p>
-
-
 <p> </p>
-
-
 <p>What more? Well, then there's the simple markup to hold the teletext pages, the pagenumber input and the install webapp notice, and that's pretty much all there is to it. We're going to create the rest of the markup we need on the fly and fill it with the teletext pages. Ready for some code? Well, you'd better :)</p>
-
-
 <p><span style="font-size: large;">Code</span></p>
-
-
 <p>As this is my first post, and I realized that I wanted to write about it after I wrote the app, I'll just flesh it out here for you to dissect. In the upcoming posts, I'm intending to be more pedagogical and let you follow me on a codeful journey à la 'A christmas carol' and show you just how the rabbit hole is dug. But this time, I'll let you do your thing. The code is quite readable, following the singleton pattern. There are sub objects regarding initializing, touch handling, page handling and pagenum handling.</p>
-
-
 <p>You'll see som weird -webkit-prefixed CSS properties. These are responsible for the fluid animations using <a href="http://vision-media.ca/resources/css/css-transformations-animations-and-transitions-examples" title="CSS Transitions">CSS Transitions</a>. The iPhone is a powerful device being a diminutive phone, but its performance fades when compared to full fledged computers. This makes javascript execution slower, so we need to take care of our cycles. Luckliy, Apple has pioneered CSS Transitions and CSS Animations, and made them hardware accelerated. This makes the iPhone capable of handling otherwise impossible feats.</p>
-
-
 <p><script src="https://gist.github.com/288624.js?file=txtv.js"></script></p>
-
-
 <p>You've read each single character now, right ;)</p>
-
-
 <p><span style="font-size: medium;">CSS</span></p>
-
-
 <p>The only thing noteworthy in the CSS are pretty much the webkit-specific parts, like the part on line 33 - 36 which are responsible for the smooth transitions.</p>
-
-
 <p><script src="https://gist.github.com/288624.js?file=txtv.css"></script></p>
-
-
 <p><span style="font-size: large;">Demo</span></p>
-
-
 <p><span style="font-size: large;"><span style="font-size: small;">Hit <a href="http://bit.ly/texttv" title="txtv">http://bit.ly/texttv</a> with your iPhone or a recent webkit browser like Safari 4 or Chrome and play around. Notice that you can press the pagenumber up left and change page. To navigate between pages you swipe up and down, and to reach subpages you swipe left and right. Pretty sweet, hey?! Did I even come close to achieving the challenge of beating the TextTV app? If not, why and how should it be done?<br /></span></span></p>
-
-
 <p><span style="font-size: large;"><span style="font-size: small;">Please bear with me as i find the right way to go along with this blog, and do come with comments and questions!</span></span></p>
-
-
 <p><span style="font-size: large;"><span style="font-size: small;">Now, my head is already bursting with the next idea :)<br /></span></span></p>
-
 ]]></content>
   </entry>
   

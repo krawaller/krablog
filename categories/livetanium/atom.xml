@@ -4,7 +4,7 @@
   <title><![CDATA[Category: livetanium | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/livetanium/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,16 +19,9 @@
     <updated>2010-12-01T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/livetanium</id>
     <content type="html"><![CDATA[<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
-
-
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>
-
-
 <p>Made out of titanium, nodejs and unicorns, our Livetanium library lets you code Titanium Mobile apps and see changes in realtime. It uses a nodejs server to pipe filechanges to the app, and these changes are applied in realtime. It's iPhone only at the moment, but works in both the simulator and on the actual device. You can <a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough">see a quick walkthrough here </a>or check out <a href="https://github.com/krawaller/Titanium-Tools/tree/master/Resources/tools/livetanium/" title="Livetanium source code">the source</a>.</p>
-
-
 <p>Please try it out and let us know what you think!</p>
-
 ]]></content>
   </entry>
   

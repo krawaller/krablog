@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RIA_university_course | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/ria-university-course/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,20 +19,10 @@
     <updated>2010-02-06T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/advanced-javascript-in-academia-killing-my-da</id>
     <content type="html"><![CDATA[<p><span style="">In a </span><span style=""><a href="http://blog.krawaller.se/advanced-javascript-in-academia-developing-a">previous post</a></span><span style="">, I described the raison d’être for a new course in Advanced JavaScript at Linnaeus University,  Sweden. As a quick synopsis, suffice to say that there simply isn’t any course at all (in Sweden at least) teaching any front-end theory from this side of the Ajax revolution, it’s all framesets and DHTML. Linnaeus University, recognising both the demand and lack of supply, wanted to bridge the void, and I hijacked that task.</span></p>
-
-
 <p><span style="">Enough about the why, now onto the what! An academic to the bone, my interest in JavaScript is of a very nerdy nature. I love delving into the intricacies of the language’s esoteric aspects, without much thought or care for their practical applications. <a href="http://www.danwebb.net/">Dan Webb’s</a> chapter on metaprogramming in <a href="http://www.sitepoint.com/books/jsdesign1/">The Art &amp; Science of JavaScript</a> made my heart sing, I found <a href="http://smokejumperit.com/">Robert Fishers</a> red pill functional programming article in <a href="http://www.jsmag.com/main.issues.description/id=1/">jsmag #1</a> to be truly beautiful, and Crockfords article about <a href="http://javascript.crockford.com/little.html">the little JavaScripter</a> sent me on a month-long recursive adventure through all <a href="http://www.amazon.com/Little-Schemer-Daniel-P-Friedman/dp/0262560992/">three</a> <a href="http://www.amazon.com/Seasoned-Schemer-Daniel-P-Friedman/dp/026256100X/">schemer</a> <a href="http://www.amazon.com/Reasoned-Schemer-Daniel-P-Friedman/dp/0262562146/">books</a>. That’s the flavour of the knowledge I initially planned to share in the course.</span></p>
-
-
 <p><span style="">Fortunately, my contact at Linnaeus was of a more practical nature, realising the importance of matching the needs of (to-be) professional RIA developers. My initial package of advanced JavaScript might help you to ace <a href="http://dmitry.baranovskiy.com/post/91403200">Baranovskiys JavaScript quiz</a> (although maybe not quite as well as <a href="http://www.nczonline.net/blog/2010/01/26/answering-baranovskiys-javascript-quiz/">Zakas did</a>), but when tasked with something actually useful like, say, recreating an Objective-C iPhone app using JavaScript, my exact understanding of obscure closure behaviours won’t be of much aid.</span></p>
-
-
 <p><span style="">Thus wisened up, I set out to take a more practical approach. Well aware of my lack of experience in the “real world” of web development, I went on a parasitic mission to leech the knowledge of the people in the trenches – people who value knowledge from its practical use, and not its obscureness. I talked to a lot of developers (many thanks here goes to the Öresund JavaScript meetup), read up on the upcoming platforms where JavaScript would be applicable, and distilled forth a toolkit that I hope will actually prove useful.</span></p>
-
-
 <p><span style="">Since my target audience for the course are students taking the third year of the web programming programme, I can thankfully presume the existence of all mundane knowledge (OOP, basic JS, HTML, CSS, UML, etc), and focus solely on the weapons of a JavaScript RIA Ninja. This is the recipe we ended up with for the course:</span></p>
-
-
 <ol>
 <li>First up we define our <strong style="">developing environment</strong>. We look at editors and what we should demand of them (Aptana), at browsers and testing tools (Firebug), version control solutions (Git &amp; Github), filesharing (Dropbox), tidbit sharing (JSBin). I also found some excuse to fit <a href="http://www.jslint.com">JSLint</a> into this part.</li>
 <li>We then deliver some <strong style="">advanced JavaScript concepts</strong>, but confined to what you need for code organisation and reuse. Mostly this consists of making the students read <a href="http://oreilly.com/catalog/9780596517748">The Good Parts</a> and traverse through <a href="http://ejohn.org/apps/learn">Resigs learn app</a>.</li>
@@ -43,13 +33,8 @@
 <li>Next comes a <strong style="">porting</strong> step, where we underline the importance of JavaScript knowledge through making the students adapt their application to a different platform. Having used the best practices outlined above, they shouldn’t have much trouble redeploying to another JavaScript environment.</li>
 <li>Finally we’ll give them a throgough run in <strong style="">optimization</strong>, something the first two years of our training haven’t really given much attention to. We’ll cover all the bases here, meaning the full JavaScript half of Souders’ excellent <a href="http://oreilly.com/catalog/9780596522308/">Even Faster Websites</a>.</li>
 </ol>
-
-
 <p><span style="">The journey is now well underway, with the students having reached steps 3-5. In spite of the contents having received the blessing from many a talented veteran developer, I do have some fear of the blind-leading-blinds thing biting us later on. But, so far so good! I hope to share a progress report here as we’ve rappelled a bit deeper down the rabbit hole...</span></p>
-
-
 <p> </p>
-
 ]]></content>
   </entry>
   
@@ -59,36 +44,17 @@
     <updated>2010-01-30T00:00:00+01:00</updated>
     <id>http://krawaller.github.com/krablog/advanced-javascript-in-academia-developing-a</id>
     <content type="html"><![CDATA[<p>This post details the inception of a newly started course in Advanced JavaScript at Linnaeus University in the city of Kalmar, Sweden. I hope to follow this up with more posts detailing the journey of trying to wedge the RIA revolution into the conservative world of academia!</p>
-
-
 <p>As all us Crockford fanboys and Ajaxian hangarounds are well aware, JavaScript has had an amazing renaissance the last few years, riding the Ajax wave to unforeseen fame and glory. Suddenly we find ourselves constructing fully fledged RIA:s using the same tool that was previously deemed capable only of minor website spiceups (and even that only when a Flash developer couldn't be found or bothered).</p>
-
-
 <p><img src="http://lnu.se/img/logo_symbol.png" alt="Linnaeus University" /> <img src="http://lnu.se/img/logo_en.png" alt="Linnaeus University" /></p>
-
-
 <p>Last spring, I completed a 2-year university education in web programming at the Linnaeus University in Kalmar. In contrast to most other academic institutions, Kalmar (or at least the web development department) has managed to stay on the rapidly moving cutting edge. Thus we were always up to date with the latest and greatest toys, for example<span> 
 
 </span>being taught Silverlight and .NET MVC shortly after their release. All in all, I've been extremely pleased with the education, and being kicked out the door I felt well prepared to take on whatever web-related challenges were coming.</p>
-
-
 <p>Like almost all web educations, however, it was heavily geared towards the server side of things. Which was useful and fun, to be sure, but for me C# and PHP both paled in comparison to the quicksilvery beauty of JavaScript. Maybe teaching mathematics as a dayjob has made me more susceptible to that sort of thing, I don't know, but somehow JavaScript's expressionistic quality, naked logic and formability (for lack of a better word) really struck a chord in me. I was in love!</p>
-
-
 <p>The Kalmar web education has an optional third year where you have quite a bit of freedom in choosing what to dive into, the idea of course being allowing you find your niche in the surprisingly broad world of web work. Due to the previously mentioned JavaScript affliction I contracted during my two years, I wanted to dig deeper into that. And so I set out to try to find courses teaching advanced JavaScript. Kalmar didn't have any, but no matter, I thought – since I study over the internet anyway, if I could find a suitable course at any of the swedish universities, it could count towards my third year degree in Kalmar.</p>
-
-
 <p>But, I found absolutely <strong>nothing</strong>. It turns out we'd been really spoiled in Kalmar, and being up to date is not something you can take for granted in a university education. Who knew? Not even in the ever changing landscape of web development, where knowledge grows stale with eerie speed. I found umpteen courses teaching "DHTML", using literature published in 2001, but absolutely nothing trying to sell JavaScript as anything else than a somewhat useful compliment to HTML.</p>
-
-
 <p>I needed my JavaScript fix desperately, but there really was no course to be found. There was plenty of advanced courses in the server side realm, but none that let me embark on JavaScript adventures like the one my brother just posted about. So what's a guy to do? As it turned out, the solution was in a contemporary problem of mine; I hadn't finished (or started) my final exam project, in big part due to not finding an idea tasty enough to sink my teeth into. So I ended up creating my dream course myself, as my exam project. Suddenly spending evenings and nights (re)reading Secrets of the JavaScript Ninja, Object Oriented JavaScript, JavaScript Design Patterns, uncountable blogs and source codes, etc etc etc, was not slacking about, but doing my job!</p>
-
-
 <p>The result of those evenings is a new course titled "RIA-utveckling med JavaScript", translating to "Developing RIA with JavaScript". The maiden journey started a few weeks back, embarked on by ten brave students all doing the optional third year of the Linnaeus University Web Programming education.</p>
-
-
 <p>In a following post I'll outline the content of the course, and talk a bit about how we arrived at the particular recipe used.</p>
-
 ]]></content>
   </entry>
   

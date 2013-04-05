@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mobilesafari | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/mobilesafari/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-02-27T08:26:19+01:00</updated>
+  <updated>2013-04-05T13:35:32+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -19,49 +19,20 @@
     <updated>2010-07-31T00:00:00+02:00</updated>
     <id>http://krawaller.github.com/krablog/pretty-search-for-mobile-safari-0</id>
     <content type="html"><![CDATA[<p>Hey folks!</p>
-
-
 <p>We got tired of not having any decent Page Search in iOS, so we did what any programmer with self-esteem and too much time would do, and wrote a bookmarklet to overcome this shortcoming. It's still an early release, but it seem to be working, knock on wood.</p>
-
-
 <p>[[posterous-content:omebqIafCugpzgipisuA]]</p>
-
-
 <p><span style="font-size: medium;">Get it</span></p>
-
-
 <p>Please try it out by hitting <a href="http://79.99.1.153/prettySearch.js/demo.html">this page</a> and follow the instructions. Unfortunately we cannot programmatically add bookmarks, so you'll have to jump through some hoops. Curious? Feel free to have a look at the source code repository <a href="http://github.com/krawaller/prettySearch.js">here</a>.</p>
-
-
 <p>&nbsp;</p>
-
-
 <p><span style="font-size: medium;">What it does</span></p>
-
-
 <p>This is a bookmarklet for iOS devices which lets you search the current page using a search string or a Regular Expression. It highlights the matches and lets you jump between them, and the bar follows you around the page. Also, the search is carried out asynchronously, so your browser won't freeze. On top of this, it uses a new nifty caching system to work instantenously, even when offline, yet it is automatically updated whenever a new version is released.</p>
-
-
 <p>&nbsp;</p>
-
-
 <p><span style="font-size: medium;">How it does it</span></p>
-
-
 <p>An interesting point in the creation of this bookmarklet was that we developed a brand new way of handling bookmarklet resources caching and auto-updating. The solution is pretty cool if I may say so myself. It relies upon some new HTML5 features - namely window.postMessage and Cache Manifests. What we do is the following:</p>
-
-
 <p>When the user taps the bookmarklet, it creates a hidden iFrame pointing to our cache, <a href="http://79.99.1.153/prettySearch.js/cache.html.php">http://79.99.1.153/prettySearch.js/cache.html.php</a>. This file is dynamically generated to contain all the bookmarklet's resources as embedded non-active script tags, and since the file has an accompanying Cache Manifest (which is also dynamically updated whenever any of our resources are updated) it is saved on your device. So when we load it, it loads from the local cache. If the device is online, it also checks if the Cache Manifest is updated, and only if it is it updates the cache. When the cache file is done loading in its iFrame, it uses window.postMessage to send the resources over to its parent - the page you're currently visiting and would like to search.</p>
-
-
 <p>This setup means that our bookmarklet only needs to contain the code to bootstrap the iFrame and evaluate its resources. Also, these are loaded instantly from the local cache, and then we automatically check if the cache needs to be updated and does so if applicable. This check only occurs if the device is online, so otherwise it will just happily execute the bookmarklet from cache even when you're offline.</p>
-
-
 <p>I'll probably write another post about this later on. I think it's a pretty nice hack and I haven't really found any disadvantages yet. Please ping me if you do!</p>
-
-
 <p>&nbsp;</p>
-
 ]]></content>
   </entry>
   
