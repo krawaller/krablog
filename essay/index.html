@@ -9,7 +9,19 @@
   <meta name="author" content="Krawaller">
 
   
-  <meta name="description" content="Essay Apr 5th, 2013 Testing testing Apr 5th, 2013 Tweet Recent Posts Testing Backbone Objects Slides form SFIS talk October 2012 Software Passion &hellip;">
+  <meta name="description" content="Essay Apr 5th, 2013 Testing testing Some inline maths: $ \frac{x}{2} Some JavaScript: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+var AddRecipeView = Backbone.View. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +95,46 @@
   </header>
   
   <h2 id="testing-testing">Testing testing</h2>
+
+<p>Some inline maths: $ \frac{x}{2}</p>
+
+<p>Some JavaScript:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">AddRecipeView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DishModel</span><span class="p">();</span>
+</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+</span><span class="line">      <span class="c1">// Listen to model validation errors</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderErrors</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkErrorField</span><span class="p">)</span>
+</span><span class="line">  <span class="p">},</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// ...rest of functionality edited out...</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Some CoffeeScript:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">fun = </span><span class="nf">(arr)-&gt;</span>
+</span><span class="line">	<span class="p">[</span><span class="nx">obj1</span><span class="p">,</span><span class="nx">obj2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span>
+</span><span class="line">	<span class="nx">obj1</span><span class="p">.</span><span class="nx">val</span> <span class="o">+</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">val</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
   
     <footer>
