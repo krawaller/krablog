@@ -4,7 +4,7 @@
   <title><![CDATA[Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-05T14:22:23+02:00</updated>
+  <updated>2013-04-05T14:32:13+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Essay]]></title>
+    <link href="http://krawaller.github.com/krablog/essay/"/>
+    <updated>2013-04-01T17:21:00+02:00</updated>
+    <id>http://krawaller.github.com/krablog/essay</id>
+    <content type="html"><![CDATA[<h2 id="woo">Woo!</h2>
+
+<p>Testing testing</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Testing Backbone Objects]]></title>
@@ -1008,57 +1019,6 @@ And finally we test if the two event listeners were set:
 <p>Also, again: Carcassone is a brilliant game! The application rendition really does the real-life counterpart justice. Buy it, play it, send fan-mail to the developers!&nbsp;</p>
 <ul>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Opensourcing Golingo]]></title>
-    <link href="http://krawaller.github.com/krablog/opensourcing-golingo/"/>
-    <updated>2010-05-18T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/opensourcing-golingo</id>
-    <content type="html"><![CDATA[<p>Hey folks! Thanks for sticking with us even when we&#8217;re not the fastest guys around. I&#8217;m <em>rea-he-lly</em> glad to give you this promised behind the scenes post of how Golingo came to be. In case you&#8217;ve been sleeping under a rock (without any means of browsing the intertube), here&#8217;s a quick recap for you: Golingo is our rudely addictive word game for the iPhone - it was released about a month ago, as one of the first to use the totally revised 1.0 branch of <a href="http://www.appcelerator.com">Appcelerator</a>&#8217;s <a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a>. It is currently the <strong>#1 word game</strong> in the Swedish App Store. Fun stuff!</p>
-<p>If you&#8217;re not at all interested in how to create top paid apps using only Titanium with JavaScript, HTML5 and CSS3, this post not for you. Otherwise, please go ahead!</p>
-<p>The code is hosted <strong><a href="https://github.com/krawaller/Golingo">here</a></strong> at our brand spanking new Github account. Hold your horses or check it out straight a way!</p>
-<p>[[posterous-content:pmbIdvfjEuDqxpIsAvca]]</p>
-<p>But let&#8217;s start from the beginning. Golingo was born from a thoroughly cosy word game played using Scrabble©-tiles at Café Agape in the tiny Swedish fishing village of <a href="http://www.bovallstrand.com/bovalldir-s/bilder.html">Bovall</a>. We&#8217;ve tried to create an electronic adaption that stayed true to the concept of a blazingly quick, enthralling word juggling game. But how did we do it? Come along!</p>
-<p>The first experimental version was created as part of a school project back in 2008. It wasn&#8217;t much more than a concept, but still hade multiplayer capabilities courtesy of <a href="http://orbited.org/">Orbited</a>. Back then it looked like this:</p>
-<p>[[posterous-content:wwAdaDjyktyGdmtmIFdt]]</p>
-<p>It fell out of grace in my busy brain while some other idea events bubbled up to my master node. But at the 16th of febraury this year, I coudn&#8217;t hold it back any more - I had to have a neat project to try Titanium Mobile out, and there it was in the back of my head. I pulled it out and started prototyping straight away. I&#8217;m a hands on, iterative programmer, so I quickly got some initial results looking slightly ugly, but still promising.</p>
-<p>[[posterous-content:vDfDkEfyDhHeCmjstlac]]</p>
-<p>Everything in-game is pure JavaScript, HTML5 and CSS3, which made it possible to develop the game itself in Safari, and dropping it into Titanium only when it was almost done. This was crucial to keep up the speed and sanity during development. Titanium is a great piece of software, but it doesn&#8217;t have very good debugging capabilities, especially not for webviews. And Safari/Chrome/Webkit Nightly have extremely good debugging tools for both logic (JavaScript) and presentation (HTML and CSS), so why not use them?</p>
-<p>I decided to use as many tools as possible to simplify my work, which resulted in the following toolbelt:</p>
-<ul>
-<li><a href="http://www.appcelerator.com/products/titanium-mobile-application-development/">Titanium Mobile</a></li>
-<li> <a href="http://www.w3.org/Style/CSS/current-work">CSS3</a> with <a href="http://www.webkit.org">Webkit</a> <a href="http://webkit.org/blog/324/css-animation-2/">extras</a> </li>
-<li><a href="http://www.jquery.com">jQuery 1.4.2</a></li>
-<li><a href="http://www.danwebb.net/2008/2/3/how-to-use-low-pro-for-jquery">Low Pro for jQuery</a></li>
-<li><a href="http://www.glyphish.com">Glyphish icons</a></li>
-<li><a href="http://blog.stevenlevithan.com/archives/parseuri">Uri-parser</a></li>
-<li><a href="http://www.dsso.se">Swedish word list</a></li>
-<li><a href="http://www.couchdb.org">CouchDB</a></li>
-<li><a href="http://www.nordicfactory.com/creative/illustrations/download-free-flag-set-in-png/">Flag icons</a></li>
-</ul>
-<p>In hindsight, I would probably have replaced jQuery with XUI or tailored code. jQuery is wonderful to use, but it&#8217;s a bit heavy on mobile devices both to load and during execution. However, it does save time for the developer, so it&#8217;s not a crystal clear choice. Also, make sure that you keep up with the flow of new exiting tech that might relieve your work - for example both <a href="http://www.css3please.com">css3please.com</a> and <a href="http://www.cssdesk.com">cssdesk.com</a> were release during Golingo&#8217;s development.</p>
-<p><span style="font-size: medium;">The Construction</span></p>
-<p>Most of the actual game was made in a few weeks time, but from scratch to published app it took almost six weeks of part time work. A lot of this time was spent banging my head into various walls. Again, Titanium is great, but it&#8217;s a young framework with all the kinks that follows. There has been quite a few bugs, and the documentation hasn&#8217;t always been up to date - but this is much better nowadays. What more - since most other developers are as clueless as yourself, It&#8217;s been hard finding <a href="http://developer.appcelerator.com/apidoc/mobile/latest">good resources</a> and <a href="http://developer.appcelerator.com/questions/created">getting help</a>. I did however get a trial for Appcelerator&#8217;s Premium Subscription, with 48-hours guaranteed response, and I must say it&#8217;s really good stuff. The developers themselves answers all your stupid questions and relieves most of the wall banging. If you can afford it, <a href="http://www.appcelerator.com/products/plans-pricing/">go for it</a>!</p>
-<p>By releasing the code for Golingo, we hope to relieve some of the headaches surrounding developing packaged HTML5 apps. I do not say that it&#8217;s not full of faults, because it is, but at least it is a <strong>working example</strong> full of faults. Please don&#8217;t hesitate to dig through the code to see what is going on. We believe we&#8217;ve solved some common problems that you too will run in to when using Titanium, for example transparently calling native functions from a webview (and vice versa) using callbacks and trickery. Here&#8217;s a quick recap of that:</p>
-<p><span style="font-size: medium;">Connecting Titanium Contexts</span></p>
-<p>Your Titanium application is built up of javascript files. There is a main file called app.js which is responsible for bootstrapping your applicaiton. As a matter of fact, you could actually put <strong>all </strong>your code in app.js, but that is only viable for very small apps. Therefore Golingo consists of lots of different files - pretty much one file per window and some util libraries. Whenever you open a webview or a window with a url pointing to a js file, they run their code in a new context - meaning you cannot easily communicate with app.js or any of your other windows or webviews. Or at least, you couldn&#8217;t had the brilliant minds behind Titanium not given us app-wide events. But since they are brilliant, and they do have given us app-wide events, let&#8217;s use them to let the different parts of the app communicate.</p>
-<p>A common problem with this event-driven way of programming is that you cannot pass functions transparently back and forth between contexts since the event bridge serializes all passed data. Because of this, most people have a hard time figuring out how to call a function in another context and pass the result back to a callback specified in the calling function. We use a pattern looking something like the following, where we hijack the event firing and handling functions to hack in support for transparent callbacks.</p>
-<p><script src="https://gist.github.com/403742.js"></script></p>
-<p><span style="font-size: medium;">Low Pro like a low pro</span></p>
-<p>Another nice library helping the development of Golingo is <a href="http://www.danwebb.net/">Dan Webb</a>&#8217;s <a href="http://www.danwebb.net/lowpro">Low Pro</a>. Low Pro is used to make it a breeze to attach beaviour to elements, and does it well. All our letters and boards should behave the same way, so they&#8217;re all instances of the Letter and Board classes respectively. We ended up using Low Pro in a very basic way, but it does actually have support for inheritance as well as event binding and delegation. Our code should probably be rewritten to more accurately follow Low Pro and it&#8217;s object oriented ways, but coding in a hurry sometimes results in less than perfect code. We&#8217;ll fix that as soon as there is peace on earth. Nevertheless, I get a warm feeling from being able to just write:</p>
-<p><script src="https://gist.github.com/404905.js"></script></p>
-<p><span style="font-size: medium;">Sexifying</span></p>
-<p>In Titanium, you use JavaScript to create and layout native elements and windows. This is incredibly powerful out of the box, but my feeling is that Appcelerator care more about laying the groundwork and creating the low level functions than making a sexy API. This is totally fine by me. I love that their focus means a quickly maturing API. But since I&#8217;m also all about the sexy programming, I&#8217;ve taken on the sexifying part. In Golingo, we started this journey by abstracting the menu creation somewhat. However, these we&#8217;re only the first baby steps.</p>
-<p>After finishing Golingo, I&#8217;ve been working on a few different Titanium based projects. And the more I do work with Titanium, the more I like what you can achieve, but also the less I enjoy how Titanium does it out of the box. It&#8217;s way too verbose and clumsy for my liking. Also, there is no good way of separating the layouting from the element creation. Since I love HTML and CSS, I decided to do apply them to Titanium. The result is not present in the current Golingo release, but I&#8217;ll talk about it in an upcoming blogpost. Here is a sneak peek of an exampe:</p>
-<p><script src="https://gist.github.com/404953.js"></script></p>
-<p>Even though the HTML parsing might mean too much of a overhead for big files, a better layouting mechanism is needed, but I&#8217;ll elaborate on that subject in an upcoming post.</p>
-<p><span style="font-size: medium;">Get dirty</span></p>
-<p><span style="font-size: medium;">[[posterous-content:xoiclCBHymycFdExjuuv]]</span>I had planned to get the code in super trim and add an interactive playing guide as well as multiplayer capabilities and other goodies before releasing the source, but I realised there&#8217;s not really any need to wait. If you&#8217;re brave enough to wade through sometimes somewhat semi-stupid code, you should be free to do so, and not wait for our utopian dream. Maybe you could even give us a helping hand at fixing all these new fancy features. For example, it shouldn&#8217;t be too hard getting most of the game to run on Android. Palm should also be within reach if you break out of Titanium or write a shim for it! I dare you!</p>
-<p>I repeat: the code is hosted <strong><a href="https://github.com/krawaller/Golingo">here</a></strong> at our brand  spanking new Github account. Isn&#8217;t it time for you to dive in?</p>
-<p>[[posterous-content:bomImsqFuqIIzgaGqAkD]]</p>
-<p>We are very curious what you&#8217;ll do with the code and all. We&#8217;ll continue to develop Golingo as well as other cool apps, so stay tuned as usual. Also, we promise to catch up on the HTML5 vs Objective-C series, where we&#8217;ll try to match the basic functionality of popular apps in a days worth of programming. Please feel free to leave tips for what apps you&#8217;d like to see us take on in the comments!</p>
 ]]></content>
   </entry>
   
