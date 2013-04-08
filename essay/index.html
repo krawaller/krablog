@@ -9,19 +9,7 @@
   <meta name="author" content="Krawaller">
 
   
-  <meta name="description" content="Testing testing Some inline maths: $ \frac{x}{2} $ Some blocklevel maths: Some JavaScript: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-var AddRecipeView = Backbone. &hellip;">
+  <meta name="description" content="Goal Bla bla bla! operations, taxonomy, objects, relationships inbetween! This essay will explore how the mathematical algebraic universe, consisting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -50,15 +38,25 @@ var AddRecipeView = Backbone. &hellip;">
     <div class="essay">
     <div id="content">
       <article role="article">
-      <h2 id="testing-testing">Testing testing</h2>
+      <h2 id="goal">Goal</h2>
 
-<p>Some inline maths: $ \frac{x}{2} $</p>
+<p>Bla bla bla! operations, taxonomy, objects, relationships inbetween!</p>
 
-<p>Some blocklevel maths:</p>
+<p>This essay will explore how the mathematical algebraic universe, consisting of objects (for example numbers, fractions, sums, variables) and operations (such as addition or splitting one to a fraction with equal numerator and denominator), can be exposed to users through a web application built with JavaScript (well, CoffeeScript), html and css.</p>
 
-<script type="math/tex; mode=display"> \frac{x}{2} </script>
+<p>The operations should consists of a few fundamental truths </p>
 
-<p>Some JavaScript:</p>
+<p>Accomplishing this will entail three major tasks:</p>
+
+<ul>
+  <li>Organising the information in a meaningful manner. What object types can we identify? What should the operation taxonomy look like?</li>
+  <li>Define JSON syntax for the data structures, and an inner common API for all operations.</li>
+  <li>Expose this universe through a user interface, complete with context-generated explanations.</li>
+</ul>
+
+<h2 id="object-representation">Object representation</h2>
+
+<p>Blah blah, each object has <code>type</code>, and potentially <code>val</code> and <code>objs</code>. JSON representation. For example, the fraction $ \frac{x}{2} $ is represented by:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -70,31 +68,177 @@ var AddRecipeView = Backbone. &hellip;">
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">AddRecipeView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DishModel</span><span class="p">();</span>
-</span><span class="line">    <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
-</span><span class="line">      <span class="c1">// Listen to model validation errors</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderErrors</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkErrorField</span><span class="p">)</span>
-</span><span class="line">  <span class="p">},</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1">// ...rest of functionality edited out...</span>
-</span><span class="line"><span class="p">});</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">frac</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;fraction&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">objs</span><span class="o">:</span> <span class="p">[{</span>
+</span><span class="line">    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;variable&quot;</span>
+</span><span class="line">    <span class="nx">val</span><span class="o">:</span> <span class="s2">&quot;x&quot;</span>
+</span><span class="line">  <span class="p">},{</span>
+</span><span class="line">    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span>
+</span><span class="line">    <span class="nx">val</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span>
+</span><span class="line">  <span class="p">}]</span>	
+</span><span class="line"><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Some CoffeeScript:</p>
+<p>Note how child non child val name bla bla bla.</p>
+
+<p>This also means we can do adresses, where an address simply is an array of child positions. Let’s say we’re working with this fraction:</p>
+
+<script type="math/tex; mode=display"> \frac{(-x)^y}{3+k} </script>
+
+<p>If this is our universe, the followind addresses are legal:</p>
+
+<ul>
+  <li><code>[]</code> is the empty address which we define to mean the whole object, in this case the fraction $ \frac{(-x)^y}{3+k} $</li>
+  <li><code>[0]</code> gives the first child of the full object, which here is the power $ (-x)^y $</li>
+  <li><code>[0,0]</code> gives the first child of the first child, which here is the negation $ -x $</li>
+  <li><code>[0,0,0]</code> gives the variable $ x $</li>
+  <li><code>[0,1]</code> gives the variable $ y $</li>
+  <li><code>[1]</code> gives the sum $ 3+k $</li>
+  <li><code>[1,0]</code> gives the number $ 3 $</li>
+  <li><code>[1,1]</code> gives the variable $ k $</li>
+</ul>
+
+<p>Addresses will serve two main purposes:</p>
+
+<ul>
+  <li>Make us able to direct an operation at a descendant of the current universe expression.</li>
+  <li>Allow an operation result to highlight certain descendants of the result.</li>
+</ul>
+
+<h2 id="parser">Parser</h2>
+
+<p>Write about the split into <code>parseExpression</code>, <code>parseBlob</code>, and <code>calc</code>. Operator vs function, unary vs binary operator, chains, etc.</p>
+
+<h2 id="printing-solutions">Printing solutions</h2>
+
+<p>Discuss mathml, Latex, mathjax. printing libraries taking my JSON and outputting what is needed. MathML compatibility table from caniuse. </p>
+
+<p><img src="/krablog/images/mathml.png" /></p>
+
+<h2 id="operation">Operation</h2>
+
+<p>bla bla. start with classification already here, get taxonomy set?</p>
+
+<h3 id="target-definition">Target definition</h3>
+
+<p>Each operation works on a specific kind of object. Some just on type, others require more detailed definition. Thus, <code>type</code> and <code>validate</code> syntax! Also, can have “special” types, such as number 0, 1, numeric, etc.</p>
+
+<p>Example! Collapse double negation. Here’s the mathematical operation:</p>
+
+<script type="math/tex; mode=display"> --x \rightarrow x </script>
+
+<p>This operation works on negations. But then, the negated object must also be a negation! Here we need to use both type check and validate function:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">fun = </span><span class="nf">(arr)-&gt;</span>
-</span><span class="line">	<span class="p">[</span><span class="nx">obj1</span><span class="p">,</span><span class="nx">obj2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span>
-</span><span class="line">	<span class="nx">obj1</span><span class="p">.</span><span class="nx">val</span> <span class="o">+</span> <span class="nx">obj2</span><span class="p">.</span><span class="nx">val</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">collapseDoubleNeg</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;negation&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">){</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">arg</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">objs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&quot;negation&quot;</span> <span class="o">?</span> <span class="nx">OK</span> <span class="o">:</span> <span class="nx">Err</span><span class="p">(</span><span class="s2">&quot;mustbedoubleneg&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Since we type-check first we now that the object sent on to the validate function is a negation, and we can therefore assume the existence of a child which saves us from having to check that.</p>
+
+<h3 id="input">Input</h3>
+
+<p>Bla bla different kinds bla bla. Bla bla <code>aim</code> and <code>opname</code>!</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">aim</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class="line">  <span class="nx">opname</span><span class="o">:</span> <span class="s2">&quot;divideByOne&quot;</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Bla bla most ops also require additional input. These can be broken down into:</p>
+
+<ul>
+  <li>Argument</li>
+  <li>Child selection</li>
+  <li>Descendant selection</li>
+  <li>Direction/side</li>
+  <li>Other choice</li>
+</ul>
+
+<p>Lets go over one by one:</p>
+
+<h4 id="argument">Argument</h4>
+
+<p>Some operations require a maths object as an argument. For example, the operation that splits the number 1 into a fraction of equal numerator and denominator needs to know what the numerator and denominator should become. Lets say we want to perform this expansion:</p>
+
+<script type="math/tex; mode=display"> y+\style{background-color:blue}{1} \rightarrow y+\style{background-color:blue}{\frac{x}{x}}  </script>
+
+<p>That input would look like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">aim</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span class="line">  <span class="nx">opname</span><span class="o">:</span> <span class="s2">&quot;splitOneToFrac&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">argument</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;variable&quot;</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;x&quot;</span>
+</span><span class="line">  <span class="p">}</span>	
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Some operations might need to validate the given argument. For example, <code>splitOneToFrac</code> shown above should not accept the number 0. We can accomodate this by reusing the syntax for the <code>target</code> definition - an object which can contain a <code>type</code> string and a <code>validate</code> function.</p>
+
+<h4 id="child-selection">Child selection</h4>
+
+<p>It is quite common for an operation to require the user to select one or more children of the target object. One of the most obvious examples is <code>addition</code>. Consider the following operation:</p>
+
+<script type="math/tex; mode=display"> \frac{1}{\style{background-color:blue}{x+\style{background-color:green}{2}+y+\style{background-color:green}{3}}} \rightarrow \frac{1}{\style{background-color:blue}{x+\style{background-color:green}{5}+z}} </script>
+
+<p>Here’s our input:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">aim</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span class="line">  <span class="nx">opname</span><span class="o">:</span> <span class="s2">&quot;addition&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">selection</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Since an operation can require more than one selection to be made, we gather all selections in an array. Each selection is also an array, containing the positions of the selected children. Our input here consists of a single selection, where we’ve selected the children at positions 1 and 3.</p>
+
+<p>The syntax for defining an operation selection has to be rather complex. First off, commonly only some children are valid selections. In our <code>addition</code> example, it wouldn’t make sense to select any of the variables. In this context, only numbers are valid (and negation of numbers if this addition implementation could deal with negative numbers). We need a way to <code>filter</code> what children are ok, which can again be fulfilled with the operation <code>target</code> syntax.</p>
+
+<p>Combining with enforcing the selection of at least 2 terms, the definition ends up like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">addition</span><span class="p">.</span><span class="nx">selection</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">min</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">filter</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Note how the <code>filter</code> property isn’t actually an object with a <code>type</code> string, but rather contains the type string directly. This is simply a convenience shortcut, bla bla bla.</p>
+
+<p>Wee!</p>
 
       </article>
     </div>
