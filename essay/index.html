@@ -9,7 +9,7 @@
   <meta name="author" content="Krawaller">
 
   
-  <meta name="description" content="Goal Bla bla bla! operations, taxonomy, objects, relationships inbetween! This essay will explore how the mathematical algebraic universe, consisting &hellip;">
+  <meta name="description" content="Goal This essay will explore how the mathematical algebraic universe, consisting of objects (for example numbers, fractions, sums, variables) and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -40,23 +40,80 @@
       <article role="article">
       <h2 id="goal">Goal</h2>
 
-<p>Bla bla bla! operations, taxonomy, objects, relationships inbetween!</p>
+<p>This essay will explore how the mathematical algebraic universe, consisting of objects (for example numbers, fractions, sums, variables) and operations (such as addition or splitting the number 1 to a fraction with equal numerator and denominator), can be exposed to users through a web application built with JavaScript (well, CoffeeScript), html and css.</p>
 
-<p>This essay will explore how the mathematical algebraic universe, consisting of objects (for example numbers, fractions, sums, variables) and operations (such as addition or splitting one to a fraction with equal numerator and denominator), can be exposed to users through a web application built with JavaScript (well, CoffeeScript), html and css.</p>
+<p>The purpose of the web application is to help students to a better understanding. Encourage by the research into “Structured Derivations” by Ralph-Johan Back, the hope is that exposing the operations and objects in a logical manner (as opposed to hiding the complexity, which is often the case in teaching and mathematical educational applications) will accomplish this.</p>
 
-<p>The operations should consists of a few fundamental truths </p>
-
-<p>Accomplishing this will entail three major tasks:</p>
+<p>Creation of this web application entails three major tasks:</p>
 
 <ul>
-  <li>Organising the information in a meaningful manner. What object types can we identify? What should the operation taxonomy look like?</li>
-  <li>Define JSON syntax for the data structures, and an inner common API for all operations.</li>
-  <li>Expose this universe through a user interface, complete with context-generated explanations.</li>
+  <li><strong>Organise the information</strong> in a meaningful manner. What object types can we identify? What should the operation taxonomy look like? How do we connect the different related denizens in this universe?</li>
+  <li>Define JSON syntax for the <strong>data structures</strong>, and an inner common API for all operations.</li>
+  <li>Expose this universe through a <strong>user interface</strong>, complete with context-generated explanations.</li>
 </ul>
+
+<p>As previously stated, this essay will explore how to do this. Focus will be on the contained information, and not the technical implementation.</p>
 
 <h2 id="object-representation">Object representation</h2>
 
-<p>Blah blah, each object has <code>type</code>, and potentially <code>val</code> and <code>objs</code>. JSON representation. For example, the fraction $ \frac{x}{2} $ is represented by:</p>
+<p>Before we can consider operations, we need to define what the basic objects look like. Ideally, we should find a generic format that can represent all objects we wish to represent. </p>
+
+<h3 id="scope">Scope</h3>
+
+<p>First we need to ask ourselves - what different objects do we want to support? The “atomic” types immediately spring to mind:</p>
+
+<ul>
+  <li>numbers</li>
+  <li>variables</li>
+</ul>
+
+<p>We also need the types representing arithmetic operations:</p>
+
+<ul>
+  <li>sums</li>
+  <li>products</li>
+  <li>fractions</li>
+  <li>powers</li>
+  <li>roots</li>
+</ul>
+
+<p>…and also equations, which are really <strong>relations</strong> between two statements.</p>
+
+<p>In Structured Derivations as defined by Ralph-Johan Back, logical constructions are an integrated part of the derivation representation. Thus we should have support for them too:</p>
+
+<ul>
+  <li>and</li>
+  <li>or</li>
+  <li>not</li>
+</ul>
+
+<p>And speaking of not, we also need to support <strong>negations</strong>.</p>
+
+<h3 id="characteristics">Characteristics</h3>
+
+<p>Looking over the properties of the object types in this list, we can distill it down to a few different characteristics:</p>
+
+<ul>
+  <li>First of all, an object belongs to one of these <strong>types</strong>. </li>
+  <li>An object can potentially have a <strong>value</strong>, such as the number 3.</li>
+  <li>An object can have a <strong>name</strong>, such as the variable x.</li>
+  <li>An object might contain <strong>one single inner object</strong>. In our list, that encompasses nots and negations.</li>
+  <li>An object might contain <strong>exactly two inner objects</strong>. In our list, that fits fractions, powers, roots and relations.</li>
+  <li>An object might contain <strong>two or more inner objects</strong>, like in sums, products, ands and ors.</li>
+  <li>An object might have a <strong>subtype</strong> - relations can be equalities or one of the different kinds of inequalities.</li>
+</ul>
+
+<p>How can we represent this in a generic JSON format? It turns out, all this can be represented by just three properties:</p>
+
+<ul>
+  <li>To start, we need a <code>type</code> property, to track which type the object is.</li>
+  <li>We also need a <code>value</code> property. This can be used also for variable names and relation subtypes.</li>
+  <li>If we have an <code>objects</code> property that is always an array of sub objects, this can cover all cases for objects that contain other objects. </li>
+</ul>
+
+<p>This simple format is able to represent any object belonging to our list of types! It should also be future proof in the event of other types being added to the application; functions could have their names in the <code>value</code> property and the arguments in the <code>objects</code> property, a derivate could have the order in the <code>value</code> property, and the variable and expression as children in the <code>objects</code> property.</p>
+
+<p>Here’s an example of a JSON representation of the fraction $ \frac{x}{2} $:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -80,9 +137,9 @@
 </span><span class="line"><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Note how child non child val name bla bla bla.</p>
+<h3 id="addresses">Addresses</h3>
 
-<p>This also means we can do adresses, where an address simply is an array of child positions. Let’s say we’re working with this fraction:</p>
+<p>Having nested objects always contained in the objects property means that we can define a simple but powerful <strong>address</strong> system, that allows us to point at a contained child in a ubiquitous and simple way. We simply need to list the position in the objects array, for each generation down. Take for example this fraction:</p>
 
 <script type="math/tex; mode=display"> \frac{(-x)^y}{3+k} </script>
 
@@ -108,23 +165,23 @@
 
 <h2 id="parser">Parser</h2>
 
-<p>Write about the split into <code>parseExpression</code>, <code>parseBlob</code>, and <code>calc</code>. Operator vs function, unary vs binary operator, chains, etc.</p>
+<p><em>Write about the split into <code>parseExpression</code>, <code>parseBlob</code>, and <code>calc</code>. Operator vs function, unary vs binary operator, chains, etc.</em></p>
 
 <h2 id="printing-solutions">Printing solutions</h2>
 
-<p>Discuss mathml, Latex, mathjax. printing libraries taking my JSON and outputting what is needed. MathML compatibility table from caniuse. </p>
+<p><em>Discuss mathml, Latex, mathjax. printing libraries taking my JSON and outputting what is needed. MathML compatibility table from caniuse.</em></p>
 
 <p><img src="/krablog/images/mathml.png" /></p>
 
 <h2 id="operation">Operation</h2>
 
-<p>bla bla. start with classification already here, get taxonomy set?</p>
+<p><em>bla bla. start with classification already here, get taxonomy set?</em></p>
 
 <h3 id="target-definition">Target definition</h3>
 
 <p>Each operation works on a specific kind of object. Some just on type, others require more detailed definition. Thus, <code>type</code> and <code>validate</code> syntax! Also, can have “special” types, such as number 0, 1, numeric, etc.</p>
 
-<p>Example! Collapse double negation. Here’s the mathematical operation:</p>
+<p><em>Example! Collapse double negation. Here’s the mathematical operation:</em></p>
 
 <script type="math/tex; mode=display"> --x \rightarrow x </script>
 
@@ -148,7 +205,7 @@
 
 <h3 id="input">Input</h3>
 
-<p>Bla bla different kinds bla bla. Bla bla <code>aim</code> and <code>opname</code>!</p>
+<p><em>Bla bla different kinds bla bla. Bla bla <code>aim</code> and <code>opname</code>!</em></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -160,7 +217,7 @@
 </span><span class="line"><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Bla bla most ops also require additional input. These can be broken down into:</p>
+<p><em>Bla bla most ops also require additional input. These can be broken down into:</em></p>
 
 <ul>
   <li>Argument</li>
@@ -170,7 +227,7 @@
   <li>Other choice</li>
 </ul>
 
-<p>Lets go over one by one:</p>
+<p><em>Lets go over one by one:</em></p>
 
 <h4 id="argument">Argument</h4>
 
@@ -236,7 +293,7 @@
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Note how the <code>filter</code> property isn’t actually an object with a <code>type</code> string, but rather contains the type string directly. This is simply a convenience shortcut, bla bla bla.</p>
+<p>Note how the <code>filter</code> property isn’t actually an object with a <code>type</code> string, but rather contains the type string directly. This is simply a convenience shortcut, <em>bla bla bla.</em></p>
 
 <p>Wee!</p>
 
