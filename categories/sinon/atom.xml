@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sinon | Krawaller webdev blog]]></title>
   <link href="http://krawaller.github.com/krablog/categories/sinon/atom.xml" rel="self"/>
   <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-14T15:41:22+02:00</updated>
+  <updated>2013-04-16T05:43:28+02:00</updated>
   <id>http://krawaller.github.com/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
@@ -83,15 +83,17 @@ var AddRecipeView = Backbone.View.extend({</p>
 
 <h4 id="access-the-method">2: Access the method</h4>
 
-<p>We start the testcode by capturing the method to test from the constructor prototype:
-<code>javascript
+<p>We start the testcode by capturing the method to test from the constructor prototype:</p>
+
+<p><code>javascript
 var initialize = AddRecipeView.prototype.initialize;
 </code></p>
 
 <h4 id="context">3: Context</h4>
 
-<p>We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here’s the full fake context:
-<code>javascript
+<p>We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here’s the full fake context:</p>
+
+<p><code>javascript
 var context = {
     listenTo: sinon.stub().returns(context),
     render: sinon.stub().returns(context),
@@ -106,18 +108,21 @@ var context = {
 
 <h4 id="execute-the-method">5: Execute the method</h4>
 
-<p>Now we execute the method on our fake context:
-<code>javascript
+<p>Now we execute the method on our fake context:</p>
+
+<p><code>javascript
 var result = initialize.call(context);
-</code>
-####6: Test the result</p>
+</code></p>
+
+<h4 id="test-the-result">6: Test the result</h4>
 
 <p>As the initialize method isn’t supposed to return anything, we don’t need to test the result.</p>
 
 <h4 id="check-context-manipulation">7: Check context manipulation</h4>
 
-<p>The method was supposed to add a dishmodel instance to the <code>.model</code> property, so let’s make sure that happened:
-<code>javascript
+<p>The method was supposed to add a dishmodel instance to the <code>.model</code> property, so let’s make sure that happened:</p>
+
+<p><code>javascript
 it("should set a Dishmodel instance on .model",function(){
     expect(context.model instanceof Dishmodel).toBe(true);
 });
@@ -125,14 +130,17 @@ it("should set a Dishmodel instance on .model",function(){
 
 <h4 id="check-method-calls">8: Check method calls</h4>
 
-<p>Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
-<code>javascript
+<p>Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:</p>
+
+<p><code>javascript
 it("should call render",function(){
     expect(context.render).toHaveBeenCalledOnce();
 });
-</code>
-And finally we test if the two event listeners were set:
-<code>javascript
+</code></p>
+
+<p>And finally we test if the two event listeners were set:</p>
+
+<p><code>javascript
 it("added the event listeners",function(){
     expect(context.listenTo).toHaveBeenCalledTwice();
     expect(context.listenTo.firstCall.args).toEqual([

@@ -166,27 +166,29 @@
 
 <h4 id="access-the-method">2: Access the method</h4>
 
-<p>We start the testcode by capturing the method to test from the constructor prototype:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span><span class="p">;</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
+<p>We start the testcode by capturing the method to test from the constructor prototype:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">initialize</span> <span class="o">=</span> <span class="nx">AddRecipeView</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="context">3: Context</h4>
 
-<p>We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here’s the full fake context:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<p>We need to create a context with stubs for <code>listenTo</code> and <code>render</code>. As the method uses a chaining syntax, we must also have these stubs return our custom context. Finally we need to have some dummy data in <code>.renderErrors</code> and <code>.checkErrorField</code>, in order to be able to test if those properties were passed to <code>listenTo</code>. Here’s the full fake context:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="line">    <span class="nx">listenTo</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">().</span><span class="nx">returns</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
 </span><span class="line">    <span class="nx">render</span><span class="o">:</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">().</span><span class="nx">returns</span><span class="p">(</span><span class="nx">context</span><span class="p">),</span>
 </span><span class="line">    <span class="nx">renderErrors</span><span class="o">:</span> <span class="s2">&quot;RENDERFUNC&quot;</span><span class="p">,</span>
 </span><span class="line">    <span class="nx">checkErrorField</span><span class="o">:</span> <span class="s2">&quot;CHECKSTUFF&quot;</span>
 </span><span class="line"><span class="p">};</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="parameter-data">4: Parameter data</h4>
 
@@ -194,37 +196,43 @@
 
 <h4 id="execute-the-method">5: Execute the method</h4>
 
-<p>Now we execute the method on our fake context:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
-####6: Test the result</p>
+<p>Now we execute the method on our fake context:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="test-the-result">6: Test the result</h4>
 
 <p>As the initialize method isn’t supposed to return anything, we don’t need to test the result.</p>
 
 <h4 id="check-context-manipulation">7: Check context manipulation</h4>
 
-<p>The method was supposed to add a dishmodel instance to the <code>.model</code> property, so let’s make sure that happened:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<p>The method was supposed to add a dishmodel instance to the <code>.model</code> property, so let’s make sure that happened:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should set a Dishmodel instance on .model&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should set a Dishmodel instance on .model&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
 </span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">model</span> <span class="k">instanceof</span> <span class="nx">Dishmodel</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </span><span class="line"><span class="p">});</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="check-method-calls">8: Check method calls</h4>
 
-<p>Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<p>Finally we need to make sure that other functions were called as expected. First we check for the expected call to <code>render</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should call render&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should call render&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
 </span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">render</span><span class="p">).</span><span class="nx">toHaveBeenCalledOnce</span><span class="p">();</span>
 </span><span class="line"><span class="p">});</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
-And finally we test if the two event listeners were set:
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;figcaption&gt;<span></span>&lt;/figcaption&gt;&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And finally we test if the two event listeners were set:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -233,7 +241,7 @@ And finally we test if the two event listeners were set:
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;added the event listeners&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;added the event listeners&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
 </span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">).</span><span class="nx">toHaveBeenCalledTwice</span><span class="p">();</span>
 </span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">.</span><span class="nx">firstCall</span><span class="p">.</span><span class="nx">args</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span>
 </span><span class="line">    	<span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">renderErrors</span>
@@ -242,7 +250,7 @@ And finally we test if the two event listeners were set:
 </span><span class="line">    	<span class="nx">context</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="nx">context</span><span class="p">.</span><span class="nx">checkErrorField</span>
 </span><span class="line">    <span class="p">]);</span>
 </span><span class="line"><span class="p">});</span>
-</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="end-result">End result</h4>
 
