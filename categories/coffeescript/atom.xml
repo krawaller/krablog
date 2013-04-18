@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: coffeescript | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/coffeescript/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/coffeescript/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Software Passion]]></title>
-    <link href="http://krawaller.github.com/krablog/software-passion/"/>
+    <link href="http://krawaller.github.io/krablog/software-passion/"/>
     <updated>2012-03-25T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/software-passion</id>
+    <id>http://krawaller.github.io/krablog/software-passion</id>
     <content type="html"><![CDATA[<p>Earlier this week, Jacob and I participated in the <a href="http://softwarepassion.se/">Software Passion Conference</a> in Gothenburg. Heaps of fun! It was great to take part in a conference that wasn't all about the web, but programming in general. I find I tend to "stare into my navel" quite a bit, caring nothing about the world outside of JavaScript. So this was a great way to broaden my horizons!</p>
 <p>Jacob held a lecture on <a href="http://kraniumjs.com/">Kranium</a>, his webifying framework for Titanium. If you want his slides, get in touch with him directly (twitterhandle @litenjacob), or wait for me to get him to post them here (but don't hold your breath).</p>
 <p>I spoke on CoffeeScript, slides are right here:</p>
@@ -30,9 +30,9 @@
   
   <entry>
     <title type="html"><![CDATA[CoffeeScript overview and resource inventory]]></title>
-    <link href="http://krawaller.github.com/krablog/coffeescript-overview-and-resource-inventory/"/>
+    <link href="http://krawaller.github.io/krablog/coffeescript-overview-and-resource-inventory/"/>
     <updated>2011-11-04T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/coffeescript-overview-and-resource-inventory</id>
+    <id>http://krawaller.github.io/krablog/coffeescript-overview-and-resource-inventory</id>
     <content type="html"><![CDATA[<p>As I've <a href="http://blog.krawaller.se/tag/ria_university_course">written about previously</a> (although far from as much as I hoped to), I'm teaching a course at&nbsp;Linnaeus University&nbsp;on Advanced JavaScript for RIA creation. In the course, parallell to creating a RIA, the students are also tasked with doing a deepdive into&nbsp;a related subject of their own choosing (most often on a technology employed in the RIA creation).</p>
 <p>Because I'm still working my way to a 3rd year degree myself, I ended up in the weird situation of getting to take my own course! Although not giving myself a grade, unfortunately. I made my deepdive in CoffeeScript, which I thought might also be fit for the Krawaller blog.</p>
 <p>So here it is: a repost from my student alter ego, an overview of CoffeeScript:</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: labyrinth | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/labyrinth/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/labyrinth/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Puzzle app step 3 - revving up the engine]]></title>
-    <link href="http://krawaller.github.com/krablog/puzzle-app-step-3-revving-up-the-engine/"/>
+    <link href="http://krawaller.github.io/krablog/puzzle-app-step-3-revving-up-the-engine/"/>
     <updated>2010-07-03T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/puzzle-app-step-3-revving-up-the-engine</id>
+    <id>http://krawaller.github.io/krablog/puzzle-app-step-3-revving-up-the-engine</id>
     <content type="html"><![CDATA[<h3>Excusing the sound of silence</h3>
 <p>And suddenly a whole month went by! But we haven't just been idling around playing <a href="http://carcassonneapp.com/" title="Carcassonne app official homepage">Carcassone</a> all day (at least not just) - this past month has seen several wheels being set in motion;</p>
 <ul>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[Puzzle app step 2 - Data structure]]></title>
-    <link href="http://krawaller.github.com/krablog/puzzle-app-step-2-data-structure/"/>
+    <link href="http://krawaller.github.io/krablog/puzzle-app-step-2-data-structure/"/>
     <updated>2010-05-12T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/puzzle-app-step-2-data-structure</id>
+    <id>http://krawaller.github.io/krablog/puzzle-app-step-2-data-structure</id>
     <content type="html"><![CDATA[<p>We've already <a href="http://blog.krawaller.se/the-intestines-of-a-good-puzzle-game">laid down the foundation</a> of the project, defining the basic idea: ripping off the age-old idea of a labyrinth where the player object can travel in all cardinal directions, but always as far as possible. The why behind the adoption of this seemingly bland idea can be found in the previous post, now we're going to get started on the how!</p>
 <p>In this post we're going to define the <strong>data structures</strong> involved. Let's start with deciding what a <strong>labyrinth data object</strong> should look like! To do that, we have to jot down our ideas of what a labyrinth can contain:</p>
 <ul>
@@ -144,9 +144,9 @@
   
   <entry>
     <title type="html"><![CDATA[Puzzle app step 1 - The intestines of a good puzzle game]]></title>
-    <link href="http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game/"/>
+    <link href="http://krawaller.github.io/krablog/the-intestines-of-a-good-puzzle-game/"/>
     <updated>2010-04-29T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/the-intestines-of-a-good-puzzle-game</id>
+    <id>http://krawaller.github.io/krablog/the-intestines-of-a-good-puzzle-game</id>
     <content type="html"><![CDATA[<p>Having finally got <a href="http://blog.krawaller.se/krawaller-proudly-presents-golingo">Golingo out the door</a> and into the app store, we’re in the process of dreaming forth our next project. While Golingo will keep us occupied for some time to come;</p>
 <ul>
 <li>As my brother promised, he’s going to <strong>detail the creation</strong> of it in a forthcoming post, highlighting the use of web technologies and the benefits of the Titanium Framework. Start typing, Jacob! [edit: read that post <a href="blog.krawaller.se/opensourcing-golingo">here</a>]</li>

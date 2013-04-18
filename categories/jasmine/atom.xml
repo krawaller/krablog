@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Jasmine | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/jasmine/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/jasmine/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Testing Backbone Objects]]></title>
-    <link href="http://krawaller.github.com/krablog/testing-backbone-objects/"/>
+    <link href="http://krawaller.github.io/krablog/testing-backbone-objects/"/>
     <updated>2013-02-23T17:21:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/testing-backbone-objects</id>
+    <id>http://krawaller.github.io/krablog/testing-backbone-objects</id>
     <content type="html"><![CDATA[<h3 id="troll-bait-or-how-not-to-do-it">Troll bait (or “How not to do it”)</h3>
 
 <p>Here’s a blanket statement to flame against:</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tweetanium | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/tweetanium/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/tweetanium/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Titanium application structure – learning from Tweetanium]]></title>
-    <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
+    <link href="http://krawaller.github.io/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
+    <id>http://krawaller.github.io/krablog/titanium-application-structure-learning-from</id>
     <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
 

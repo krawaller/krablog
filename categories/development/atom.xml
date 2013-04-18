@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: development | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/development/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/development/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Titanium app for explaining layout mechanisms]]></title>
-    <link href="http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
+    <link href="http://krawaller.github.io/krablog/titanium-app-for-explaining-layout-mechanisms/"/>
     <updated>2011-08-04T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/titanium-app-for-explaining-layout-mechanisms</id>
+    <id>http://krawaller.github.io/krablog/titanium-app-for-explaining-layout-mechanisms</id>
     <content type="html"><![CDATA[<p>During a recent app project, I felt constantly hampered by not having a strong enough ninjutsu understanding of laying out things in a Titanium app. How does horizontal and vertical layout actually work? What's the difference between a View, a ScrollView and a ScrollableView? When having too much content to show on screen, do I want the parent or child to scroll? What happens when I have a scrolling child in a scrolling parent?</p>
 <p>I constantly had to pause my work to peruse the Titanium docs/kitchensink/sourcecode, or (more often) do some experimenting on the side, regarding stuff that I suspected I really should have nailed down. It felt like doing maths without having memorized the multiplication tables!&nbsp;</p>
 <h3>The TiView app</h3>
@@ -37,9 +37,9 @@
   
   <entry>
     <title type="html"><![CDATA[Krawaller's iPad design flow - productivity app recommendations]]></title>
-    <link href="http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app/"/>
+    <link href="http://krawaller.github.io/krablog/krawallers-ipad-design-flow-productivity-app/"/>
     <updated>2011-03-26T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app</id>
+    <id>http://krawaller.github.io/krablog/krawallers-ipad-design-flow-productivity-app</id>
     <content type="html"><![CDATA[<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
 <p>In quite a few, as it turned out! Obvious as it might be to the rest of the world, a touch screen is a very different input device compared to a touchpad and keyboard. And, as I eventually realised, it is especially well suited for sketching and doing mockups.&nbsp;</p>
 <h2>Our design process</h2>
@@ -102,9 +102,9 @@
   
   <entry>
     <title type="html"><![CDATA[Titanium application structure – learning from Tweetanium]]></title>
-    <link href="http://krawaller.github.com/krablog/titanium-application-structure-learning-from/"/>
+    <link href="http://krawaller.github.io/krablog/titanium-application-structure-learning-from/"/>
     <updated>2011-02-16T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/titanium-application-structure-learning-from</id>
+    <id>http://krawaller.github.io/krablog/titanium-application-structure-learning-from</id>
     <content type="html"><![CDATA[<p>Up until recently, like so many other lost souls, we've followed the same Titanium application structure as Appcelerator's KitchenSink application. In this paradigm, when you want to open a new window, you'd typically do something like this:</p>
 <script src="https://gist.github.com/829615.js?file=openingwindow.js"></script>
 
@@ -143,9 +143,9 @@
   
   <entry>
     <title type="html"><![CDATA[Releasing Auktionera, a Tradera iPhone app]]></title>
-    <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
+    <link href="http://krawaller.github.io/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
     <updated>2011-02-03T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
+    <id>http://krawaller.github.io/krablog/releasing-auktionera-a-tradera-iphone-app</id>
     <content type="html"><![CDATA[<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
 <p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
 <p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>'s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
@@ -190,9 +190,9 @@
   
   <entry>
     <title type="html"><![CDATA[Livetanium]]></title>
-    <link href="http://krawaller.github.com/krablog/livetanium/"/>
+    <link href="http://krawaller.github.io/krablog/livetanium/"/>
     <updated>2010-12-01T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/livetanium</id>
+    <id>http://krawaller.github.io/krablog/livetanium</id>
     <content type="html"><![CDATA[<p>We're proud to announce our latest experiment - <strong>Livetanium</strong> - realtime prototyping for Titanium Mobile.</p>
 <p><a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough"><img src="http://posterous.com/getfile/files.posterous.com/temp-2010-12-01/jxHAyfibaCbprllDiquvjCDDHaesbhztwicqqcesrgtDbgEBkEbuEIyuFyBi/livetanium.jpg.scaled500.jpg" height="313" alt="" width="500" /></a></p>
 <p>Made out of titanium, nodejs and unicorns, our Livetanium library lets you code Titanium Mobile apps and see changes in realtime. It uses a nodejs server to pipe filechanges to the app, and these changes are applied in realtime. It's iPhone only at the moment, but works in both the simulator and on the actual device. You can <a href="http://krawaller.se/livetanium.swf" title="Livetanium walkthrough">see a quick walkthrough here </a>or check out <a href="https://github.com/krawaller/Titanium-Tools/tree/master/Resources/tools/livetanium/" title="Livetanium source code">the source</a>.</p>

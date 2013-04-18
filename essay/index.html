@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://krawaller.github.com/krablog/essay/">
+  <link rel="canonical" href="http://krawaller.github.io/krablog/essay/">
   <link href="/krablog/favicon.png" rel="icon">
   <link href="/krablog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/krablog/javascripts/modernizr-2.0.js"></script>
@@ -42,17 +42,25 @@
 
 <p>This essay will explore how the mathematical algebraic universe, consisting of objects (for example numbers, fractions, sums, variables) and operations (such as addition or splitting the number 1 to a fraction with equal numerator and denominator), can be exposed to users through a web application built with JavaScript (well, CoffeeScript), html and css.</p>
 
-<p>The purpose of the web application is to help students to a better understanding. Encourage by the research into “Structured Derivations” by Ralph-Johan Back, the hope is that exposing the operations and objects in a logical manner (as opposed to hiding the complexity, which is often the case in teaching and mathematical educational applications) will accomplish this.</p>
+<p>The purpose of the web application is to help students to a better understanding of algebra. Encourage by the research into “Structured Derivations” by Ralph-Johan Back, the hope is that exposing the operations and objects in a logical manner (as opposed to hiding the complexity, which is often the case in teaching and mathematical educational applications) will accomplish this.</p>
 
-<p>Creation of this web application entails three major tasks:</p>
+<p>Creation of this web application requires answering the following questions regarding the contained information:</p>
 
 <ul>
-  <li><strong>Organise the information</strong> in a meaningful manner. What object types can we identify? What should the operation taxonomy look like? How do we connect the different related denizens in this universe?</li>
-  <li>Define JSON syntax for the <strong>data structures</strong>, and an inner common API for all operations.</li>
-  <li>Expose this universe through a <strong>user interface</strong>, complete with context-generated explanations.</li>
+  <li><strong>How can the information we want to expose be organized in a meaningfull manner?</strong> What mathematical object types that we want to include can we identify? What should the operation taxonomy look like? How do we connect the different related denizens in this universe?</li>
+  <li><strong>How do we define a JSON format that can represent the data structures?</strong> What should the inner common API for all operations look like?</li>
+  <li><strong>How do we expose the algebraic universe through a **user interface?</strong> How do we represent the different information items? How do we show their relations to each other?</li>
 </ul>
 
-<p>As previously stated, this essay will explore how to do this. Focus will be on the contained information, and not the technical implementation.</p>
+<h3 id="relation-with-the-algebra-explorer-project">Relation with the Algebra Explorer project</h3>
+
+<p>Creation of the Algebra Explorer application is a very large project. This essay focuses only on answering the information-related questions given above. We will only touch on the technical implementation and user interface creation in direct connection to the organisation of information.</p>
+
+<p>The Algebra Explorer project will also require significant post-completion user tests by students, to evaluate educational aspects. This falls outside the scope of this essay.</p>
+
+<p>Here is a Venn diagram illustrating how this essay relates to the Algebra Explorer project:</p>
+
+<p><img src="/krablog/images/essayvenn.png" /></p>
 
 <h2 id="object-representation">Object representation</h2>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: txtv | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/txtv/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/txtv/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[HTML5 vs Objective C, round 1]]></title>
-    <link href="http://krawaller.github.com/krablog/html5-vs-objective-c-round-1/"/>
+    <link href="http://krawaller.github.io/krablog/html5-vs-objective-c-round-1/"/>
     <updated>2010-01-28T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/html5-vs-objective-c-round-1</id>
+    <id>http://krawaller.github.io/krablog/html5-vs-objective-c-round-1</id>
     <content type="html"><![CDATA[<p>Welcome to this <strong>series of serious mobile web development</strong>. Here I'll most humbly guide you through some of my recent projects and show you just how much ass HTML5 and JavaScript (and sometimes frameworks like Titanium Mobile) may kick if handled correctly.</p>
 <p>All the code will be hosted on <a href="http://github.com/litenjacob/txtv" title="my github">my github</a> and openly licensed. Since I'm a restless soul and my head nearly bursts of all the ideas I'd like to realize, I'll sometimes give you, dear reader, exercises to fork and enhance my projects when I move on. 'nuff said, let's get started.</p>
 <p><span style="font-size: large;">This week's challenge:</span></p>

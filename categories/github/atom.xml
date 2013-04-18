@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: github | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/github/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/github/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Releasing Tristania fan app]]></title>
-    <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
+    <link href="http://krawaller.github.io/krablog/releasing-tristania-fan-app/"/>
     <updated>2010-10-21T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
+    <id>http://krawaller.github.io/krablog/releasing-tristania-fan-app</id>
     <content type="html"><![CDATA[<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
 <p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
 <p>&nbsp;</p>
@@ -72,9 +72,9 @@
   
   <entry>
     <title type="html"><![CDATA[Krawaller goes Github]]></title>
-    <link href="http://krawaller.github.com/krablog/krawaller-goes-github/"/>
+    <link href="http://krawaller.github.io/krablog/krawaller-goes-github/"/>
     <updated>2010-05-05T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/krawaller-goes-github</id>
+    <id>http://krawaller.github.io/krablog/krawaller-goes-github</id>
     <content type="html"><![CDATA[<p>Hi folks!</p>
 <p>We just wanted to let you know that we've set up <a href="http://github.com/krawaller">a fancy new Github accout here</a>, to make way for our upcoming <a href="http://www.golingoapp.com">Golingo</a> source release.</p>
 <p>However, we'd feel a bit ashamed if it would have to stay so very reverberatingly empty until then, so we had to throw together a few projects to make it more cosy and homelike. Oh my, the priorities of a creative programmer ;)</p>

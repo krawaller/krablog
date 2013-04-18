@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mobilesafari | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/mobilesafari/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/mobilesafari/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Pretty Search for Mobile Safari]]></title>
-    <link href="http://krawaller.github.com/krablog/pretty-search-for-mobile-safari-0/"/>
+    <link href="http://krawaller.github.io/krablog/pretty-search-for-mobile-safari-0/"/>
     <updated>2010-07-31T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/pretty-search-for-mobile-safari-0</id>
+    <id>http://krawaller.github.io/krablog/pretty-search-for-mobile-safari-0</id>
     <content type="html"><![CDATA[<p>Hey folks!</p>
 <p>We got tired of not having any decent Page Search in iOS, so we did what any programmer with self-esteem and too much time would do, and wrote a bookmarklet to overcome this shortcoming. It's still an early release, but it seem to be working, knock on wood.</p>
 <p>[[posterous-content:omebqIafCugpzgipisuA]]</p>

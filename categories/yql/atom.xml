@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: yql | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/yql/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/yql/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Releasing Auktionera, a Tradera iPhone app]]></title>
-    <link href="http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
+    <link href="http://krawaller.github.io/krablog/releasing-auktionera-a-tradera-iphone-app/"/>
     <updated>2011-02-03T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/releasing-auktionera-a-tradera-iphone-app</id>
+    <id>http://krawaller.github.io/krablog/releasing-auktionera-a-tradera-iphone-app</id>
     <content type="html"><![CDATA[<p style="padding-left: 30px;"><strong>Update</strong>: As Tradera finally saw sense and ported the eBay app, we're pulling the Auktionera app from the App Store! One has to choose one's battles...&nbsp;</p>
 <p>As Jacob wrote the Livetanium post 2 months ago, I remember us vowing to keep up the pace in the content flow to this blog. That was, as stated, two months ago, and this place has been tumbleweeding ever since. Epic fail, as the kids (<a href="http://thebestpageintheuniverse.net/c.cgi?u=epic" target="_blank">erroneously</a>) say these days!&nbsp;</p>
 <p>One of our excuses is a pretty intense development of an iPhone app for the swedish auction site Tradera, which is now released to the App Store! <a href="http://itunes.apple.com/se/app/id416520953">Here</a>'s a shop link, and we also created a little <a href="http://auktionera-app.se" title="Auktionera app support site" target="_blank">support site</a> with some more information (in Swedish).</p>
@@ -62,9 +62,9 @@
   
   <entry>
     <title type="html"><![CDATA[Releasing Tristania fan app]]></title>
-    <link href="http://krawaller.github.com/krablog/releasing-tristania-fan-app/"/>
+    <link href="http://krawaller.github.io/krablog/releasing-tristania-fan-app/"/>
     <updated>2010-10-21T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/releasing-tristania-fan-app</id>
+    <id>http://krawaller.github.io/krablog/releasing-tristania-fan-app</id>
     <content type="html"><![CDATA[<p>We are proud to announce the release of our latest creation; the official app for the magnificent metal band <a href="http://www.tristania.com" title="Tristania's official homepage" target="_blank">Tristania</a>!&nbsp;</p>
 <p>[[posterous-content:cCIiuwqEGmfzemizpFzI]]</p>
 <p>&nbsp;</p>
@@ -119,9 +119,9 @@
   
   <entry>
     <title type="html"><![CDATA[Headbanging with YQL]]></title>
-    <link href="http://krawaller.github.com/krablog/headbanging-with-yql/"/>
+    <link href="http://krawaller.github.io/krablog/headbanging-with-yql/"/>
     <updated>2010-09-04T00:00:00+02:00</updated>
-    <id>http://krawaller.github.com/krablog/headbanging-with-yql</id>
+    <id>http://krawaller.github.io/krablog/headbanging-with-yql</id>
     <content type="html"><![CDATA[<p>[[posterous-content:HzJgGabluwqhaydBgsId]]</p>
 <p>During the past month, we've been hard at work on the official application for the metal band <a href="http://www.tristania.com" title="Tristania" target="_blank">Tristania</a>, a project now nearing completion. This process has given me much food for thought, and a new love of my life - Yahoo's <a href="http://developer.yahoo.com/yql/" title="YQL homepage" target="_blank">YQL</a> tool!</p>
 <h3>Band app content</h3>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ithoughts | Krawaller webdev blog]]></title>
-  <link href="http://krawaller.github.com/krablog/categories/ithoughts/atom.xml" rel="self"/>
-  <link href="http://krawaller.github.com/krablog/"/>
-  <updated>2013-04-16T05:43:28+02:00</updated>
-  <id>http://krawaller.github.com/krablog/</id>
+  <link href="http://krawaller.github.io/krablog/categories/ithoughts/atom.xml" rel="self"/>
+  <link href="http://krawaller.github.io/krablog/"/>
+  <updated>2013-04-18T08:16:15+02:00</updated>
+  <id>http://krawaller.github.io/krablog/</id>
   <author>
     <name><![CDATA[Krawaller]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Krawaller's iPad design flow - productivity app recommendations]]></title>
-    <link href="http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app/"/>
+    <link href="http://krawaller.github.io/krablog/krawallers-ipad-design-flow-productivity-app/"/>
     <updated>2011-03-26T00:00:00+01:00</updated>
-    <id>http://krawaller.github.com/krablog/krawallers-ipad-design-flow-productivity-app</id>
+    <id>http://krawaller.github.io/krablog/krawallers-ipad-design-flow-productivity-app</id>
     <content type="html"><![CDATA[<p>While waiting for my younger brother to post some long-promised content, I thought I'd give a quick overview of our design flow iPad usage. When I first got my pad, I bought it mainly as a testing device, not really anticipating to use it as an actual productivity tool. Because let's face it, in what fields could it possibly bester my trusted MacBook Pro?&nbsp;</p>
 <p>In quite a few, as it turned out! Obvious as it might be to the rest of the world, a touch screen is a very different input device compared to a touchpad and keyboard. And, as I eventually realised, it is especially well suited for sketching and doing mockups.&nbsp;</p>
 <h2>Our design process</h2>
